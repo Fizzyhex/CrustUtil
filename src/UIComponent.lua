@@ -117,7 +117,7 @@ function UIComponent:Build()
 end
 
 --[=[
-	`Defer` is called after the UIComponent's creation and will not yield the thread.
+	`Defer` is called after `Build` and will not yield the thread.
 ]=]
 function UIComponent:Defer()
 end
