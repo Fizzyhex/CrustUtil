@@ -43,29 +43,26 @@
 	```
 ]=]
 local UIComponent = {}
-
-UIComponent.__call = function(self, props)
+UIComponent.__call = function(self, props: {[any]: any})
 	local new = setmetatable({props = props}, self)
 
-	local args = {new:Build(props)}
+	local args = {new:Build()}
 
-	if new.Defer then
-		task.spawn(function()
-			new:Defer()
-		end)
-	end
+	task.spawn(function()
+		new:Defer()
+	end)
 
 	return new, unpack(args)
 end
 
 --[=[
-	Creates a new Instance. 
+	A utility for creating Instances. 
 
 	@param className string -- The class name of the Instance you want to create
 	@param props table -- The properties of the instance you want to create
 	@return Instance -- Returns a new Instance
 ]=]
-function UIComponent.CreateInstance(className: string, props: {[string]: any})
+function UIComponent.CreateInstance(className: string, props: {[any]: any})
 	local instance = Instance.new(className)
 	local parent
 	for k, v in pairs (props) do
@@ -77,6 +74,43 @@ function UIComponent.CreateInstance(className: string, props: {[string]: any})
 	end
 	instance.Parent = parent
 	return instance
+end
+
+--[=[
+	`Build` is called during the UIComponent's creation.
+
+	@return self, ... -- Returns the object and any provided arguments
+
+	```lua
+		local UIComponent = require(somewhere.UIComponent)
+	
+		local PersistentGui = UIComponent.new()
+
+		function PersistentGui:Build()
+			self.gui = CreateInstance("ScreenGui", {
+				Name = "PersistentGui",
+				ResetOnSpawn = false,
+				ZIndex = self.props.ZIndex,
+				Parent = LOCAL_PLAYER.PlayerGui
+			})
+
+			return tick()
+		end
+
+		local persistentGui, creationTime = MainGui.new{
+			ZIndex = 3
+		}
+
+		print("Created GUI at", creationTime)
+	```
+]=]
+function UIComponent:Build()
+end
+
+--[=[
+	`Defer` is called after the UIComponent's creation and will not yield the thread.
+]=]
+function UIComponent:Defer()
 end
 
 --[=[
