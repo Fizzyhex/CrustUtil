@@ -65,7 +65,6 @@ end
 	```lua
 		local parts = {}
 
-		-- This is equivalent to the code below...
 		parts.cube = UIComponent.CreateInstance "BasePart", {
 			Name = "Cube",
 			Anchored = true,
