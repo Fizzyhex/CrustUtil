@@ -61,6 +61,15 @@ end
 	@param className string -- The class name of the Instance you want to create
 	@param props table -- The properties of the instance you want to create
 	@return Instance -- Returns a new Instance
+
+	```lua
+		local cube = UIComponent.CreateInstance("BasePart", {
+			Name = "Cube",
+			Anchored = true,
+			Size = Vector3.new(4, 4, 4)
+			Parent = workspace
+		})
+	```
 ]=]
 function UIComponent.CreateInstance(className: string, props: {[any]: any})
 	local instance = Instance.new(className)
@@ -120,7 +129,7 @@ end
 		local newComponent = UIComponent.new()
 	```
 	
-	@return Export
+	@return UIComponent
 ]=]
 function UIComponent.new()
 	local element = {}
