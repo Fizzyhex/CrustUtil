@@ -28,7 +28,10 @@
 			return self.SetText
 		end
 		
-		local screenGui = CreateInstance("ScreenGui", {ResetOnSpawn = false, Parent = LOCAL_PLAYER.PlayerGui})
+		local screenGui = CreateInstance("ScreenGui", {
+			ResetOnSpawn = false, 
+			Parent = LOCAL_PLAYER.PlayerGui
+		})
 		
 		local button, UpdateText = LoudButton{text = "click me 10 times!", parent = screenGui}
 		local clicks = 0
