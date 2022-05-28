@@ -19,19 +19,19 @@
 		end
 		
 		function LoudButton:Build()
-			self.button = CreateInstance("TextButton", {
+			self.button = CreateInstance "TextButton", {
 				Size = UDim2.new(0, 80, 0, 30),
 				Text = self.props.text
 				Parent = self.props.parent
-			})
+			}
 			
 			return self.SetText
 		end
 		
-		local screenGui = CreateInstance("ScreenGui", {
+		local screenGui = CreateInstance "ScreenGui", {
 			ResetOnSpawn = false, 
 			Parent = LOCAL_PLAYER.PlayerGui
-		})
+		}
 		
 		local button, UpdateText = LoudButton{text = "click me 10 times!", parent = screenGui}
 		local clicks = 0
@@ -63,12 +63,30 @@ end
 	@return Instance -- Returns a new Instance
 
 	```lua
-		local cube = UIComponent.CreateInstance("BasePart", {
+		local parts = {}
+
+		-- This is equivalent to the code below...
+		parts.cube = UIComponent.CreateInstance "BasePart", {
+			Name = "Cube",
+			Anchored = true,
+			Size = Vector3.new(4, 4, 4)
+			Parent = workspace
+		}
+
+		-- ...which is equivalent to:
+		parts.cube = UIComponent.CreateInstance("BasePart", {
 			Name = "Cube",
 			Anchored = true,
 			Size = Vector3.new(4, 4, 4)
 			Parent = workspace
 		})
+
+		-- ...which is also equivalent to:
+		parts.cube = Instance.new("BasePart")
+		parts.cube.Name = "Cube"
+		parts.cube.Anchored = true
+		parts.cube.Size = Vector3.new(4, 4, 4)
+		parts.cube.Parent = workspace
 	```
 ]=]
 function UIComponent.CreateInstance(className: string, props: {[any]: any})
