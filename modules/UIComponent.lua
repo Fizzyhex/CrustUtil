@@ -39,9 +39,9 @@
 		end)
 	```
 ]=]
-local Export = {}
+local UIComponent = {}
 
-Export.__call = function(self, props)
+UIComponent.__call = function(self, props)
 	local new = setmetatable({props = props}, self)
 
 	local args = {new:Build(props)}
@@ -62,7 +62,7 @@ end
 	@param props table -- The properties of the instance you want to create
 	@return Instance -- Returns a new Instance
 ]=]
-function Export.CreateInstance(className: string, props: {[string]: any})
+function UIComponent.CreateInstance(className: string, props: {[string]: any})
 	local instance = Instance.new(className)
 	local parent
 	for k, v in pairs (props) do
@@ -85,13 +85,13 @@ end
 	
 	@return Export
 ]=]
-function Export.new()
+function UIComponent.new()
 	local element = {}
 	element.__index = element
 	
-	setmetatable(element, Export)
+	setmetatable(element, UIComponent)
 	
 	return element
 end
 
-return Export
+return UIComponent
