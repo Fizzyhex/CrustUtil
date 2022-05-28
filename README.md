@@ -12,4 +12,4 @@ Alternatively, grab the package you want from the [/src](/src) folder. **This wi
 
 | Module | Dependancy | Description |
 | -- | -- | -- |
-| [UIComponent](https://virshal.github.io/CrustUtil/api/UIComponent) | `UIComponent = virshal/uicomponent@0.1.0` | A library for creating GUIs
+| [UIComponent](https://virshal.github.io/CrustUtil/api/UIComponent) | `UIComponent = "virshal/uicomponent@0.1.0"` | A library for creating GUIs
