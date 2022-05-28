@@ -2,7 +2,7 @@
 A library of utilities for Roblox.
 
 ## Why the name?
-These utilities are here to help solidify the foundation of your scripts. But mainly because I was about to eat pizza when I decided I wanted to make this.
+I was about to eat pizza when I decided I wanted to make this.
 
 | Module | Dependancy | Description |
 | -- | -- | -- |
