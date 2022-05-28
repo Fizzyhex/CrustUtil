@@ -1,1 +1,11 @@
+gitRepoUrl = "https://github.com/Virshal/CrustUtil" # From Git
 gitSourceBranch = "main"
+
+changelog = true
+
+[home]
+enabled = true
+includeReadme = true
+
+[docusaurus]
+tagline = "A library of useful Roblox utilities"
