@@ -1,14 +1,8 @@
-# CrustUtil
-A library of modules for Roblox
+## What's this?
+A library of utilities for Roblox.
 
 ## Why the name?
-I was eating pizza when I decided I was going to make this!
-
-## Installation
-
-Use the package manager [Wally] to install the module you want.
-
-Alternatively, grab the package you want from the [/src](/src) folder. **This will not include any dependancies!**
+These utilities are here to help solidify the foundation of your scripts. But mainly because I was about to eat pizza when I decided I wanted to make this.
 
 | Module | Dependancy | Description |
 | -- | -- | -- |
