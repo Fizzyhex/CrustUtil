@@ -94,6 +94,14 @@ function UIComponent.CreateInstance(className: string, props: {[any]: any})
 	for k, v in pairs (props) do
 		if k == "Parent" then
 			parent = v
+		elseif k == "Children" then
+			if typeof(k) ~= "table" then
+				k.Parent = instance
+			else
+				for _, child: Instance in pairs (k) do
+					child.Parent = instance
+				end
+			end
 		else
 			instance[k] = v
 		end

@@ -1,7 +1,7 @@
 [package]
 name = "virshal/uicomponent"
 description = "A library for creating GUIs"
-version = "0.1.3"
+version = "0.1.4"
 license = "MIT"
 authors = ["Virshal"]
 registry = "https://github.com/UpliftGames/wally-index"
