@@ -7,7 +7,8 @@
 	
 	A UIComponent is a class for managing components of user interfaces.
 	
-	For example:
+	## Example
+
 	```lua
 		local UIComponent = require(somewhere.UIComponent)
 		local CreateInstance = UIComponent.CreateInstance
@@ -19,21 +20,21 @@
 		end
 		
 		function LoudButton:Build()
-			self.button = CreateInstance "TextButton", {
+			self.button = CreateInstance("TextButton", {
 				Size = UDim2.new(0, 80, 0, 30),
 				Text = self.props.text
 				Parent = self.props.parent
-			}
+			})
 			
-			return self.SetText
+			return self.button, self.SetText
 		end
 		
-		local screenGui = CreateInstance "ScreenGui", {
+		local screenGui = CreateInstance("ScreenGui", {
 			ResetOnSpawn = false, 
 			Parent = LOCAL_PLAYER.PlayerGui
-		}
+		})
 		
-		local button, UpdateText = LoudButton{text = "click me 10 times!", parent = screenGui}
+		local button, _, UpdateText = LoudButton {text = "click me 10 times!", parent = screenGui}
 		local clicks = 0
 		
 		button.button.MouseButton1Click:Connect(function(clickCounter)
@@ -43,14 +44,26 @@
 	```
 ]=]
 local UIComponent = {}
+
+UIComponent.Children = newproxy(true)
+getmetatable(UIComponent.Children).__tostring = function() return "CustomEnum(Children)" end
+
 UIComponent.__call = function(self, props: {[any]: any})
 	local new = setmetatable({props = props}, self)
 
 	local args = {new:Build()}
+	local topInstance = args[1]
 
-	task.spawn(function()
-		new:Defer()
-	end)
+	if topInstance then
+		assert(typeof(topInstance) == "Instance", "The first argument returned by a UIComponent must be an Instance")
+		new._topInstance = topInstance
+	end
+
+	if new.Defer then
+		task.spawn(function()
+			new:Defer()
+		end)
+	end
 
 	return new, unpack(args)
 end
@@ -63,28 +76,17 @@ end
 	@return Instance -- Returns a new Instance
 
 	```lua
-		local smokeyCube = CreateInstance "BasePart", {
-			Name = "SmokeyCube",
-			Anchored = true,
-			Size = Vector3.new(4, 4, 4)
-			Parent = workspace
-			Children = CreateInstance "Smoke" { 
-				Size = 4 
-			}
-		}
-
-		-- ...which is equivalent to:
 		local smokeyCube = CreateInstance("BasePart", {
 			Name = "SmokeyCube",
 			Anchored = true,
 			Size = Vector3.new(4, 4, 4)
 			Parent = workspace
-			Children = CreateInstance("Smoke", {
+			[UIComponent.Children] = CreateInstance("Smoke", {
 				Size = 4
 			})
 		})
 		
-		-- ...which is also equivalent to:
+		-- ...which is equivalent to:
 		local smokeyCube = Instance.new("BasePart")
 		smokeyCube.Name = "SmokeyCube"
 		smokeyCube.Anchored = true
@@ -95,19 +97,92 @@ end
 		smoke.Size = 4
 		smoke.Parent = smokeyCube
 	```
+
+	## Assigning children
+
+	Assigning children can be done within the CreateInstance function.
+	
+	The simplist way to do this is to simply pass a child:
+
+	```lua
+		local gui = CreateInstance("ScreenGui", {
+			Parent = PlayerGui,
+
+			Children = CreateInstance("Frame", {
+				Size = UDim2.new(0, 50, 0, 50),
+			}),
+		})
+	```
+
+	Or a table for multiple children:
+
+	```lua
+		local gui = CreateInstance("ScreenGui", {
+			Parent = PlayerGui,
+
+			Children = {
+				CreateInstance("Frame", {
+					Size = UDim2.new(0, 50, 0, 50),
+				}),
+
+				CreateInstance("TextButton", {
+					Size = UDim2.new(0, 50, 0, 50),
+				}),
+			}
+		})
+	```
+
+	If you ever need to, you can also specify multiple children under different keys using the `UIComponent.Children` Enum:
+
+	```lua
+		local gui = CreateInstance("ScreenGui", {
+			Parent = PlayerGui,
+
+			[UIComponent.Children] = {
+				CreateInstance("Frame", {
+					Size = UDim2.new(0, 50, 0, 50),
+				}),
+			}
+
+			[UIComponent.Children] = {
+				CreateInstance("TextButton", {
+					Size = UDim2.new(0, 50, 0, 50),
+				}),
+			}
+		})
+	```
 ]=]
 function UIComponent.CreateInstance(className: string, props: {[any]: any})
 	local instance = Instance.new(className)
 	local parent
-	for k, v in pairs (props) do
+	
+	local function HandleChild(child)
+		if typeof(child) == "Instance" then
+			child.Parent = instance
+		elseif UIComponent.Is(child) then
+			if child._topInstance then
+				child._topInstance.Parent = instance
+			else
+				error("Failed to parent UIComponent because it has no top instance!")
+			end
+		else
+			error("Instance children must be an Instance or a UIComponent! " .. tostring(child))
+		end
+	end
+	
+	for k, v in pairs (props or {}) do
 		if k == "Parent" then
 			parent = v
-		elseif k == "Children" then
-			if typeof(k) ~= "table" then
+		elseif k == "Children" or k == UIComponent.Children then
+			if typeof(v) == "Instance" then
 				k.Parent = instance
 			else
-				for _, child: Instance in pairs (k) do
-					child.Parent = instance
+				if UIComponent.Is(v) then
+					HandleChild(v)
+				else
+					for _, child: any in pairs (v) do
+						HandleChild(child)
+					end
 				end
 			end
 		else
@@ -120,6 +195,8 @@ end
 
 --[=[
 	`Build` is called during the UIComponent's creation.
+
+	Build should **not** be called to create a new Instance of a UIComponent. Instead, call it like a function.
 
 	@return self, ... -- Returns the object and any provided arguments
 
@@ -136,10 +213,10 @@ end
 				Parent = LOCAL_PLAYER.PlayerGui
 			})
 
-			return tick()
+			return self.gui, tick()
 		end
 
-		local persistentGui, creationTime = MainGui.new{
+		local persistentGui, _, creationTime = MainGui.new{
 			ZIndex = 3
 		}
 
@@ -156,6 +233,17 @@ function UIComponent:Defer()
 end
 
 --[=[
+	Checks if the given object is a UIComponent object.
+
+	@param thing any -- Object to check
+
+	@return boolean -- `true` if object is a UIComponent.
+]=]
+function UIComponent.Is(thing: any)
+	return typeof(thing) == "table" and getmetatable(getmetatable(thing)) == UIComponent
+end
+
+--[=[
 	Creates a new UIComponent class.
 	
 	```lua
@@ -167,9 +255,9 @@ end
 function UIComponent.new()
 	local element = {}
 	element.__index = element
-	
+
 	setmetatable(element, UIComponent)
-	
+
 	return element
 end
 
