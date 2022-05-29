@@ -63,29 +63,37 @@ end
 	@return Instance -- Returns a new Instance
 
 	```lua
-		local parts = {}
-
-		parts.cube = UIComponent.CreateInstance "BasePart", {
-			Name = "Cube",
+		local smokeyCube = CreateInstance "BasePart", {
+			Name = "SmokeyCube",
 			Anchored = true,
 			Size = Vector3.new(4, 4, 4)
 			Parent = workspace
+			[Children] = CreateInstance "Smoke" { 
+				Size = 4 
+			}
 		}
 
 		-- ...which is equivalent to:
-		parts.cube = UIComponent.CreateInstance("BasePart", {
-			Name = "Cube",
+		local smokeyCube = CreateInstance("BasePart", {
+			Name = "SmokeyCube",
 			Anchored = true,
 			Size = Vector3.new(4, 4, 4)
 			Parent = workspace
+			[Children] = CreateInstance("Smoke", {
+				Size = 4
+			})
 		})
-
+		
 		-- ...which is also equivalent to:
-		parts.cube = Instance.new("BasePart")
-		parts.cube.Name = "Cube"
-		parts.cube.Anchored = true
-		parts.cube.Size = Vector3.new(4, 4, 4)
-		parts.cube.Parent = workspace
+		local smokeyCube = Instance.new("BasePart")
+		smokeyCube.Name = "SmokeyCube"
+		smokeyCube.Anchored = true
+		smokeyCube.Size = Vector3.new(4, 4, 4)
+		smokeyCube.Parent = workspace
+
+		local smoke = Instance.new("Smoke")
+		smoke.Size = 4
+		smoke.Parent = smokeyCube
 	```
 ]=]
 function UIComponent.CreateInstance(className: string, props: {[any]: any})
