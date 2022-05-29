@@ -100,11 +100,9 @@ end
 		smoke.Parent = smokeyCube
 	```
 
-	## Assigning children
+	### Assigning children
 
-	Assigning children can be done within the CreateInstance function.
-	
-	The simplist way to do this is to simply pass a child:
+	Assigning children can be done within the CreateInstance function. The simplist way to do this is to simply pass a child:
 
 	```lua
 		local gui = CreateInstance("ScreenGui", {
@@ -117,7 +115,6 @@ end
 	```
 
 	Or a table for multiple children:
-
 	```lua
 		local gui = CreateInstance("ScreenGui", {
 			Parent = PlayerGui,
@@ -135,7 +132,6 @@ end
 	```
 
 	If you ever need to, you can also specify multiple children under different keys using the `UIComponent.Children` Enum:
-
 	```lua
 		local gui = CreateInstance("ScreenGui", {
 			Parent = PlayerGui,
