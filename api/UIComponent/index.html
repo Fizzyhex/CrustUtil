@@ -6,7 +6,8 @@
 <meta name="generator" content="Docusaurus v2.0.0-beta.9">
 <title data-react-helmet="true">UIComponent | CrustUtil</title><meta data-react-helmet="true" property="og:title" content="UIComponent | CrustUtil"><meta data-react-helmet="true" name="twitter:card" content="summary_large_image"><meta data-react-helmet="true" name="description" content="A UIComponent is a class for managing components of user interfaces.
 
-For example:
+## Example
+
 ```lua
 	local UIComponent = require(somewhere.UIComponent)
 	local CreateInstance = UIComponent.CreateInstance
@@ -18,21 +19,21 @@ For example:
 	end
 	
 	function LoudButton:Build()
-		self.button = CreateInstance &quot;TextButton&quot;, {
+		self.button = CreateInstance(&quot;TextButton&quot;, {
 			Size = UDim2.new(0, 80, 0, 30),
 			Text = self.props.text
 			Parent = self.props.parent
-		}
+		})
 		
-		return self.SetText
+		return self.button, self.SetText
 	end
 	
-	local screenGui = CreateInstance &quot;ScreenGui&quot;, {
+	local screenGui = CreateInstance(&quot;ScreenGui&quot;, {
 		ResetOnSpawn = false, 
 		Parent = LOCAL_PLAYER.PlayerGui
-	}
+	})
 	
-	local button, UpdateText = LoudButton{text = &quot;click me 10 times!&quot;, parent = screenGui}
+	local button, _, UpdateText = LoudButton {text = &quot;click me 10 times!&quot;, parent = screenGui}
 	local clicks = 0
 	
 	button.button.MouseButton1Click:Connect(function(clickCounter)
@@ -41,7 +42,8 @@ For example:
 	end)
 ```"><meta data-react-helmet="true" property="og:description" content="A UIComponent is a class for managing components of user interfaces.
 
-For example:
+## Example
+
 ```lua
 	local UIComponent = require(somewhere.UIComponent)
 	local CreateInstance = UIComponent.CreateInstance
@@ -53,21 +55,21 @@ For example:
 	end
 	
 	function LoudButton:Build()
-		self.button = CreateInstance &quot;TextButton&quot;, {
+		self.button = CreateInstance(&quot;TextButton&quot;, {
 			Size = UDim2.new(0, 80, 0, 30),
 			Text = self.props.text
 			Parent = self.props.parent
-		}
+		})
 		
-		return self.SetText
+		return self.button, self.SetText
 	end
 	
-	local screenGui = CreateInstance &quot;ScreenGui&quot;, {
+	local screenGui = CreateInstance(&quot;ScreenGui&quot;, {
 		ResetOnSpawn = false, 
 		Parent = LOCAL_PLAYER.PlayerGui
-	}
+	})
 	
-	local button, UpdateText = LoudButton{text = &quot;click me 10 times!&quot;, parent = screenGui}
+	local button, _, UpdateText = LoudButton {text = &quot;click me 10 times!&quot;, parent = screenGui}
 	local clicks = 0
 	
 	button.button.MouseButton1Click:Connect(function(clickCounter)
@@ -75,14 +77,14 @@ For example:
 		UpdateText(button, button.props.text .. &quot; &quot; .. clicks)
 	end)
 ```"><meta data-react-helmet="true" property="og:url" content="https://Virshal.github.io/CrustUtil/api/UIComponent"><meta data-react-helmet="true" name="docusaurus_locale" content="en"><meta data-react-helmet="true" name="docusaurus_tag" content="default"><link data-react-helmet="true" rel="canonical" href="https://Virshal.github.io/CrustUtil/api/UIComponent"><link data-react-helmet="true" rel="alternate" href="https://Virshal.github.io/CrustUtil/api/UIComponent" hreflang="en"><link data-react-helmet="true" rel="alternate" href="https://Virshal.github.io/CrustUtil/api/UIComponent" hreflang="x-default"><link rel="stylesheet" href="/CrustUtil/assets/css/styles.302001c7.css">
-<link rel="preload" href="/CrustUtil/assets/js/runtime~main.0fff8005.js" as="script">
-<link rel="preload" href="/CrustUtil/assets/js/main.b8048a48.js" as="script">
+<link rel="preload" href="/CrustUtil/assets/js/runtime~main.32a9d585.js" as="script">
+<link rel="preload" href="/CrustUtil/assets/js/main.1a83cf3d.js" as="script">
 </head>
 <body>
 <script>!function(){function e(e){document.documentElement.setAttribute("data-theme",e)}var t=function(){var e=null;try{e=localStorage.getItem("theme")}catch(e){}return e}();null!==t?e(t):window.matchMedia("(prefers-color-scheme: dark)").matches?e("dark"):(window.matchMedia("(prefers-color-scheme: light)").matches,e("light"))}()</script><div id="__docusaurus">
 <div><a href="#" class="skipToContent_1oUP">Skip to main content</a></div><nav class="navbar navbar--fixed-top"><div class="navbar__inner"><div class="navbar__items"><button aria-label="Navigation bar toggle" class="navbar__toggle clean-btn" type="button" tabindex="0"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/CrustUtil/"><b class="navbar__title">CrustUtil</b></a><a class="navbar__item navbar__link" href="/CrustUtil/docs/intro">Docs</a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/CrustUtil/api/">API</a></div><div class="navbar__items navbar__items--right"><a href="https://github.com/Virshal/CrustUtil" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link"><span>GitHub<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_3J9K"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></span></a><div class="toggle_71bT toggle_3Zt9 toggleDisabled_3cF-"><div class="toggleTrack_32Fl" role="button" tabindex="-1"><div class="toggleTrackCheck_3lV7"><span class="toggleIcon_O4iE">🌜</span></div><div class="toggleTrackX_S2yS"><span class="toggleIcon_O4iE">🌞</span></div><div class="toggleTrackThumb_xI_Z"></div></div><input type="checkbox" class="toggleScreenReader_28Tw" aria-label="Switch between dark and light mode"></div><div class="navbar__search"><span aria-label="expand searchbar" role="button" class="search-icon" tabindex="0"></span><input type="search" id="search_input_react" placeholder="Press S to Search..." aria-label="Search" class="navbar__search-input search-bar"></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div class="main-wrapper docPageContainer_2Kz0"><div class="docPage_1bdk"><div class="docSidebarContainer_1ykS"><div class="sidebar_15mo"><nav class="menu thin-scrollbar menu_Bmed"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" href="/CrustUtil/api/UIComponent">​U​I​Component</a></li></ul></nav><button type="button" title="Collapse sidebar" aria-label="Collapse sidebar" class="button button--secondary button--outline collapseSidebarButton_1CGd"><svg width="20" height="20" aria-hidden="true" class="collapseSidebarButtonIcon_3E-R"><g fill="#7a7a7a"><path d="M9.992 10.023c0 .2-.062.399-.172.547l-4.996 7.492a.982.982 0 01-.828.454H1c-.55 0-1-.453-1-1 0-.2.059-.403.168-.551l4.629-6.942L.168 3.078A.939.939 0 010 2.528c0-.548.45-.997 1-.997h2.996c.352 0 .649.18.828.45L9.82 9.472c.11.148.172.347.172.55zm0 0"></path><path d="M19.98 10.023c0 .2-.058.399-.168.547l-4.996 7.492a.987.987 0 01-.828.454h-3c-.547 0-.996-.453-.996-1 0-.2.059-.403.168-.551l4.625-6.942-4.625-6.945a.939.939 0 01-.168-.55 1 1 0 01.996-.997h3c.348 0 .649.18.828.45l4.996 7.492c.11.148.168.347.168.55zm0 0"></path></g></svg></button></div></div><main class="docMainContainer_28N5"><div class="container padding-vert--lg"><div class="row"><div class="col docItemCol_3WPG"><div class="docItemContainer_3XDu"><article><div class="member_qHIL markdown"><div class="tocCollapsible_1PrD theme-doc-toc-mobile tocMobile_3ryM"><button type="button" class="clean-btn tocCollapsibleButton_2O1e">On this page</button></div><header><h1 class="docTitle_1ddc" style="text-decoration:none"><span style="display:inline-block">U</span><span style="display:inline-block">I</span><span style="display:inline-block">Component</span></h1><div class="luaClassTags_2Zrs"></div><div>
 <p>A UIComponent is a class for managing components of user interfaces.</p>
-<p>For example:</p>
+<h2>Example</h2>
 <pre class="language-lua"><code class="language-lua">	<span class="token keyword">local</span> UIComponent <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span>somewhere<span class="token punctuation">.</span>UIComponent<span class="token punctuation">)</span>
 	<span class="token keyword">local</span> CreateInstance <span class="token operator">=</span> UIComponent<span class="token punctuation">.</span>CreateInstance
 	
@@ -93,21 +95,21 @@ For example:
 	<span class="token keyword">end</span>
 	
 	<span class="token keyword">function</span> LoudButton<span class="token punctuation">:</span><span class="token function">Build</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-		self<span class="token punctuation">.</span>button <span class="token operator">=</span> CreateInstance <span class="token string">"TextButton"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+		self<span class="token punctuation">.</span>button <span class="token operator">=</span> <span class="token function">CreateInstance</span><span class="token punctuation">(</span><span class="token string">"TextButton"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
 			Size <span class="token operator">=</span> UDim2<span class="token punctuation">.</span><span class="token function">new</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">80</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">30</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
 			Text <span class="token operator">=</span> self<span class="token punctuation">.</span>props<span class="token punctuation">.</span>text
 			Parent <span class="token operator">=</span> self<span class="token punctuation">.</span>props<span class="token punctuation">.</span>parent
-		<span class="token punctuation">}</span>
+		<span class="token punctuation">}</span><span class="token punctuation">)</span>
 		
-		<span class="token keyword">return</span> self<span class="token punctuation">.</span>SetText
+		<span class="token keyword">return</span> self<span class="token punctuation">.</span>button<span class="token punctuation">,</span> self<span class="token punctuation">.</span>SetText
 	<span class="token keyword">end</span>
 	
-	<span class="token keyword">local</span> screenGui <span class="token operator">=</span> CreateInstance <span class="token string">"ScreenGui"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+	<span class="token keyword">local</span> screenGui <span class="token operator">=</span> <span class="token function">CreateInstance</span><span class="token punctuation">(</span><span class="token string">"ScreenGui"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
 		ResetOnSpawn <span class="token operator">=</span> <span class="token keyword">false</span><span class="token punctuation">,</span> 
 		Parent <span class="token operator">=</span> LOCAL_PLAYER<span class="token punctuation">.</span>PlayerGui
-	<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span><span class="token punctuation">)</span>
 	
-	<span class="token keyword">local</span> button<span class="token punctuation">,</span> UpdateText <span class="token operator">=</span> <span class="token function">LoudButton</span><span class="token punctuation">{</span>text <span class="token operator">=</span> <span class="token string">"click me 10 times!"</span><span class="token punctuation">,</span> parent <span class="token operator">=</span> screenGui<span class="token punctuation">}</span>
+	<span class="token keyword">local</span> button<span class="token punctuation">,</span> _<span class="token punctuation">,</span> UpdateText <span class="token operator">=</span> <span class="token function">LoudButton</span> <span class="token punctuation">{</span>text <span class="token operator">=</span> <span class="token string">"click me 10 times!"</span><span class="token punctuation">,</span> parent <span class="token operator">=</span> screenGui<span class="token punctuation">}</span>
 	<span class="token keyword">local</span> clicks <span class="token operator">=</span> <span class="token number">0</span>
 	
 	button<span class="token punctuation">.</span>button<span class="token punctuation">.</span>MouseButton1Click<span class="token punctuation">:</span><span class="token function">Connect</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>clickCounter<span class="token punctuation">)</span>
@@ -115,7 +117,7 @@ For example:
 		<span class="token function">UpdateText</span><span class="token punctuation">(</span>button<span class="token punctuation">,</span> button<span class="token punctuation">.</span>props<span class="token punctuation">.</span>text <span class="token operator">..</span> <span class="token string">" "</span> <span class="token operator">..</span> clicks<span class="token punctuation">)</span>
 	<span class="token keyword">end</span><span class="token punctuation">)</span>
 </code></pre>
-</div></header><h2 class="anchor anchorWithStickyNavbar_31ik" id="functions">Functions<a aria-hidden="true" class="hash-link" href="#functions" title="Direct link to heading">​</a></h2><div class="divider_3z1R"></div><h3 class="anchor anchorWithStickyNavbar_31ik" id="CreateInstance"><code style="text-decoration:none">CreateInstance</code><a aria-hidden="true" class="hash-link" href="#CreateInstance" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_1UH0"><a class="sourceButton_2aE5" href="https://github.com/Virshal/CrustUtil/blob/main/lib/UIComponent/init.lua#L99"><div class="sourceButtonText_monK">&lt;/&gt;</div></a></div><div class="memberString_P8-X"><code>UIComponent<!-- -->.</code><code class="green_3LnD">CreateInstance</code><code>(</code><div class="inset_2cJr"><div><code>className<!-- -->: </code><code class="blue_2Afy">string</code><code>,</code><span class="inlineDescription_17uy">-- <span>
+</div></header><h2 class="anchor anchorWithStickyNavbar_31ik" id="functions">Functions<a aria-hidden="true" class="hash-link" href="#functions" title="Direct link to heading">​</a></h2><div class="divider_3z1R"></div><h3 class="anchor anchorWithStickyNavbar_31ik" id="CreateInstance"><code style="text-decoration:none">CreateInstance</code><a aria-hidden="true" class="hash-link" href="#CreateInstance" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_1UH0"><a class="sourceButton_2aE5" href="https://github.com/Virshal/CrustUtil/blob/main/lib/UIComponent/init.lua#L157"><div class="sourceButtonText_monK">&lt;/&gt;</div></a></div><div class="memberString_P8-X"><code>UIComponent<!-- -->.</code><code class="green_3LnD">CreateInstance</code><code>(</code><div class="inset_2cJr"><div><code>className<!-- -->: </code><code class="blue_2Afy">string</code><code>,</code><span class="inlineDescription_17uy">-- <span>
 <p>The class name of the Instance you want to create</p>
 </span></span></div><div><code>props<!-- -->: </code><code class="blue_2Afy">table</code><span class="inlineDescription_17uy">-- <span>
 <p>The properties of the instance you want to create</p>
@@ -123,28 +125,17 @@ For example:
 <p>Returns a new Instance</p>
 </span></span></div><div>
 <p>A utility for creating Instances.</p>
-<pre class="language-lua"><code class="language-lua">	<span class="token keyword">local</span> smokeyCube <span class="token operator">=</span> CreateInstance <span class="token string">"BasePart"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+<pre class="language-lua"><code class="language-lua">	<span class="token keyword">local</span> smokeyCube <span class="token operator">=</span> <span class="token function">CreateInstance</span><span class="token punctuation">(</span><span class="token string">"BasePart"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
 		Name <span class="token operator">=</span> <span class="token string">"SmokeyCube"</span><span class="token punctuation">,</span>
 		Anchored <span class="token operator">=</span> <span class="token keyword">true</span><span class="token punctuation">,</span>
 		Size <span class="token operator">=</span> Vector3<span class="token punctuation">.</span><span class="token function">new</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span>
 		Parent <span class="token operator">=</span> workspace
-		Children <span class="token operator">=</span> CreateInstance <span class="token string">"Smoke"</span> <span class="token punctuation">{</span> 
-			Size <span class="token operator">=</span> <span class="token number">4</span> 
-		<span class="token punctuation">}</span>
-	<span class="token punctuation">}</span>
-
-	<span class="token comment">-- ...which is equivalent to:</span>
-	<span class="token keyword">local</span> smokeyCube <span class="token operator">=</span> <span class="token function">CreateInstance</span><span class="token punctuation">(</span><span class="token string">"BasePart"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
-		Name <span class="token operator">=</span> <span class="token string">"SmokeyCube"</span><span class="token punctuation">,</span>
-		Anchored <span class="token operator">=</span> <span class="token keyword">true</span><span class="token punctuation">,</span>
-		Size <span class="token operator">=</span> Vector3<span class="token punctuation">.</span><span class="token function">new</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span>
-		Parent <span class="token operator">=</span> workspace
-		Children <span class="token operator">=</span> <span class="token function">CreateInstance</span><span class="token punctuation">(</span><span class="token string">"Smoke"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+		<span class="token punctuation">[</span>UIComponent<span class="token punctuation">.</span>Children<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">CreateInstance</span><span class="token punctuation">(</span><span class="token string">"Smoke"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
 			Size <span class="token operator">=</span> <span class="token number">4</span>
 		<span class="token punctuation">}</span><span class="token punctuation">)</span>
 	<span class="token punctuation">}</span><span class="token punctuation">)</span>
 	
-	<span class="token comment">-- ...which is also equivalent to:</span>
+	<span class="token comment">-- ...which is equivalent to:</span>
 	<span class="token keyword">local</span> smokeyCube <span class="token operator">=</span> Instance<span class="token punctuation">.</span><span class="token function">new</span><span class="token punctuation">(</span><span class="token string">"BasePart"</span><span class="token punctuation">)</span>
 	smokeyCube<span class="token punctuation">.</span>Name <span class="token operator">=</span> <span class="token string">"SmokeyCube"</span>
 	smokeyCube<span class="token punctuation">.</span>Anchored <span class="token operator">=</span> <span class="token keyword">true</span>
@@ -155,14 +146,64 @@ For example:
 	smoke<span class="token punctuation">.</span>Size <span class="token operator">=</span> <span class="token number">4</span>
 	smoke<span class="token punctuation">.</span>Parent <span class="token operator">=</span> smokeyCube
 </code></pre>
-</div><div class="divider_3z1R"></div><h3 class="anchor anchorWithStickyNavbar_31ik" id="new"><code style="text-decoration:none">new</code><a aria-hidden="true" class="hash-link" href="#new" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_1UH0"><a class="sourceButton_2aE5" href="https://github.com/Virshal/CrustUtil/blob/main/lib/UIComponent/init.lua#L167"><div class="sourceButtonText_monK">&lt;/&gt;</div></a></div><div class="memberString_P8-X"><code>UIComponent<!-- -->.</code><code class="green_3LnD">new</code><code>(</code><code>) → </code><code class="blue_2Afy"><a style="text-decoration:underline;color:inherit" href="/CrustUtil/api/UIComponent">UIComponent</a></code></div><div>
+<h2>Assigning children</h2>
+<p>Assigning children can be done within the CreateInstance function.</p>
+<p>The simplist way to do this is to simply pass a child:</p>
+<pre class="language-lua"><code class="language-lua">	<span class="token keyword">local</span> gui <span class="token operator">=</span> <span class="token function">CreateInstance</span><span class="token punctuation">(</span><span class="token string">"ScreenGui"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+		Parent <span class="token operator">=</span> PlayerGui<span class="token punctuation">,</span>
+
+		Children <span class="token operator">=</span> <span class="token function">CreateInstance</span><span class="token punctuation">(</span><span class="token string">"Frame"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+			Size <span class="token operator">=</span> UDim2<span class="token punctuation">.</span><span class="token function">new</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">50</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">50</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+		<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+	<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre>
+<p>Or a table for multiple children:</p>
+<pre class="language-lua"><code class="language-lua">	<span class="token keyword">local</span> gui <span class="token operator">=</span> <span class="token function">CreateInstance</span><span class="token punctuation">(</span><span class="token string">"ScreenGui"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+		Parent <span class="token operator">=</span> PlayerGui<span class="token punctuation">,</span>
+
+		Children <span class="token operator">=</span> <span class="token punctuation">{</span>
+			<span class="token function">CreateInstance</span><span class="token punctuation">(</span><span class="token string">"Frame"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+				Size <span class="token operator">=</span> UDim2<span class="token punctuation">.</span><span class="token function">new</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">50</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">50</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+			<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+
+			<span class="token function">CreateInstance</span><span class="token punctuation">(</span><span class="token string">"TextButton"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+				Size <span class="token operator">=</span> UDim2<span class="token punctuation">.</span><span class="token function">new</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">50</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">50</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+			<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre>
+<p>If you ever need to, you can also specify multiple children under different keys using the <code>UIComponent.Children</code> Enum:</p>
+<pre class="language-lua"><code class="language-lua">	<span class="token keyword">local</span> gui <span class="token operator">=</span> <span class="token function">CreateInstance</span><span class="token punctuation">(</span><span class="token string">"ScreenGui"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+		Parent <span class="token operator">=</span> PlayerGui<span class="token punctuation">,</span>
+
+		<span class="token punctuation">[</span>UIComponent<span class="token punctuation">.</span>Children<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span>
+			<span class="token function">CreateInstance</span><span class="token punctuation">(</span><span class="token string">"Frame"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+				Size <span class="token operator">=</span> UDim2<span class="token punctuation">.</span><span class="token function">new</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">50</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">50</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+			<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+		<span class="token punctuation">}</span>
+
+		<span class="token punctuation">[</span>UIComponent<span class="token punctuation">.</span>Children<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span>
+			<span class="token function">CreateInstance</span><span class="token punctuation">(</span><span class="token string">"TextButton"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+				Size <span class="token operator">=</span> UDim2<span class="token punctuation">.</span><span class="token function">new</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">50</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">50</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+			<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre>
+</div><div class="divider_3z1R"></div><h3 class="anchor anchorWithStickyNavbar_31ik" id="Is"><code style="text-decoration:none">Is</code><a aria-hidden="true" class="hash-link" href="#Is" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_1UH0"><a class="sourceButton_2aE5" href="https://github.com/Virshal/CrustUtil/blob/main/lib/UIComponent/init.lua#L244"><div class="sourceButtonText_monK">&lt;/&gt;</div></a></div><div class="memberString_P8-X"><code>UIComponent<!-- -->.</code><code class="green_3LnD">Is</code><code>(</code><div class="inset_2cJr"><div><code>thing<!-- -->: </code><code class="blue_2Afy">any</code><span class="inlineDescription_17uy">-- <span>
+<p>Object to check</p>
+</span></span></div></div><code>) → </code><code class="blue_2Afy">boolean</code><span class="inlineDescription_17uy">-- <span>
+<p><code>true</code> if object is a UIComponent.</p>
+</span></span></div><div>
+<p>Checks if the given object is a UIComponent object.</p>
+</div><div class="divider_3z1R"></div><h3 class="anchor anchorWithStickyNavbar_31ik" id="new"><code style="text-decoration:none">new</code><a aria-hidden="true" class="hash-link" href="#new" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_1UH0"><a class="sourceButton_2aE5" href="https://github.com/Virshal/CrustUtil/blob/main/lib/UIComponent/init.lua#L257"><div class="sourceButtonText_monK">&lt;/&gt;</div></a></div><div class="memberString_P8-X"><code>UIComponent<!-- -->.</code><code class="green_3LnD">new</code><code>(</code><code>) → </code><code class="blue_2Afy"><a style="text-decoration:underline;color:inherit" href="/CrustUtil/api/UIComponent">UIComponent</a></code></div><div>
 <p>Creates a new UIComponent class.</p>
 <pre class="language-lua"><code class="language-lua">	<span class="token keyword">local</span> newComponent <span class="token operator">=</span> UIComponent<span class="token punctuation">.</span><span class="token function">new</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 </code></pre>
-</div><div class="divider_3z1R"></div><h3 class="anchor anchorWithStickyNavbar_31ik" id="Build"><code style="text-decoration:none">Build</code><a aria-hidden="true" class="hash-link" href="#Build" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_1UH0"><a class="sourceButton_2aE5" href="https://github.com/Virshal/CrustUtil/blob/main/lib/UIComponent/init.lua#L149"><div class="sourceButtonText_monK">&lt;/&gt;</div></a></div><div class="memberString_P8-X"><code>UIComponent<!-- -->:</code><code class="green_3LnD">Build</code><code>(</code><code>) → </code><code class="blue_2Afy">self,</code><code class="blue_2Afy">...</code><span class="inlineDescription_17uy">-- <span>
+</div><div class="divider_3z1R"></div><h3 class="anchor anchorWithStickyNavbar_31ik" id="Build"><code style="text-decoration:none">Build</code><a aria-hidden="true" class="hash-link" href="#Build" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_1UH0"><a class="sourceButton_2aE5" href="https://github.com/Virshal/CrustUtil/blob/main/lib/UIComponent/init.lua#L228"><div class="sourceButtonText_monK">&lt;/&gt;</div></a></div><div class="memberString_P8-X"><code>UIComponent<!-- -->:</code><code class="green_3LnD">Build</code><code>(</code><code>) → </code><code class="blue_2Afy">self,</code><code class="blue_2Afy">...</code><span class="inlineDescription_17uy">-- <span>
 <p>Returns the object and any provided arguments</p>
 </span></span></div><div>
 <p><code>Build</code> is called during the UIComponent's creation.</p>
+<p>Build should <strong>not</strong> be called to create a new Instance of a UIComponent. Instead, call it like a function.</p>
 <pre class="language-lua"><code class="language-lua">	<span class="token keyword">local</span> UIComponent <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span>somewhere<span class="token punctuation">.</span>UIComponent<span class="token punctuation">)</span>
 
 	<span class="token keyword">local</span> PersistentGui <span class="token operator">=</span> UIComponent<span class="token punctuation">.</span><span class="token function">new</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
@@ -175,22 +216,22 @@ For example:
 			Parent <span class="token operator">=</span> LOCAL_PLAYER<span class="token punctuation">.</span>PlayerGui
 		<span class="token punctuation">}</span><span class="token punctuation">)</span>
 
-		<span class="token keyword">return</span> <span class="token function">tick</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+		<span class="token keyword">return</span> self<span class="token punctuation">.</span>gui<span class="token punctuation">,</span> <span class="token function">tick</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 	<span class="token keyword">end</span>
 
-	<span class="token keyword">local</span> persistentGui<span class="token punctuation">,</span> creationTime <span class="token operator">=</span> MainGui<span class="token punctuation">.</span><span class="token function">new</span><span class="token punctuation">{</span>
+	<span class="token keyword">local</span> persistentGui<span class="token punctuation">,</span> _<span class="token punctuation">,</span> creationTime <span class="token operator">=</span> MainGui<span class="token punctuation">.</span><span class="token function">new</span><span class="token punctuation">{</span>
 		ZIndex <span class="token operator">=</span> <span class="token number">3</span>
 	<span class="token punctuation">}</span>
 
 	<span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"Created GUI at"</span><span class="token punctuation">,</span> creationTime<span class="token punctuation">)</span>
 </code></pre>
-</div><div class="divider_3z1R"></div><h3 class="anchor anchorWithStickyNavbar_31ik" id="Defer"><code style="text-decoration:none">Defer</code><a aria-hidden="true" class="hash-link" href="#Defer" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_1UH0"><a class="sourceButton_2aE5" href="https://github.com/Virshal/CrustUtil/blob/main/lib/UIComponent/init.lua#L155"><div class="sourceButtonText_monK">&lt;/&gt;</div></a></div><div class="memberString_P8-X"><code>UIComponent<!-- -->:</code><code class="green_3LnD">Defer</code><code>(</code><code>) → </code><code>(</code><code>)</code></div><div>
+</div><div class="divider_3z1R"></div><h3 class="anchor anchorWithStickyNavbar_31ik" id="Defer"><code style="text-decoration:none">Defer</code><a aria-hidden="true" class="hash-link" href="#Defer" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_1UH0"><a class="sourceButton_2aE5" href="https://github.com/Virshal/CrustUtil/blob/main/lib/UIComponent/init.lua#L234"><div class="sourceButtonText_monK">&lt;/&gt;</div></a></div><div class="memberString_P8-X"><code>UIComponent<!-- -->:</code><code class="green_3LnD">Defer</code><code>(</code><code>) → </code><code>(</code><code>)</code></div><div>
 <p><code>Defer</code> is called after <code>Build</code> and will not yield the thread.</p>
 </div></div></article></div><details><summary>Show raw api</summary><pre style="max-width:100%;white-space:pre-wrap">{
     &quot;functions&quot;: [
         {
             &quot;name&quot;: &quot;CreateInstance&quot;,
-            &quot;desc&quot;: &quot;A utility for creating Instances. \n\n\n```lua\n\tlocal smokeyCube = CreateInstance \&quot;BasePart\&quot;, {\n\t\tName = \&quot;SmokeyCube\&quot;,\n\t\tAnchored = true,\n\t\tSize = Vector3.new(4, 4, 4)\n\t\tParent = workspace\n\t\tChildren = CreateInstance \&quot;Smoke\&quot; { \n\t\t\tSize = 4 \n\t\t}\n\t}\n\n\t-- ...which is equivalent to:\n\tlocal smokeyCube = CreateInstance(\&quot;BasePart\&quot;, {\n\t\tName = \&quot;SmokeyCube\&quot;,\n\t\tAnchored = true,\n\t\tSize = Vector3.new(4, 4, 4)\n\t\tParent = workspace\n\t\tChildren = CreateInstance(\&quot;Smoke\&quot;, {\n\t\t\tSize = 4\n\t\t})\n\t})\n\t\n\t-- ...which is also equivalent to:\n\tlocal smokeyCube = Instance.new(\&quot;BasePart\&quot;)\n\tsmokeyCube.Name = \&quot;SmokeyCube\&quot;\n\tsmokeyCube.Anchored = true\n\tsmokeyCube.Size = Vector3.new(4, 4, 4)\n\tsmokeyCube.Parent = workspace\n\n\tlocal smoke = Instance.new(\&quot;Smoke\&quot;)\n\tsmoke.Size = 4\n\tsmoke.Parent = smokeyCube\n```&quot;,
+            &quot;desc&quot;: &quot;A utility for creating Instances. \n\n\n```lua\n\tlocal smokeyCube = CreateInstance(\&quot;BasePart\&quot;, {\n\t\tName = \&quot;SmokeyCube\&quot;,\n\t\tAnchored = true,\n\t\tSize = Vector3.new(4, 4, 4)\n\t\tParent = workspace\n\t\t[UIComponent.Children] = CreateInstance(\&quot;Smoke\&quot;, {\n\t\t\tSize = 4\n\t\t})\n\t})\n\t\n\t-- ...which is equivalent to:\n\tlocal smokeyCube = Instance.new(\&quot;BasePart\&quot;)\n\tsmokeyCube.Name = \&quot;SmokeyCube\&quot;\n\tsmokeyCube.Anchored = true\n\tsmokeyCube.Size = Vector3.new(4, 4, 4)\n\tsmokeyCube.Parent = workspace\n\n\tlocal smoke = Instance.new(\&quot;Smoke\&quot;)\n\tsmoke.Size = 4\n\tsmoke.Parent = smokeyCube\n```\n\n## Assigning children\n\nAssigning children can be done within the CreateInstance function.\n\nThe simplist way to do this is to simply pass a child:\n\n```lua\n\tlocal gui = CreateInstance(\&quot;ScreenGui\&quot;, {\n\t\tParent = PlayerGui,\n\n\t\tChildren = CreateInstance(\&quot;Frame\&quot;, {\n\t\t\tSize = UDim2.new(0, 50, 0, 50),\n\t\t}),\n\t})\n```\n\nOr a table for multiple children:\n\n```lua\n\tlocal gui = CreateInstance(\&quot;ScreenGui\&quot;, {\n\t\tParent = PlayerGui,\n\n\t\tChildren = {\n\t\t\tCreateInstance(\&quot;Frame\&quot;, {\n\t\t\t\tSize = UDim2.new(0, 50, 0, 50),\n\t\t\t}),\n\n\t\t\tCreateInstance(\&quot;TextButton\&quot;, {\n\t\t\t\tSize = UDim2.new(0, 50, 0, 50),\n\t\t\t}),\n\t\t}\n\t})\n```\n\nIf you ever need to, you can also specify multiple children under different keys using the `UIComponent.Children` Enum:\n\n```lua\n\tlocal gui = CreateInstance(\&quot;ScreenGui\&quot;, {\n\t\tParent = PlayerGui,\n\n\t\t[UIComponent.Children] = {\n\t\t\tCreateInstance(\&quot;Frame\&quot;, {\n\t\t\t\tSize = UDim2.new(0, 50, 0, 50),\n\t\t\t}),\n\t\t}\n\n\t\t[UIComponent.Children] = {\n\t\t\tCreateInstance(\&quot;TextButton\&quot;, {\n\t\t\t\tSize = UDim2.new(0, 50, 0, 50),\n\t\t\t}),\n\t\t}\n\t})\n```&quot;,
             &quot;params&quot;: [
                 {
                     &quot;name&quot;: &quot;className&quot;,
@@ -211,13 +252,13 @@ For example:
             ],
             &quot;function_type&quot;: &quot;static&quot;,
             &quot;source&quot;: {
-                &quot;line&quot;: 99,
+                &quot;line&quot;: 157,
                 &quot;path&quot;: &quot;lib/UIComponent/init.lua&quot;
             }
         },
         {
             &quot;name&quot;: &quot;Build&quot;,
-            &quot;desc&quot;: &quot;`Build` is called during the UIComponent&#x27;s creation.\n\n\n```lua\n\tlocal UIComponent = require(somewhere.UIComponent)\n\n\tlocal PersistentGui = UIComponent.new()\n\n\tfunction PersistentGui:Build()\n\t\tself.gui = CreateInstance(\&quot;ScreenGui\&quot;, {\n\t\t\tName = \&quot;PersistentGui\&quot;,\n\t\t\tResetOnSpawn = false,\n\t\t\tZIndex = self.props.ZIndex,\n\t\t\tParent = LOCAL_PLAYER.PlayerGui\n\t\t})\n\n\t\treturn tick()\n\tend\n\n\tlocal persistentGui, creationTime = MainGui.new{\n\t\tZIndex = 3\n\t}\n\n\tprint(\&quot;Created GUI at\&quot;, creationTime)\n```&quot;,
+            &quot;desc&quot;: &quot;`Build` is called during the UIComponent&#x27;s creation.\n\nBuild should **not** be called to create a new Instance of a UIComponent. Instead, call it like a function.\n\n\n```lua\n\tlocal UIComponent = require(somewhere.UIComponent)\n\n\tlocal PersistentGui = UIComponent.new()\n\n\tfunction PersistentGui:Build()\n\t\tself.gui = CreateInstance(\&quot;ScreenGui\&quot;, {\n\t\t\tName = \&quot;PersistentGui\&quot;,\n\t\t\tResetOnSpawn = false,\n\t\t\tZIndex = self.props.ZIndex,\n\t\t\tParent = LOCAL_PLAYER.PlayerGui\n\t\t})\n\n\t\treturn self.gui, tick()\n\tend\n\n\tlocal persistentGui, _, creationTime = MainGui.new{\n\t\tZIndex = 3\n\t}\n\n\tprint(\&quot;Created GUI at\&quot;, creationTime)\n```&quot;,
             &quot;params&quot;: [],
             &quot;returns&quot;: [
                 {
@@ -227,7 +268,7 @@ For example:
             ],
             &quot;function_type&quot;: &quot;method&quot;,
             &quot;source&quot;: {
-                &quot;line&quot;: 149,
+                &quot;line&quot;: 228,
                 &quot;path&quot;: &quot;lib/UIComponent/init.lua&quot;
             }
         },
@@ -238,7 +279,29 @@ For example:
             &quot;returns&quot;: [],
             &quot;function_type&quot;: &quot;method&quot;,
             &quot;source&quot;: {
-                &quot;line&quot;: 155,
+                &quot;line&quot;: 234,
+                &quot;path&quot;: &quot;lib/UIComponent/init.lua&quot;
+            }
+        },
+        {
+            &quot;name&quot;: &quot;Is&quot;,
+            &quot;desc&quot;: &quot;Checks if the given object is a UIComponent object.&quot;,
+            &quot;params&quot;: [
+                {
+                    &quot;name&quot;: &quot;thing&quot;,
+                    &quot;desc&quot;: &quot;Object to check&quot;,
+                    &quot;lua_type&quot;: &quot;any&quot;
+                }
+            ],
+            &quot;returns&quot;: [
+                {
+                    &quot;desc&quot;: &quot;`true` if object is a UIComponent.&quot;,
+                    &quot;lua_type&quot;: &quot;boolean&quot;
+                }
+            ],
+            &quot;function_type&quot;: &quot;static&quot;,
+            &quot;source&quot;: {
+                &quot;line&quot;: 244,
                 &quot;path&quot;: &quot;lib/UIComponent/init.lua&quot;
             }
         },
@@ -254,7 +317,7 @@ For example:
             ],
             &quot;function_type&quot;: &quot;static&quot;,
             &quot;source&quot;: {
-                &quot;line&quot;: 167,
+                &quot;line&quot;: 257,
                 &quot;path&quot;: &quot;lib/UIComponent/init.lua&quot;
             }
         }
@@ -262,13 +325,13 @@ For example:
     &quot;properties&quot;: [],
     &quot;types&quot;: [],
     &quot;name&quot;: &quot;UIComponent&quot;,
-    &quot;desc&quot;: &quot;A UIComponent is a class for managing components of user interfaces.\n\nFor example:\n```lua\n\tlocal UIComponent = require(somewhere.UIComponent)\n\tlocal CreateInstance = UIComponent.CreateInstance\n\t\n\tlocal LoudButton = UIComponent.new()\n\t\n\tfunction LoudButton:SetText(text)\n\t\tself.button.Text = text:upper()\n\tend\n\t\n\tfunction LoudButton:Build()\n\t\tself.button = CreateInstance \&quot;TextButton\&quot;, {\n\t\t\tSize = UDim2.new(0, 80, 0, 30),\n\t\t\tText = self.props.text\n\t\t\tParent = self.props.parent\n\t\t}\n\t\t\n\t\treturn self.SetText\n\tend\n\t\n\tlocal screenGui = CreateInstance \&quot;ScreenGui\&quot;, {\n\t\tResetOnSpawn = false, \n\t\tParent = LOCAL_PLAYER.PlayerGui\n\t}\n\t\n\tlocal button, UpdateText = LoudButton{text = \&quot;click me 10 times!\&quot;, parent = screenGui}\n\tlocal clicks = 0\n\t\n\tbutton.button.MouseButton1Click:Connect(function(clickCounter)\n\t\tclicks += 1\n\t\tUpdateText(button, button.props.text .. \&quot; \&quot; .. clicks)\n\tend)\n```&quot;,
+    &quot;desc&quot;: &quot;A UIComponent is a class for managing components of user interfaces.\n\n## Example\n\n```lua\n\tlocal UIComponent = require(somewhere.UIComponent)\n\tlocal CreateInstance = UIComponent.CreateInstance\n\t\n\tlocal LoudButton = UIComponent.new()\n\t\n\tfunction LoudButton:SetText(text)\n\t\tself.button.Text = text:upper()\n\tend\n\t\n\tfunction LoudButton:Build()\n\t\tself.button = CreateInstance(\&quot;TextButton\&quot;, {\n\t\t\tSize = UDim2.new(0, 80, 0, 30),\n\t\t\tText = self.props.text\n\t\t\tParent = self.props.parent\n\t\t})\n\t\t\n\t\treturn self.button, self.SetText\n\tend\n\t\n\tlocal screenGui = CreateInstance(\&quot;ScreenGui\&quot;, {\n\t\tResetOnSpawn = false, \n\t\tParent = LOCAL_PLAYER.PlayerGui\n\t})\n\t\n\tlocal button, _, UpdateText = LoudButton {text = \&quot;click me 10 times!\&quot;, parent = screenGui}\n\tlocal clicks = 0\n\t\n\tbutton.button.MouseButton1Click:Connect(function(clickCounter)\n\t\tclicks += 1\n\t\tUpdateText(button, button.props.text .. \&quot; \&quot; .. clicks)\n\tend)\n```&quot;,
     &quot;source&quot;: {
-        &quot;line&quot;: 45,
+        &quot;line&quot;: 46,
         &quot;path&quot;: &quot;lib/UIComponent/init.lua&quot;
     }
-}</pre></details></div><div class="col col--3"><div class="tableOfContents_35-E thin-scrollbar"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#types" class="table-of-contents__link toc-highlight">Types</a></li><li><a href="#properties" class="table-of-contents__link toc-highlight">Properties</a></li><li><a href="#functions" class="table-of-contents__link toc-highlight">Functions</a><ul><li><a href="#Build" class="table-of-contents__link toc-highlight">:Build</a></li><li><a href="#Defer" class="table-of-contents__link toc-highlight">:Defer</a></li><li><a href="#CreateInstance" class="table-of-contents__link toc-highlight">.CreateInstance</a></li><li><a href="#new" class="table-of-contents__link toc-highlight">.new</a></li></ul></li></ul></div></div></div></div></main></div></div><footer class="footer footer--dark"><div class="container"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2022 Virshal. Built with Moonwave and Docusaurus.</div></div></div></footer></div>
-<script src="/CrustUtil/assets/js/runtime~main.0fff8005.js"></script>
-<script src="/CrustUtil/assets/js/main.b8048a48.js"></script>
+}</pre></details></div><div class="col col--3"><div class="tableOfContents_35-E thin-scrollbar"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#types" class="table-of-contents__link toc-highlight">Types</a></li><li><a href="#properties" class="table-of-contents__link toc-highlight">Properties</a></li><li><a href="#functions" class="table-of-contents__link toc-highlight">Functions</a><ul><li><a href="#Build" class="table-of-contents__link toc-highlight">:Build</a></li><li><a href="#Defer" class="table-of-contents__link toc-highlight">:Defer</a></li><li><a href="#CreateInstance" class="table-of-contents__link toc-highlight">.CreateInstance</a></li><li><a href="#Is" class="table-of-contents__link toc-highlight">.Is</a></li><li><a href="#new" class="table-of-contents__link toc-highlight">.new</a></li></ul></li></ul></div></div></div></div></main></div></div><footer class="footer footer--dark"><div class="container"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2022 Virshal. Built with Moonwave and Docusaurus.</div></div></div></footer></div>
+<script src="/CrustUtil/assets/js/runtime~main.32a9d585.js"></script>
+<script src="/CrustUtil/assets/js/main.1a83cf3d.js"></script>
 </body>
 </html>
