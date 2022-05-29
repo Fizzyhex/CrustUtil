@@ -75,8 +75,8 @@ For example:
 		UpdateText(button, button.props.text .. &quot; &quot; .. clicks)
 	end)
 ```"><meta data-react-helmet="true" property="og:url" content="https://Virshal.github.io/CrustUtil/api/UIComponent"><meta data-react-helmet="true" name="docusaurus_locale" content="en"><meta data-react-helmet="true" name="docusaurus_tag" content="default"><link data-react-helmet="true" rel="canonical" href="https://Virshal.github.io/CrustUtil/api/UIComponent"><link data-react-helmet="true" rel="alternate" href="https://Virshal.github.io/CrustUtil/api/UIComponent" hreflang="en"><link data-react-helmet="true" rel="alternate" href="https://Virshal.github.io/CrustUtil/api/UIComponent" hreflang="x-default"><link rel="stylesheet" href="/CrustUtil/assets/css/styles.302001c7.css">
-<link rel="preload" href="/CrustUtil/assets/js/runtime~main.4651d2cd.js" as="script">
-<link rel="preload" href="/CrustUtil/assets/js/main.c01de61b.js" as="script">
+<link rel="preload" href="/CrustUtil/assets/js/runtime~main.0fff8005.js" as="script">
+<link rel="preload" href="/CrustUtil/assets/js/main.b8048a48.js" as="script">
 </head>
 <body>
 <script>!function(){function e(e){document.documentElement.setAttribute("data-theme",e)}var t=function(){var e=null;try{e=localStorage.getItem("theme")}catch(e){}return e}();null!==t?e(t):window.matchMedia("(prefers-color-scheme: dark)").matches?e("dark"):(window.matchMedia("(prefers-color-scheme: light)").matches,e("light"))}()</script><div id="__docusaurus">
@@ -128,7 +128,7 @@ For example:
 		Anchored <span class="token operator">=</span> <span class="token keyword">true</span><span class="token punctuation">,</span>
 		Size <span class="token operator">=</span> Vector3<span class="token punctuation">.</span><span class="token function">new</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span>
 		Parent <span class="token operator">=</span> workspace
-		<span class="token punctuation">[</span>Children<span class="token punctuation">]</span> <span class="token operator">=</span> CreateInstance <span class="token string">"Smoke"</span> <span class="token punctuation">{</span> 
+		Children <span class="token operator">=</span> CreateInstance <span class="token string">"Smoke"</span> <span class="token punctuation">{</span> 
 			Size <span class="token operator">=</span> <span class="token number">4</span> 
 		<span class="token punctuation">}</span>
 	<span class="token punctuation">}</span>
@@ -139,7 +139,7 @@ For example:
 		Anchored <span class="token operator">=</span> <span class="token keyword">true</span><span class="token punctuation">,</span>
 		Size <span class="token operator">=</span> Vector3<span class="token punctuation">.</span><span class="token function">new</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span>
 		Parent <span class="token operator">=</span> workspace
-		<span class="token punctuation">[</span>Children<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">CreateInstance</span><span class="token punctuation">(</span><span class="token string">"Smoke"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+		Children <span class="token operator">=</span> <span class="token function">CreateInstance</span><span class="token punctuation">(</span><span class="token string">"Smoke"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
 			Size <span class="token operator">=</span> <span class="token number">4</span>
 		<span class="token punctuation">}</span><span class="token punctuation">)</span>
 	<span class="token punctuation">}</span><span class="token punctuation">)</span>
@@ -190,7 +190,7 @@ For example:
     &quot;functions&quot;: [
         {
             &quot;name&quot;: &quot;CreateInstance&quot;,
-            &quot;desc&quot;: &quot;A utility for creating Instances. \n\n\n```lua\n\tlocal smokeyCube = CreateInstance \&quot;BasePart\&quot;, {\n\t\tName = \&quot;SmokeyCube\&quot;,\n\t\tAnchored = true,\n\t\tSize = Vector3.new(4, 4, 4)\n\t\tParent = workspace\n\t\t[Children] = CreateInstance \&quot;Smoke\&quot; { \n\t\t\tSize = 4 \n\t\t}\n\t}\n\n\t-- ...which is equivalent to:\n\tlocal smokeyCube = CreateInstance(\&quot;BasePart\&quot;, {\n\t\tName = \&quot;SmokeyCube\&quot;,\n\t\tAnchored = true,\n\t\tSize = Vector3.new(4, 4, 4)\n\t\tParent = workspace\n\t\t[Children] = CreateInstance(\&quot;Smoke\&quot;, {\n\t\t\tSize = 4\n\t\t})\n\t})\n\t\n\t-- ...which is also equivalent to:\n\tlocal smokeyCube = Instance.new(\&quot;BasePart\&quot;)\n\tsmokeyCube.Name = \&quot;SmokeyCube\&quot;\n\tsmokeyCube.Anchored = true\n\tsmokeyCube.Size = Vector3.new(4, 4, 4)\n\tsmokeyCube.Parent = workspace\n\n\tlocal smoke = Instance.new(\&quot;Smoke\&quot;)\n\tsmoke.Size = 4\n\tsmoke.Parent = smokeyCube\n```&quot;,
+            &quot;desc&quot;: &quot;A utility for creating Instances. \n\n\n```lua\n\tlocal smokeyCube = CreateInstance \&quot;BasePart\&quot;, {\n\t\tName = \&quot;SmokeyCube\&quot;,\n\t\tAnchored = true,\n\t\tSize = Vector3.new(4, 4, 4)\n\t\tParent = workspace\n\t\tChildren = CreateInstance \&quot;Smoke\&quot; { \n\t\t\tSize = 4 \n\t\t}\n\t}\n\n\t-- ...which is equivalent to:\n\tlocal smokeyCube = CreateInstance(\&quot;BasePart\&quot;, {\n\t\tName = \&quot;SmokeyCube\&quot;,\n\t\tAnchored = true,\n\t\tSize = Vector3.new(4, 4, 4)\n\t\tParent = workspace\n\t\tChildren = CreateInstance(\&quot;Smoke\&quot;, {\n\t\t\tSize = 4\n\t\t})\n\t})\n\t\n\t-- ...which is also equivalent to:\n\tlocal smokeyCube = Instance.new(\&quot;BasePart\&quot;)\n\tsmokeyCube.Name = \&quot;SmokeyCube\&quot;\n\tsmokeyCube.Anchored = true\n\tsmokeyCube.Size = Vector3.new(4, 4, 4)\n\tsmokeyCube.Parent = workspace\n\n\tlocal smoke = Instance.new(\&quot;Smoke\&quot;)\n\tsmoke.Size = 4\n\tsmoke.Parent = smokeyCube\n```&quot;,
             &quot;params&quot;: [
                 {
                     &quot;name&quot;: &quot;className&quot;,
@@ -268,7 +268,7 @@ For example:
         &quot;path&quot;: &quot;lib/UIComponent/init.lua&quot;
     }
 }</pre></details></div><div class="col col--3"><div class="tableOfContents_35-E thin-scrollbar"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#types" class="table-of-contents__link toc-highlight">Types</a></li><li><a href="#properties" class="table-of-contents__link toc-highlight">Properties</a></li><li><a href="#functions" class="table-of-contents__link toc-highlight">Functions</a><ul><li><a href="#Build" class="table-of-contents__link toc-highlight">:Build</a></li><li><a href="#Defer" class="table-of-contents__link toc-highlight">:Defer</a></li><li><a href="#CreateInstance" class="table-of-contents__link toc-highlight">.CreateInstance</a></li><li><a href="#new" class="table-of-contents__link toc-highlight">.new</a></li></ul></li></ul></div></div></div></div></main></div></div><footer class="footer footer--dark"><div class="container"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2022 Virshal. Built with Moonwave and Docusaurus.</div></div></div></footer></div>
-<script src="/CrustUtil/assets/js/runtime~main.4651d2cd.js"></script>
-<script src="/CrustUtil/assets/js/main.c01de61b.js"></script>
+<script src="/CrustUtil/assets/js/runtime~main.0fff8005.js"></script>
+<script src="/CrustUtil/assets/js/main.b8048a48.js"></script>
 </body>
 </html>
