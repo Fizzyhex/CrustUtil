@@ -46,7 +46,9 @@
 local UIComponent = {}
 
 UIComponent.Children = newproxy(true)
-getmetatable(UIComponent.Children).__tostring = function() return "CustomEnum(Children)" end
+getmetatable(UIComponent.Children).__tostring = function() 
+	return "CustomEnum(Children)" 
+end
 
 UIComponent.__call = function(self, props: {[any]: any})
 	local new = setmetatable({props = props}, self)
