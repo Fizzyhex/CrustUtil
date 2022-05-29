@@ -68,7 +68,7 @@ end
 			Anchored = true,
 			Size = Vector3.new(4, 4, 4)
 			Parent = workspace
-			[Children] = CreateInstance "Smoke" { 
+			Children = CreateInstance "Smoke" { 
 				Size = 4 
 			}
 		}
@@ -79,7 +79,7 @@ end
 			Anchored = true,
 			Size = Vector3.new(4, 4, 4)
 			Parent = workspace
-			[Children] = CreateInstance("Smoke", {
+			Children = CreateInstance("Smoke", {
 				Size = 4
 			})
 		})
