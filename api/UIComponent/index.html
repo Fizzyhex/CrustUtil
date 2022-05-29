@@ -75,8 +75,8 @@ For example:
 		UpdateText(button, button.props.text .. &quot; &quot; .. clicks)
 	end)
 ```"><meta data-react-helmet="true" property="og:url" content="https://Virshal.github.io/CrustUtil/api/UIComponent"><meta data-react-helmet="true" name="docusaurus_locale" content="en"><meta data-react-helmet="true" name="docusaurus_tag" content="default"><link data-react-helmet="true" rel="canonical" href="https://Virshal.github.io/CrustUtil/api/UIComponent"><link data-react-helmet="true" rel="alternate" href="https://Virshal.github.io/CrustUtil/api/UIComponent" hreflang="en"><link data-react-helmet="true" rel="alternate" href="https://Virshal.github.io/CrustUtil/api/UIComponent" hreflang="x-default"><link rel="stylesheet" href="/CrustUtil/assets/css/styles.302001c7.css">
-<link rel="preload" href="/CrustUtil/assets/js/runtime~main.1e4726a7.js" as="script">
-<link rel="preload" href="/CrustUtil/assets/js/main.155ec7d4.js" as="script">
+<link rel="preload" href="/CrustUtil/assets/js/runtime~main.4651d2cd.js" as="script">
+<link rel="preload" href="/CrustUtil/assets/js/main.c01de61b.js" as="script">
 </head>
 <body>
 <script>!function(){function e(e){document.documentElement.setAttribute("data-theme",e)}var t=function(){var e=null;try{e=localStorage.getItem("theme")}catch(e){}return e}();null!==t?e(t):window.matchMedia("(prefers-color-scheme: dark)").matches?e("dark"):(window.matchMedia("(prefers-color-scheme: light)").matches,e("light"))}()</script><div id="__docusaurus">
@@ -115,7 +115,7 @@ For example:
 		<span class="token function">UpdateText</span><span class="token punctuation">(</span>button<span class="token punctuation">,</span> button<span class="token punctuation">.</span>props<span class="token punctuation">.</span>text <span class="token operator">..</span> <span class="token string">" "</span> <span class="token operator">..</span> clicks<span class="token punctuation">)</span>
 	<span class="token keyword">end</span><span class="token punctuation">)</span>
 </code></pre>
-</div></header><h2 class="anchor anchorWithStickyNavbar_31ik" id="functions">Functions<a aria-hidden="true" class="hash-link" href="#functions" title="Direct link to heading">​</a></h2><div class="divider_3z1R"></div><h3 class="anchor anchorWithStickyNavbar_31ik" id="CreateInstance"><code style="text-decoration:none">CreateInstance</code><a aria-hidden="true" class="hash-link" href="#CreateInstance" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_1UH0"><a class="sourceButton_2aE5" href="https://github.com/Virshal/CrustUtil/blob/main/lib/UIComponent/init.lua#L91"><div class="sourceButtonText_monK">&lt;/&gt;</div></a></div><div class="memberString_P8-X"><code>UIComponent<!-- -->.</code><code class="green_3LnD">CreateInstance</code><code>(</code><div class="inset_2cJr"><div><code>className<!-- -->: </code><code class="blue_2Afy">string</code><code>,</code><span class="inlineDescription_17uy">-- <span>
+</div></header><h2 class="anchor anchorWithStickyNavbar_31ik" id="functions">Functions<a aria-hidden="true" class="hash-link" href="#functions" title="Direct link to heading">​</a></h2><div class="divider_3z1R"></div><h3 class="anchor anchorWithStickyNavbar_31ik" id="CreateInstance"><code style="text-decoration:none">CreateInstance</code><a aria-hidden="true" class="hash-link" href="#CreateInstance" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_1UH0"><a class="sourceButton_2aE5" href="https://github.com/Virshal/CrustUtil/blob/main/lib/UIComponent/init.lua#L99"><div class="sourceButtonText_monK">&lt;/&gt;</div></a></div><div class="memberString_P8-X"><code>UIComponent<!-- -->.</code><code class="green_3LnD">CreateInstance</code><code>(</code><div class="inset_2cJr"><div><code>className<!-- -->: </code><code class="blue_2Afy">string</code><code>,</code><span class="inlineDescription_17uy">-- <span>
 <p>The class name of the Instance you want to create</p>
 </span></span></div><div><code>props<!-- -->: </code><code class="blue_2Afy">table</code><span class="inlineDescription_17uy">-- <span>
 <p>The properties of the instance you want to create</p>
@@ -123,35 +123,43 @@ For example:
 <p>Returns a new Instance</p>
 </span></span></div><div>
 <p>A utility for creating Instances.</p>
-<pre class="language-lua"><code class="language-lua">	<span class="token keyword">local</span> parts <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
-
-	parts<span class="token punctuation">.</span>cube <span class="token operator">=</span> UIComponent<span class="token punctuation">.</span>CreateInstance <span class="token string">"BasePart"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
-		Name <span class="token operator">=</span> <span class="token string">"Cube"</span><span class="token punctuation">,</span>
+<pre class="language-lua"><code class="language-lua">	<span class="token keyword">local</span> smokeyCube <span class="token operator">=</span> CreateInstance <span class="token string">"BasePart"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+		Name <span class="token operator">=</span> <span class="token string">"SmokeyCube"</span><span class="token punctuation">,</span>
 		Anchored <span class="token operator">=</span> <span class="token keyword">true</span><span class="token punctuation">,</span>
 		Size <span class="token operator">=</span> Vector3<span class="token punctuation">.</span><span class="token function">new</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span>
 		Parent <span class="token operator">=</span> workspace
+		<span class="token punctuation">[</span>Children<span class="token punctuation">]</span> <span class="token operator">=</span> CreateInstance <span class="token string">"Smoke"</span> <span class="token punctuation">{</span> 
+			Size <span class="token operator">=</span> <span class="token number">4</span> 
+		<span class="token punctuation">}</span>
 	<span class="token punctuation">}</span>
 
 	<span class="token comment">-- ...which is equivalent to:</span>
-	parts<span class="token punctuation">.</span>cube <span class="token operator">=</span> UIComponent<span class="token punctuation">.</span><span class="token function">CreateInstance</span><span class="token punctuation">(</span><span class="token string">"BasePart"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
-		Name <span class="token operator">=</span> <span class="token string">"Cube"</span><span class="token punctuation">,</span>
+	<span class="token keyword">local</span> smokeyCube <span class="token operator">=</span> <span class="token function">CreateInstance</span><span class="token punctuation">(</span><span class="token string">"BasePart"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+		Name <span class="token operator">=</span> <span class="token string">"SmokeyCube"</span><span class="token punctuation">,</span>
 		Anchored <span class="token operator">=</span> <span class="token keyword">true</span><span class="token punctuation">,</span>
 		Size <span class="token operator">=</span> Vector3<span class="token punctuation">.</span><span class="token function">new</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span>
 		Parent <span class="token operator">=</span> workspace
+		<span class="token punctuation">[</span>Children<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">CreateInstance</span><span class="token punctuation">(</span><span class="token string">"Smoke"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+			Size <span class="token operator">=</span> <span class="token number">4</span>
+		<span class="token punctuation">}</span><span class="token punctuation">)</span>
 	<span class="token punctuation">}</span><span class="token punctuation">)</span>
-
+	
 	<span class="token comment">-- ...which is also equivalent to:</span>
-	parts<span class="token punctuation">.</span>cube <span class="token operator">=</span> Instance<span class="token punctuation">.</span><span class="token function">new</span><span class="token punctuation">(</span><span class="token string">"BasePart"</span><span class="token punctuation">)</span>
-	parts<span class="token punctuation">.</span>cube<span class="token punctuation">.</span>Name <span class="token operator">=</span> <span class="token string">"Cube"</span>
-	parts<span class="token punctuation">.</span>cube<span class="token punctuation">.</span>Anchored <span class="token operator">=</span> <span class="token keyword">true</span>
-	parts<span class="token punctuation">.</span>cube<span class="token punctuation">.</span>Size <span class="token operator">=</span> Vector3<span class="token punctuation">.</span><span class="token function">new</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span>
-	parts<span class="token punctuation">.</span>cube<span class="token punctuation">.</span>Parent <span class="token operator">=</span> workspace
+	<span class="token keyword">local</span> smokeyCube <span class="token operator">=</span> Instance<span class="token punctuation">.</span><span class="token function">new</span><span class="token punctuation">(</span><span class="token string">"BasePart"</span><span class="token punctuation">)</span>
+	smokeyCube<span class="token punctuation">.</span>Name <span class="token operator">=</span> <span class="token string">"SmokeyCube"</span>
+	smokeyCube<span class="token punctuation">.</span>Anchored <span class="token operator">=</span> <span class="token keyword">true</span>
+	smokeyCube<span class="token punctuation">.</span>Size <span class="token operator">=</span> Vector3<span class="token punctuation">.</span><span class="token function">new</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span>
+	smokeyCube<span class="token punctuation">.</span>Parent <span class="token operator">=</span> workspace
+
+	<span class="token keyword">local</span> smoke <span class="token operator">=</span> Instance<span class="token punctuation">.</span><span class="token function">new</span><span class="token punctuation">(</span><span class="token string">"Smoke"</span><span class="token punctuation">)</span>
+	smoke<span class="token punctuation">.</span>Size <span class="token operator">=</span> <span class="token number">4</span>
+	smoke<span class="token punctuation">.</span>Parent <span class="token operator">=</span> smokeyCube
 </code></pre>
-</div><div class="divider_3z1R"></div><h3 class="anchor anchorWithStickyNavbar_31ik" id="new"><code style="text-decoration:none">new</code><a aria-hidden="true" class="hash-link" href="#new" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_1UH0"><a class="sourceButton_2aE5" href="https://github.com/Virshal/CrustUtil/blob/main/lib/UIComponent/init.lua#L151"><div class="sourceButtonText_monK">&lt;/&gt;</div></a></div><div class="memberString_P8-X"><code>UIComponent<!-- -->.</code><code class="green_3LnD">new</code><code>(</code><code>) → </code><code class="blue_2Afy"><a style="text-decoration:underline;color:inherit" href="/CrustUtil/api/UIComponent">UIComponent</a></code></div><div>
+</div><div class="divider_3z1R"></div><h3 class="anchor anchorWithStickyNavbar_31ik" id="new"><code style="text-decoration:none">new</code><a aria-hidden="true" class="hash-link" href="#new" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_1UH0"><a class="sourceButton_2aE5" href="https://github.com/Virshal/CrustUtil/blob/main/lib/UIComponent/init.lua#L167"><div class="sourceButtonText_monK">&lt;/&gt;</div></a></div><div class="memberString_P8-X"><code>UIComponent<!-- -->.</code><code class="green_3LnD">new</code><code>(</code><code>) → </code><code class="blue_2Afy"><a style="text-decoration:underline;color:inherit" href="/CrustUtil/api/UIComponent">UIComponent</a></code></div><div>
 <p>Creates a new UIComponent class.</p>
 <pre class="language-lua"><code class="language-lua">	<span class="token keyword">local</span> newComponent <span class="token operator">=</span> UIComponent<span class="token punctuation">.</span><span class="token function">new</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 </code></pre>
-</div><div class="divider_3z1R"></div><h3 class="anchor anchorWithStickyNavbar_31ik" id="Build"><code style="text-decoration:none">Build</code><a aria-hidden="true" class="hash-link" href="#Build" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_1UH0"><a class="sourceButton_2aE5" href="https://github.com/Virshal/CrustUtil/blob/main/lib/UIComponent/init.lua#L133"><div class="sourceButtonText_monK">&lt;/&gt;</div></a></div><div class="memberString_P8-X"><code>UIComponent<!-- -->:</code><code class="green_3LnD">Build</code><code>(</code><code>) → </code><code class="blue_2Afy">self,</code><code class="blue_2Afy">...</code><span class="inlineDescription_17uy">-- <span>
+</div><div class="divider_3z1R"></div><h3 class="anchor anchorWithStickyNavbar_31ik" id="Build"><code style="text-decoration:none">Build</code><a aria-hidden="true" class="hash-link" href="#Build" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_1UH0"><a class="sourceButton_2aE5" href="https://github.com/Virshal/CrustUtil/blob/main/lib/UIComponent/init.lua#L149"><div class="sourceButtonText_monK">&lt;/&gt;</div></a></div><div class="memberString_P8-X"><code>UIComponent<!-- -->:</code><code class="green_3LnD">Build</code><code>(</code><code>) → </code><code class="blue_2Afy">self,</code><code class="blue_2Afy">...</code><span class="inlineDescription_17uy">-- <span>
 <p>Returns the object and any provided arguments</p>
 </span></span></div><div>
 <p><code>Build</code> is called during the UIComponent's creation.</p>
@@ -176,13 +184,13 @@ For example:
 
 	<span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"Created GUI at"</span><span class="token punctuation">,</span> creationTime<span class="token punctuation">)</span>
 </code></pre>
-</div><div class="divider_3z1R"></div><h3 class="anchor anchorWithStickyNavbar_31ik" id="Defer"><code style="text-decoration:none">Defer</code><a aria-hidden="true" class="hash-link" href="#Defer" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_1UH0"><a class="sourceButton_2aE5" href="https://github.com/Virshal/CrustUtil/blob/main/lib/UIComponent/init.lua#L139"><div class="sourceButtonText_monK">&lt;/&gt;</div></a></div><div class="memberString_P8-X"><code>UIComponent<!-- -->:</code><code class="green_3LnD">Defer</code><code>(</code><code>) → </code><code>(</code><code>)</code></div><div>
+</div><div class="divider_3z1R"></div><h3 class="anchor anchorWithStickyNavbar_31ik" id="Defer"><code style="text-decoration:none">Defer</code><a aria-hidden="true" class="hash-link" href="#Defer" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_1UH0"><a class="sourceButton_2aE5" href="https://github.com/Virshal/CrustUtil/blob/main/lib/UIComponent/init.lua#L155"><div class="sourceButtonText_monK">&lt;/&gt;</div></a></div><div class="memberString_P8-X"><code>UIComponent<!-- -->:</code><code class="green_3LnD">Defer</code><code>(</code><code>) → </code><code>(</code><code>)</code></div><div>
 <p><code>Defer</code> is called after <code>Build</code> and will not yield the thread.</p>
 </div></div></article></div><details><summary>Show raw api</summary><pre style="max-width:100%;white-space:pre-wrap">{
     &quot;functions&quot;: [
         {
             &quot;name&quot;: &quot;CreateInstance&quot;,
-            &quot;desc&quot;: &quot;A utility for creating Instances. \n\n\n```lua\n\tlocal parts = {}\n\n\tparts.cube = UIComponent.CreateInstance \&quot;BasePart\&quot;, {\n\t\tName = \&quot;Cube\&quot;,\n\t\tAnchored = true,\n\t\tSize = Vector3.new(4, 4, 4)\n\t\tParent = workspace\n\t}\n\n\t-- ...which is equivalent to:\n\tparts.cube = UIComponent.CreateInstance(\&quot;BasePart\&quot;, {\n\t\tName = \&quot;Cube\&quot;,\n\t\tAnchored = true,\n\t\tSize = Vector3.new(4, 4, 4)\n\t\tParent = workspace\n\t})\n\n\t-- ...which is also equivalent to:\n\tparts.cube = Instance.new(\&quot;BasePart\&quot;)\n\tparts.cube.Name = \&quot;Cube\&quot;\n\tparts.cube.Anchored = true\n\tparts.cube.Size = Vector3.new(4, 4, 4)\n\tparts.cube.Parent = workspace\n```&quot;,
+            &quot;desc&quot;: &quot;A utility for creating Instances. \n\n\n```lua\n\tlocal smokeyCube = CreateInstance \&quot;BasePart\&quot;, {\n\t\tName = \&quot;SmokeyCube\&quot;,\n\t\tAnchored = true,\n\t\tSize = Vector3.new(4, 4, 4)\n\t\tParent = workspace\n\t\t[Children] = CreateInstance \&quot;Smoke\&quot; { \n\t\t\tSize = 4 \n\t\t}\n\t}\n\n\t-- ...which is equivalent to:\n\tlocal smokeyCube = CreateInstance(\&quot;BasePart\&quot;, {\n\t\tName = \&quot;SmokeyCube\&quot;,\n\t\tAnchored = true,\n\t\tSize = Vector3.new(4, 4, 4)\n\t\tParent = workspace\n\t\t[Children] = CreateInstance(\&quot;Smoke\&quot;, {\n\t\t\tSize = 4\n\t\t})\n\t})\n\t\n\t-- ...which is also equivalent to:\n\tlocal smokeyCube = Instance.new(\&quot;BasePart\&quot;)\n\tsmokeyCube.Name = \&quot;SmokeyCube\&quot;\n\tsmokeyCube.Anchored = true\n\tsmokeyCube.Size = Vector3.new(4, 4, 4)\n\tsmokeyCube.Parent = workspace\n\n\tlocal smoke = Instance.new(\&quot;Smoke\&quot;)\n\tsmoke.Size = 4\n\tsmoke.Parent = smokeyCube\n```&quot;,
             &quot;params&quot;: [
                 {
                     &quot;name&quot;: &quot;className&quot;,
@@ -203,7 +211,7 @@ For example:
             ],
             &quot;function_type&quot;: &quot;static&quot;,
             &quot;source&quot;: {
-                &quot;line&quot;: 91,
+                &quot;line&quot;: 99,
                 &quot;path&quot;: &quot;lib/UIComponent/init.lua&quot;
             }
         },
@@ -219,7 +227,7 @@ For example:
             ],
             &quot;function_type&quot;: &quot;method&quot;,
             &quot;source&quot;: {
-                &quot;line&quot;: 133,
+                &quot;line&quot;: 149,
                 &quot;path&quot;: &quot;lib/UIComponent/init.lua&quot;
             }
         },
@@ -230,7 +238,7 @@ For example:
             &quot;returns&quot;: [],
             &quot;function_type&quot;: &quot;method&quot;,
             &quot;source&quot;: {
-                &quot;line&quot;: 139,
+                &quot;line&quot;: 155,
                 &quot;path&quot;: &quot;lib/UIComponent/init.lua&quot;
             }
         },
@@ -246,7 +254,7 @@ For example:
             ],
             &quot;function_type&quot;: &quot;static&quot;,
             &quot;source&quot;: {
-                &quot;line&quot;: 151,
+                &quot;line&quot;: 167,
                 &quot;path&quot;: &quot;lib/UIComponent/init.lua&quot;
             }
         }
@@ -260,7 +268,7 @@ For example:
         &quot;path&quot;: &quot;lib/UIComponent/init.lua&quot;
     }
 }</pre></details></div><div class="col col--3"><div class="tableOfContents_35-E thin-scrollbar"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#types" class="table-of-contents__link toc-highlight">Types</a></li><li><a href="#properties" class="table-of-contents__link toc-highlight">Properties</a></li><li><a href="#functions" class="table-of-contents__link toc-highlight">Functions</a><ul><li><a href="#Build" class="table-of-contents__link toc-highlight">:Build</a></li><li><a href="#Defer" class="table-of-contents__link toc-highlight">:Defer</a></li><li><a href="#CreateInstance" class="table-of-contents__link toc-highlight">.CreateInstance</a></li><li><a href="#new" class="table-of-contents__link toc-highlight">.new</a></li></ul></li></ul></div></div></div></div></main></div></div><footer class="footer footer--dark"><div class="container"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2022 Virshal. Built with Moonwave and Docusaurus.</div></div></div></footer></div>
-<script src="/CrustUtil/assets/js/runtime~main.1e4726a7.js"></script>
-<script src="/CrustUtil/assets/js/main.155ec7d4.js"></script>
+<script src="/CrustUtil/assets/js/runtime~main.4651d2cd.js"></script>
+<script src="/CrustUtil/assets/js/main.c01de61b.js"></script>
 </body>
 </html>
