@@ -16,7 +16,7 @@ registry = "https://github.com/UpliftGames/wally-index"
 realm = "shared"
 
 [dependencies]
-UIComponent = "virshal/uicomponent@0.1.5"
+UIComponent = "virshal/uicomponent@0.1.6"
 ```
 
 To install or update these dependancies, run `wally install` within your project's terminal. Wally will then create a folder called 'Packages' with all of your installed dependancies!

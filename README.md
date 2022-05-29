@@ -6,4 +6,4 @@ I was about to eat pizza when I decided I wanted to make this.
 
 | Module | Dependancy | Description |
 | -- | -- | -- |
-| [UIComponent](https://virshal.github.io/CrustUtil/api/UIComponent) | `UIComponent = "virshal/uicomponent@0.1.5"` | A library for creating GUIs
+| [UIComponent](https://virshal.github.io/CrustUtil/api/UIComponent) | `UIComponent = "virshal/uicomponent@0.1.6"` | A library for creating GUIs
