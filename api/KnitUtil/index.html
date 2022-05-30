@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="generator" content="Docusaurus v2.0.0-beta.9">
 <title data-react-helmet="true">KnitUtil | CrustUtil</title><meta data-react-helmet="true" property="og:title" content="KnitUtil | CrustUtil"><meta data-react-helmet="true" name="twitter:card" content="summary_large_image"><meta data-react-helmet="true" name="description" content="A module that contains useful functions for projects that use [Knit](https://sleitnick.github.io/Knit/)."><meta data-react-helmet="true" property="og:description" content="A module that contains useful functions for projects that use [Knit](https://sleitnick.github.io/Knit/)."><meta data-react-helmet="true" property="og:url" content="https://Virshal.github.io/CrustUtil/api/KnitUtil"><meta data-react-helmet="true" name="docusaurus_locale" content="en"><meta data-react-helmet="true" name="docusaurus_tag" content="default"><link data-react-helmet="true" rel="canonical" href="https://Virshal.github.io/CrustUtil/api/KnitUtil"><link data-react-helmet="true" rel="alternate" href="https://Virshal.github.io/CrustUtil/api/KnitUtil" hreflang="en"><link data-react-helmet="true" rel="alternate" href="https://Virshal.github.io/CrustUtil/api/KnitUtil" hreflang="x-default"><link rel="stylesheet" href="/CrustUtil/assets/css/styles.302001c7.css">
-<link rel="preload" href="/CrustUtil/assets/js/runtime~main.522143a6.js" as="script">
-<link rel="preload" href="/CrustUtil/assets/js/main.11b74e9a.js" as="script">
+<link rel="preload" href="/CrustUtil/assets/js/runtime~main.fbb603d8.js" as="script">
+<link rel="preload" href="/CrustUtil/assets/js/main.8425946e.js" as="script">
 </head>
 <body>
 <script>!function(){function e(e){document.documentElement.setAttribute("data-theme",e)}var t=function(){var e=null;try{e=localStorage.getItem("theme")}catch(e){}return e}();null!==t?e(t):window.matchMedia("(prefers-color-scheme: dark)").matches?e("dark"):(window.matchMedia("(prefers-color-scheme: light)").matches,e("light"))}()</script><div id="__docusaurus">
@@ -35,107 +35,107 @@
 <p>The component instance the method belongs to</p>
 </span></span></div></div><code>)</code></div><div>
 <p>Searches all the Instance's components for a specific method.</p>
-<h2>Writing cleaner code with MethodFromInstance</h2>
+<h3>Writing cleaner code with MethodFromInstance</h3>
 <p>Let's say we have two components: a door and a light switch. We want to write a script to interact with these objects and any new ones we may come up with in the future:</p>
-<h3>Door Component</h3>
-<pre class="language-lua"><code class="language-lua">	<span class="token keyword">local</span> Door <span class="token operator">=</span> Component<span class="token punctuation">.</span><span class="token function">new</span> <span class="token punctuation">{</span>
-		Tag <span class="token operator">=</span> <span class="token string">"Door"</span>
-	<span class="token punctuation">}</span>
+<h4>Door Component</h4>
+<pre class="language-lua"><code class="language-lua"><span class="token keyword">local</span> Door <span class="token operator">=</span> Component<span class="token punctuation">.</span><span class="token function">new</span> <span class="token punctuation">{</span>
+	Tag <span class="token operator">=</span> <span class="token string">"Door"</span>
+<span class="token punctuation">}</span>
 
-	<span class="token keyword">function</span> Door<span class="token punctuation">:</span><span class="token function">_open</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-		<span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"Door open"</span><span class="token punctuation">)</span>
-		self<span class="token punctuation">.</span>isOpen <span class="token operator">=</span> <span class="token keyword">true</span>
-	<span class="token keyword">end</span>
+<span class="token keyword">function</span> Door<span class="token punctuation">:</span><span class="token function">_open</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+	<span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"Door open"</span><span class="token punctuation">)</span>
+	self<span class="token punctuation">.</span>isOpen <span class="token operator">=</span> <span class="token keyword">true</span>
+<span class="token keyword">end</span>
 
-	<span class="token keyword">function</span> Door<span class="token punctuation">:</span><span class="token function">_close</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-		<span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"Door closed"</span><span class="token punctuation">)</span>
-		self<span class="token punctuation">.</span>isOpen <span class="token operator">=</span> <span class="token keyword">false</span>
-	<span class="token keyword">end</span>
+<span class="token keyword">function</span> Door<span class="token punctuation">:</span><span class="token function">_close</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+	<span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"Door closed"</span><span class="token punctuation">)</span>
+	self<span class="token punctuation">.</span>isOpen <span class="token operator">=</span> <span class="token keyword">false</span>
+<span class="token keyword">end</span>
 
-	<span class="token keyword">function</span> Door<span class="token punctuation">:</span><span class="token function">OnInteract</span><span class="token punctuation">(</span>open<span class="token punctuation">:</span> boolean<span class="token punctuation">)</span>
-		<span class="token keyword">if</span> open <span class="token keyword">then</span>
-			<span class="token keyword">if</span> self<span class="token punctuation">.</span>isOpen <span class="token keyword">then</span>
-				self<span class="token punctuation">:</span><span class="token function">_close</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-			<span class="token keyword">else</span>
-				self<span class="token punctuation">:</span><span class="token function">_open</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-			<span class="token keyword">end</span>
+<span class="token keyword">function</span> Door<span class="token punctuation">:</span><span class="token function">OnInteract</span><span class="token punctuation">(</span>open<span class="token punctuation">:</span> boolean<span class="token punctuation">)</span>
+	<span class="token keyword">if</span> open <span class="token keyword">then</span>
+		<span class="token keyword">if</span> self<span class="token punctuation">.</span>isOpen <span class="token keyword">then</span>
+			self<span class="token punctuation">:</span><span class="token function">_close</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+		<span class="token keyword">else</span>
+			self<span class="token punctuation">:</span><span class="token function">_open</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 		<span class="token keyword">end</span>
 	<span class="token keyword">end</span>
+<span class="token keyword">end</span>
 
-	<span class="token keyword">function</span> Door<span class="token punctuation">:</span><span class="token function">Construct</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-		self<span class="token punctuation">.</span>isOpen <span class="token operator">=</span> <span class="token keyword">false</span>
-	<span class="token keyword">end</span>
+<span class="token keyword">function</span> Door<span class="token punctuation">:</span><span class="token function">Construct</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+	self<span class="token punctuation">.</span>isOpen <span class="token operator">=</span> <span class="token keyword">false</span>
+<span class="token keyword">end</span>
 </code></pre>
-<h3>Light Switch Component</h3>
-<pre class="language-lua"><code class="language-lua">	<span class="token keyword">local</span> LightSwitch <span class="token operator">=</span> Component<span class="token punctuation">.</span><span class="token function">new</span> <span class="token punctuation">{</span>
-		Tag <span class="token operator">=</span> <span class="token string">"LightSwitch"</span>
-	<span class="token punctuation">}</span>
+<h4>Light Switch Component</h4>
+<pre class="language-lua"><code class="language-lua"><span class="token keyword">local</span> LightSwitch <span class="token operator">=</span> Component<span class="token punctuation">.</span><span class="token function">new</span> <span class="token punctuation">{</span>
+	Tag <span class="token operator">=</span> <span class="token string">"LightSwitch"</span>
+<span class="token punctuation">}</span>
 
-	<span class="token keyword">function</span> LightSwitch<span class="token punctuation">:</span><span class="token function">_turnOn</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-		<span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"Light on"</span><span class="token punctuation">)</span>
-		self<span class="token punctuation">.</span>isOn <span class="token operator">=</span> <span class="token keyword">true</span>
-	<span class="token keyword">end</span>
+<span class="token keyword">function</span> LightSwitch<span class="token punctuation">:</span><span class="token function">_turnOn</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+	<span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"Light on"</span><span class="token punctuation">)</span>
+	self<span class="token punctuation">.</span>isOn <span class="token operator">=</span> <span class="token keyword">true</span>
+<span class="token keyword">end</span>
 
-	<span class="token keyword">function</span> LightSwitch<span class="token punctuation">:</span><span class="token function">_turnOff</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-		<span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"Light off"</span><span class="token punctuation">)</span>
-		self<span class="token punctuation">.</span>isOn <span class="token operator">=</span> <span class="token keyword">false</span>
-	<span class="token keyword">end</span>
+<span class="token keyword">function</span> LightSwitch<span class="token punctuation">:</span><span class="token function">_turnOff</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+	<span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"Light off"</span><span class="token punctuation">)</span>
+	self<span class="token punctuation">.</span>isOn <span class="token operator">=</span> <span class="token keyword">false</span>
+<span class="token keyword">end</span>
 
-	<span class="token keyword">function</span> LightSwitch<span class="token punctuation">:</span><span class="token function">OnInteract</span><span class="token punctuation">(</span>on<span class="token punctuation">:</span> boolean<span class="token punctuation">)</span>
-		<span class="token keyword">if</span> on <span class="token keyword">then</span>
-			<span class="token keyword">if</span> self<span class="token punctuation">.</span>isOn <span class="token keyword">then</span>
-				self<span class="token punctuation">:</span><span class="token function">_turnOff</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-			<span class="token keyword">else</span>
-				self<span class="token punctuation">:</span><span class="token function">_turnOn</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-			<span class="token keyword">end</span>
+<span class="token keyword">function</span> LightSwitch<span class="token punctuation">:</span><span class="token function">OnInteract</span><span class="token punctuation">(</span>on<span class="token punctuation">:</span> boolean<span class="token punctuation">)</span>
+	<span class="token keyword">if</span> on <span class="token keyword">then</span>
+		<span class="token keyword">if</span> self<span class="token punctuation">.</span>isOn <span class="token keyword">then</span>
+			self<span class="token punctuation">:</span><span class="token function">_turnOff</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+		<span class="token keyword">else</span>
+			self<span class="token punctuation">:</span><span class="token function">_turnOn</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 		<span class="token keyword">end</span>
 	<span class="token keyword">end</span>
+<span class="token keyword">end</span>
 
-	<span class="token keyword">function</span> LightSwitch<span class="token punctuation">:</span><span class="token function">Construct</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-		self<span class="token punctuation">.</span>isOn <span class="token operator">=</span> <span class="token keyword">false</span>
-	<span class="token keyword">end</span>
+<span class="token keyword">function</span> LightSwitch<span class="token punctuation">:</span><span class="token function">Construct</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+	self<span class="token punctuation">.</span>isOn <span class="token operator">=</span> <span class="token keyword">false</span>
+<span class="token keyword">end</span>
 </code></pre>
-<h3>Interaction Script (without MethodFromInstance)</h3>
+<h4>Interaction Script (without MethodFromInstance)</h4>
 <p>Without <code>MethodFromInstance</code>, we might write some interaction code like this:</p>
-<pre class="language-lua"><code class="language-lua">	<span class="token comment">-- Require components we can interact with</span>
-	<span class="token keyword">local</span> DoorComponent <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span>somewhere<span class="token punctuation">.</span>Components<span class="token punctuation">.</span>DoorComponent<span class="token punctuation">)</span>
-	<span class="token keyword">local</span> LightSwitchComponent <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span>somewhere<span class="token punctuation">.</span>Components<span class="token punctuation">.</span>LightSwitch<span class="token punctuation">)</span>
+<pre class="language-lua"><code class="language-lua"><span class="token comment">-- Require components we can interact with</span>
+<span class="token keyword">local</span> DoorComponent <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span>somewhere<span class="token punctuation">.</span>Components<span class="token punctuation">.</span>DoorComponent<span class="token punctuation">)</span>
+<span class="token keyword">local</span> LightSwitchComponent <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span>somewhere<span class="token punctuation">.</span>Components<span class="token punctuation">.</span>LightSwitch<span class="token punctuation">)</span>
 
-	<span class="token keyword">local</span> <span class="token keyword">function</span> <span class="token function">InteractWith</span><span class="token punctuation">(</span>instance<span class="token punctuation">:</span> Instance<span class="token punctuation">)</span>
-		<span class="token comment">-- Scan through the Instance's components for an 'OnInteract' method</span>
-		<span class="token keyword">if</span> CollectionService<span class="token punctuation">:</span><span class="token function">HasTag</span><span class="token punctuation">(</span>instance<span class="token punctuation">,</span> <span class="token string">"Door"</span><span class="token punctuation">)</span> <span class="token keyword">then</span>
-			DoorComponent<span class="token punctuation">:</span><span class="token function">FromInstance</span><span class="token punctuation">(</span>instance<span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token function">OnInteract</span><span class="token punctuation">(</span><span class="token keyword">true</span><span class="token punctuation">)</span>
-		<span class="token keyword">elseif</span> CollectionService<span class="token punctuation">:</span><span class="token function">HasTag</span><span class="token punctuation">(</span>instance<span class="token punctuation">,</span> <span class="token string">"LightSwitch"</span><span class="token punctuation">)</span> <span class="token keyword">then</span>
-			LightSwitchComponent<span class="token punctuation">:</span><span class="token function">FromInstance</span><span class="token punctuation">(</span>instance<span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token function">OnInteract</span><span class="token punctuation">(</span><span class="token keyword">true</span><span class="token punctuation">)</span>
-		<span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">.......</span> <span class="token keyword">then</span>
-			<span class="token comment">-- etc etc etc</span>
-			<span class="token punctuation">.....</span>
-		<span class="token keyword">end</span>
+<span class="token keyword">local</span> <span class="token keyword">function</span> <span class="token function">InteractWith</span><span class="token punctuation">(</span>instance<span class="token punctuation">:</span> Instance<span class="token punctuation">)</span>
+	<span class="token comment">-- Scan through the Instance's components for an 'OnInteract' method</span>
+	<span class="token keyword">if</span> CollectionService<span class="token punctuation">:</span><span class="token function">HasTag</span><span class="token punctuation">(</span>instance<span class="token punctuation">,</span> <span class="token string">"Door"</span><span class="token punctuation">)</span> <span class="token keyword">then</span>
+		DoorComponent<span class="token punctuation">:</span><span class="token function">FromInstance</span><span class="token punctuation">(</span>instance<span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token function">OnInteract</span><span class="token punctuation">(</span><span class="token keyword">true</span><span class="token punctuation">)</span>
+	<span class="token keyword">elseif</span> CollectionService<span class="token punctuation">:</span><span class="token function">HasTag</span><span class="token punctuation">(</span>instance<span class="token punctuation">,</span> <span class="token string">"LightSwitch"</span><span class="token punctuation">)</span> <span class="token keyword">then</span>
+		LightSwitchComponent<span class="token punctuation">:</span><span class="token function">FromInstance</span><span class="token punctuation">(</span>instance<span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token function">OnInteract</span><span class="token punctuation">(</span><span class="token keyword">true</span><span class="token punctuation">)</span>
+	<span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">.......</span> <span class="token keyword">then</span>
+		<span class="token comment">-- etc etc etc</span>
+		<span class="token punctuation">.....</span>
 	<span class="token keyword">end</span>
+<span class="token keyword">end</span>
 
-	<span class="token comment">-- Open the door</span>
-	<span class="token function">InteractWith</span><span class="token punctuation">(</span>workspace<span class="token punctuation">.</span>Door<span class="token punctuation">)</span>
-	<span class="token comment">-- Flick the light switch to on</span>
-	<span class="token function">InteractWith</span><span class="token punctuation">(</span>workspace<span class="token punctuation">.</span>LightSwitch<span class="token punctuation">)</span>
+<span class="token comment">-- Open the door</span>
+<span class="token function">InteractWith</span><span class="token punctuation">(</span>workspace<span class="token punctuation">.</span>Door<span class="token punctuation">)</span>
+<span class="token comment">-- Flick the light switch to on</span>
+<span class="token function">InteractWith</span><span class="token punctuation">(</span>workspace<span class="token punctuation">.</span>LightSwitch<span class="token punctuation">)</span>
 </code></pre>
-<h3>Interaction Script (using MethodFromInstance)</h3>
+<h4>Final Result (using MethodFromInstance)</h4>
 <p>This code is bad because it will get messy as we add more types of Components to our game.</p>
 <p>However, if we instead use <code>MethodFromInstance</code> we don't need to modify the code every time we create a new component.</p>
 <p>Below is an example that implements <code>MethodFromInstance</code>:</p>
-<pre class="language-lua"><code class="language-lua">	<span class="token keyword">local</span> <span class="token keyword">function</span> <span class="token function">InteractWith</span><span class="token punctuation">(</span>instance<span class="token punctuation">:</span> Instance<span class="token punctuation">)</span>
-		<span class="token comment">-- Scan through the Instance's components for an 'OnInteract' method</span>
-		<span class="token keyword">local</span> onInteract <span class="token operator">=</span> KnitUtil<span class="token punctuation">.</span><span class="token function">MethodFromInstance</span><span class="token punctuation">(</span>instance<span class="token punctuation">,</span> <span class="token string">"OnInteract"</span><span class="token punctuation">)</span>
+<pre class="language-lua"><code class="language-lua"><span class="token keyword">local</span> <span class="token keyword">function</span> <span class="token function">InteractWith</span><span class="token punctuation">(</span>instance<span class="token punctuation">:</span> Instance<span class="token punctuation">)</span>
+	<span class="token comment">-- Scan through the Instance's components for an 'OnInteract' method</span>
+	<span class="token keyword">local</span> onInteract <span class="token operator">=</span> KnitUtil<span class="token punctuation">.</span><span class="token function">MethodFromInstance</span><span class="token punctuation">(</span>instance<span class="token punctuation">,</span> <span class="token string">"OnInteract"</span><span class="token punctuation">)</span>
 
-		<span class="token keyword">if</span> onInteract <span class="token keyword">then</span>
-			<span class="token comment">-- Call the method</span>
-			<span class="token function">onInteract</span><span class="token punctuation">(</span><span class="token keyword">true</span><span class="token punctuation">)</span>
-		<span class="token keyword">end</span>
+	<span class="token keyword">if</span> onInteract <span class="token keyword">then</span>
+		<span class="token comment">-- Call the method</span>
+		<span class="token function">onInteract</span><span class="token punctuation">(</span><span class="token keyword">true</span><span class="token punctuation">)</span>
 	<span class="token keyword">end</span>
+<span class="token keyword">end</span>
 
-	<span class="token comment">-- Open the door</span>
-	<span class="token function">InteractWith</span><span class="token punctuation">(</span>workspace<span class="token punctuation">.</span>Door<span class="token punctuation">)</span>
-	<span class="token comment">-- Flick the light switch to on</span>
-	<span class="token function">InteractWith</span><span class="token punctuation">(</span>workspace<span class="token punctuation">.</span>LightSwitch<span class="token punctuation">)</span>
+<span class="token comment">-- Open the door</span>
+<span class="token function">InteractWith</span><span class="token punctuation">(</span>workspace<span class="token punctuation">.</span>Door<span class="token punctuation">)</span>
+<span class="token comment">-- Flick the light switch to on</span>
+<span class="token function">InteractWith</span><span class="token punctuation">(</span>workspace<span class="token punctuation">.</span>LightSwitch<span class="token punctuation">)</span>
 </code></pre>
 </div><div class="divider_3z1R"></div><h3 class="anchor anchorWithStickyNavbar_31ik" id="VariableFromInstance"><code style="text-decoration:none">VariableFromInstance</code><a aria-hidden="true" class="hash-link" href="#VariableFromInstance" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_1UH0"><a class="sourceButton_2aE5" href="https://github.com/Virshal/CrustUtil/blob/main/lib/KnitUtil/init.lua#L227"><div class="sourceButtonText_monK">&lt;/&gt;</div></a></div><div class="memberString_P8-X"><code>KnitUtil<!-- -->.</code><code class="green_3LnD">VariableFromInstance</code><code>(</code><div class="inset_2cJr"><div><code>instance<!-- -->: </code><code class="blue_2Afy"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/datatype/Instance" target="_blank" rel="noopener noreferrer">Instance<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><code>,</code><span class="inlineDescription_17uy">-- <span>
 <p>The Instance to search</p>
@@ -147,14 +147,14 @@
 <p>The component instance the method belongs to</p>
 </span></span></div></div><code>)</code></div><div>
 <p>Similar to <code>MethodFromInstance</code>, but for non-methods.</p>
-<pre class="language-lua"><code class="language-lua">	<span class="token keyword">local</span> <span class="token keyword">function</span> <span class="token function">GetHealth</span><span class="token punctuation">(</span>enemy<span class="token punctuation">:</span> Instance<span class="token punctuation">)</span>
-		<span class="token keyword">local</span> health<span class="token punctuation">:</span> number? <span class="token operator">=</span> KnitUtil<span class="token punctuation">.</span><span class="token function">VariableFromInstance</span><span class="token punctuation">(</span>enemy<span class="token punctuation">,</span> <span class="token string">"MyHealth"</span><span class="token punctuation">)</span>
-		<span class="token keyword">return</span> health
-	<span class="token keyword">end</span>
+<pre class="language-lua"><code class="language-lua"><span class="token keyword">local</span> <span class="token keyword">function</span> <span class="token function">GetHealth</span><span class="token punctuation">(</span>enemy<span class="token punctuation">:</span> Instance<span class="token punctuation">)</span>
+	<span class="token keyword">local</span> health<span class="token punctuation">:</span> number? <span class="token operator">=</span> KnitUtil<span class="token punctuation">.</span><span class="token function">VariableFromInstance</span><span class="token punctuation">(</span>enemy<span class="token punctuation">,</span> <span class="token string">"MyHealth"</span><span class="token punctuation">)</span>
+	<span class="token keyword">return</span> health
+<span class="token keyword">end</span>
 
-	<span class="token function">print</span><span class="token punctuation">(</span><span class="token function">GetHealth</span><span class="token punctuation">(</span>workspace<span class="token punctuation">.</span>Zombie<span class="token punctuation">)</span><span class="token punctuation">)</span>
-	<span class="token function">print</span><span class="token punctuation">(</span><span class="token function">GetHealth</span><span class="token punctuation">(</span>workspace<span class="token punctuation">.</span>Player<span class="token punctuation">)</span><span class="token punctuation">)</span>
-	<span class="token function">print</span><span class="token punctuation">(</span><span class="token function">GetHealth</span><span class="token punctuation">(</span>workspace<span class="token punctuation">.</span>DestructableBox<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token function">print</span><span class="token punctuation">(</span><span class="token function">GetHealth</span><span class="token punctuation">(</span>workspace<span class="token punctuation">.</span>Zombie<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token function">print</span><span class="token punctuation">(</span><span class="token function">GetHealth</span><span class="token punctuation">(</span>workspace<span class="token punctuation">.</span>Player<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token function">print</span><span class="token punctuation">(</span><span class="token function">GetHealth</span><span class="token punctuation">(</span>workspace<span class="token punctuation">.</span>DestructableBox<span class="token punctuation">)</span><span class="token punctuation">)</span>
 </code></pre>
 </div></div></article></div><details><summary>Show raw api</summary><pre style="max-width:100%;white-space:pre-wrap">{
     &quot;functions&quot;: [
@@ -182,7 +182,7 @@
         },
         {
             &quot;name&quot;: &quot;MethodFromInstance&quot;,
-            &quot;desc&quot;: &quot;Searches all the Instance&#x27;s components for a specific method.\n\n\n## Writing cleaner code with MethodFromInstance\n\nLet&#x27;s say we have two components: a door and a light switch. We want to write a script to interact with these objects and any new ones we may come up with in the future:\n\n### Door Component\n```lua\n\tlocal Door = Component.new {\n\t\tTag = \&quot;Door\&quot;\n\t}\n\n\tfunction Door:_open()\n\t\tprint(\&quot;Door open\&quot;)\n\t\tself.isOpen = true\n\tend\n\n\tfunction Door:_close()\n\t\tprint(\&quot;Door closed\&quot;)\n\t\tself.isOpen = false\n\tend\n\n\tfunction Door:OnInteract(open: boolean)\n\t\tif open then\n\t\t\tif self.isOpen then\n\t\t\t\tself:_close()\n\t\t\telse\n\t\t\t\tself:_open()\n\t\t\tend\n\t\tend\n\tend\n\n\tfunction Door:Construct()\n\t\tself.isOpen = false\n\tend\n```\n\n### Light Switch Component\n```lua\n\tlocal LightSwitch = Component.new {\n\t\tTag = \&quot;LightSwitch\&quot;\n\t}\n\n\tfunction LightSwitch:_turnOn()\n\t\tprint(\&quot;Light on\&quot;)\n\t\tself.isOn = true\n\tend\n\n\tfunction LightSwitch:_turnOff()\n\t\tprint(\&quot;Light off\&quot;)\n\t\tself.isOn = false\n\tend\n\n\tfunction LightSwitch:OnInteract(on: boolean)\n\t\tif on then\n\t\t\tif self.isOn then\n\t\t\t\tself:_turnOff()\n\t\t\telse\n\t\t\t\tself:_turnOn()\n\t\t\tend\n\t\tend\n\tend\n\n\tfunction LightSwitch:Construct()\n\t\tself.isOn = false\n\tend\n```\n\n### Interaction Script (without MethodFromInstance)\n\nWithout `MethodFromInstance`, we might write some interaction code like this:\n```lua\n\t-- Require components we can interact with\n\tlocal DoorComponent = require(somewhere.Components.DoorComponent)\n\tlocal LightSwitchComponent = require(somewhere.Components.LightSwitch)\n\n\tlocal function InteractWith(instance: Instance)\n\t\t-- Scan through the Instance&#x27;s components for an &#x27;OnInteract&#x27; method\n\t\tif CollectionService:HasTag(instance, \&quot;Door\&quot;) then\n\t\t\tDoorComponent:FromInstance(instance):OnInteract(true)\n\t\telseif CollectionService:HasTag(instance, \&quot;LightSwitch\&quot;) then\n\t\t\tLightSwitchComponent:FromInstance(instance):OnInteract(true)\n\t\telse if ....... then\n\t\t\t-- etc etc etc\n\t\t\t.....\n\t\tend\n\tend\n\n\t-- Open the door\n\tInteractWith(workspace.Door)\n\t-- Flick the light switch to on\n\tInteractWith(workspace.LightSwitch)\n```\n\n### Interaction Script (using MethodFromInstance)\n\nThis code is bad because it will get messy as we add more types of Components to our game.\n\nHowever, if we instead use `MethodFromInstance` we don&#x27;t need to modify the code every time we create a new component.\n\nBelow is an example that implements `MethodFromInstance`:\n```lua\n\tlocal function InteractWith(instance: Instance)\n\t\t-- Scan through the Instance&#x27;s components for an &#x27;OnInteract&#x27; method\n\t\tlocal onInteract = KnitUtil.MethodFromInstance(instance, \&quot;OnInteract\&quot;)\n\n\t\tif onInteract then\n\t\t\t-- Call the method\n\t\t\tonInteract(true)\n\t\tend\n\tend\n\n\t-- Open the door\n\tInteractWith(workspace.Door)\n\t-- Flick the light switch to on\n\tInteractWith(workspace.LightSwitch)\n```&quot;,
+            &quot;desc&quot;: &quot;Searches all the Instance&#x27;s components for a specific method.\n\n\n### Writing cleaner code with MethodFromInstance\n\nLet&#x27;s say we have two components: a door and a light switch. We want to write a script to interact with these objects and any new ones we may come up with in the future:\n\n#### Door Component\n```lua\nlocal Door = Component.new {\n\tTag = \&quot;Door\&quot;\n}\n\nfunction Door:_open()\n\tprint(\&quot;Door open\&quot;)\n\tself.isOpen = true\nend\n\nfunction Door:_close()\n\tprint(\&quot;Door closed\&quot;)\n\tself.isOpen = false\nend\n\nfunction Door:OnInteract(open: boolean)\n\tif open then\n\t\tif self.isOpen then\n\t\t\tself:_close()\n\t\telse\n\t\t\tself:_open()\n\t\tend\n\tend\nend\n\nfunction Door:Construct()\n\tself.isOpen = false\nend\n```\n\n#### Light Switch Component\n```lua\nlocal LightSwitch = Component.new {\n\tTag = \&quot;LightSwitch\&quot;\n}\n\nfunction LightSwitch:_turnOn()\n\tprint(\&quot;Light on\&quot;)\n\tself.isOn = true\nend\n\nfunction LightSwitch:_turnOff()\n\tprint(\&quot;Light off\&quot;)\n\tself.isOn = false\nend\n\nfunction LightSwitch:OnInteract(on: boolean)\n\tif on then\n\t\tif self.isOn then\n\t\t\tself:_turnOff()\n\t\telse\n\t\t\tself:_turnOn()\n\t\tend\n\tend\nend\n\nfunction LightSwitch:Construct()\n\tself.isOn = false\nend\n```\n\n#### Interaction Script (without MethodFromInstance)\n\nWithout `MethodFromInstance`, we might write some interaction code like this:\n```lua\n-- Require components we can interact with\nlocal DoorComponent = require(somewhere.Components.DoorComponent)\nlocal LightSwitchComponent = require(somewhere.Components.LightSwitch)\n\nlocal function InteractWith(instance: Instance)\n\t-- Scan through the Instance&#x27;s components for an &#x27;OnInteract&#x27; method\n\tif CollectionService:HasTag(instance, \&quot;Door\&quot;) then\n\t\tDoorComponent:FromInstance(instance):OnInteract(true)\n\telseif CollectionService:HasTag(instance, \&quot;LightSwitch\&quot;) then\n\t\tLightSwitchComponent:FromInstance(instance):OnInteract(true)\n\telse if ....... then\n\t\t-- etc etc etc\n\t\t.....\n\tend\nend\n\n-- Open the door\nInteractWith(workspace.Door)\n-- Flick the light switch to on\nInteractWith(workspace.LightSwitch)\n```\n\n#### Final Result (using MethodFromInstance)\n\nThis code is bad because it will get messy as we add more types of Components to our game.\n\nHowever, if we instead use `MethodFromInstance` we don&#x27;t need to modify the code every time we create a new component.\n\nBelow is an example that implements `MethodFromInstance`:\n```lua\nlocal function InteractWith(instance: Instance)\n\t-- Scan through the Instance&#x27;s components for an &#x27;OnInteract&#x27; method\n\tlocal onInteract = KnitUtil.MethodFromInstance(instance, \&quot;OnInteract\&quot;)\n\n\tif onInteract then\n\t\t-- Call the method\n\t\tonInteract(true)\n\tend\nend\n\n-- Open the door\nInteractWith(workspace.Door)\n-- Flick the light switch to on\nInteractWith(workspace.LightSwitch)\n```&quot;,
             &quot;params&quot;: [
                 {
                     &quot;name&quot;: &quot;instance&quot;,
@@ -213,7 +213,7 @@
         },
         {
             &quot;name&quot;: &quot;VariableFromInstance&quot;,
-            &quot;desc&quot;: &quot;Similar to `MethodFromInstance`, but for non-methods.\n\n\n```lua\n\tlocal function GetHealth(enemy: Instance)\n\t\tlocal health: number? = KnitUtil.VariableFromInstance(enemy, \&quot;MyHealth\&quot;)\n\t\treturn health\n\tend\n\n\tprint(GetHealth(workspace.Zombie))\n\tprint(GetHealth(workspace.Player))\n\tprint(GetHealth(workspace.DestructableBox))\n```&quot;,
+            &quot;desc&quot;: &quot;Similar to `MethodFromInstance`, but for non-methods.\n\n\n```lua\nlocal function GetHealth(enemy: Instance)\n\tlocal health: number? = KnitUtil.VariableFromInstance(enemy, \&quot;MyHealth\&quot;)\n\treturn health\nend\n\nprint(GetHealth(workspace.Zombie))\nprint(GetHealth(workspace.Player))\nprint(GetHealth(workspace.DestructableBox))\n```&quot;,
             &quot;params&quot;: [
                 {
                     &quot;name&quot;: &quot;instance&quot;,
@@ -252,7 +252,7 @@
         &quot;path&quot;: &quot;lib/KnitUtil/init.lua&quot;
     }
 }</pre></details></div><div class="col col--3"><div class="tableOfContents_35-E thin-scrollbar"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#types" class="table-of-contents__link toc-highlight">Types</a></li><li><a href="#properties" class="table-of-contents__link toc-highlight">Properties</a></li><li><a href="#functions" class="table-of-contents__link toc-highlight">Functions</a><ul><li><a href="#LoadComponents" class="table-of-contents__link toc-highlight">.LoadComponents</a></li><li><a href="#MethodFromInstance" class="table-of-contents__link toc-highlight">.MethodFromInstance</a></li><li><a href="#VariableFromInstance" class="table-of-contents__link toc-highlight">.VariableFromInstance</a></li></ul></li></ul></div></div></div></div></main></div></div><footer class="footer footer--dark"><div class="container"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2022 Virshal. Built with Moonwave and Docusaurus.</div></div></div></footer></div>
-<script src="/CrustUtil/assets/js/runtime~main.522143a6.js"></script>
-<script src="/CrustUtil/assets/js/main.11b74e9a.js"></script>
+<script src="/CrustUtil/assets/js/runtime~main.fbb603d8.js"></script>
+<script src="/CrustUtil/assets/js/main.8425946e.js"></script>
 </body>
 </html>
