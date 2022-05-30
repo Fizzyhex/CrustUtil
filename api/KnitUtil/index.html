@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="generator" content="Docusaurus v2.0.0-beta.9">
+<title data-react-helmet="true">KnitUtil | CrustUtil</title><meta data-react-helmet="true" property="og:title" content="KnitUtil | CrustUtil"><meta data-react-helmet="true" name="twitter:card" content="summary_large_image"><meta data-react-helmet="true" name="description" content="A module that contains useful functions for projects that use [Knit](https://sleitnick.github.io/Knit/)."><meta data-react-helmet="true" property="og:description" content="A module that contains useful functions for projects that use [Knit](https://sleitnick.github.io/Knit/)."><meta data-react-helmet="true" property="og:url" content="https://Virshal.github.io/CrustUtil/api/KnitUtil"><meta data-react-helmet="true" name="docusaurus_locale" content="en"><meta data-react-helmet="true" name="docusaurus_tag" content="default"><link data-react-helmet="true" rel="canonical" href="https://Virshal.github.io/CrustUtil/api/KnitUtil"><link data-react-helmet="true" rel="alternate" href="https://Virshal.github.io/CrustUtil/api/KnitUtil" hreflang="en"><link data-react-helmet="true" rel="alternate" href="https://Virshal.github.io/CrustUtil/api/KnitUtil" hreflang="x-default"><link rel="stylesheet" href="/CrustUtil/assets/css/styles.302001c7.css">
+<link rel="preload" href="/CrustUtil/assets/js/runtime~main.522143a6.js" as="script">
+<link rel="preload" href="/CrustUtil/assets/js/main.11b74e9a.js" as="script">
+</head>
+<body>
+<script>!function(){function e(e){document.documentElement.setAttribute("data-theme",e)}var t=function(){var e=null;try{e=localStorage.getItem("theme")}catch(e){}return e}();null!==t?e(t):window.matchMedia("(prefers-color-scheme: dark)").matches?e("dark"):(window.matchMedia("(prefers-color-scheme: light)").matches,e("light"))}()</script><div id="__docusaurus">
+<div><a href="#" class="skipToContent_1oUP">Skip to main content</a></div><nav class="navbar navbar--fixed-top"><div class="navbar__inner"><div class="navbar__items"><button aria-label="Navigation bar toggle" class="navbar__toggle clean-btn" type="button" tabindex="0"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/CrustUtil/"><b class="navbar__title">CrustUtil</b></a><a class="navbar__item navbar__link" href="/CrustUtil/docs/intro">Docs</a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/CrustUtil/api/">API</a></div><div class="navbar__items navbar__items--right"><a href="https://github.com/Virshal/CrustUtil" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link"><span>GitHub<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_3J9K"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></span></a><div class="toggle_71bT toggle_3Zt9 toggleDisabled_3cF-"><div class="toggleTrack_32Fl" role="button" tabindex="-1"><div class="toggleTrackCheck_3lV7"><span class="toggleIcon_O4iE">🌜</span></div><div class="toggleTrackX_S2yS"><span class="toggleIcon_O4iE">🌞</span></div><div class="toggleTrackThumb_xI_Z"></div></div><input type="checkbox" class="toggleScreenReader_28Tw" aria-label="Switch between dark and light mode"></div><div class="navbar__search"><span aria-label="expand searchbar" role="button" class="search-icon" tabindex="0"></span><input type="search" id="search_input_react" placeholder="Press S to Search..." aria-label="Search" class="navbar__search-input search-bar"></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div class="main-wrapper docPageContainer_2Kz0"><div class="docPage_1bdk"><div class="docSidebarContainer_1ykS"><div class="sidebar_15mo"><nav class="menu thin-scrollbar menu_Bmed"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" href="/CrustUtil/api/KnitUtil">​Knit​Util</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/CrustUtil/api/UIComponent">​U​I​Component</a></li></ul></nav><button type="button" title="Collapse sidebar" aria-label="Collapse sidebar" class="button button--secondary button--outline collapseSidebarButton_1CGd"><svg width="20" height="20" aria-hidden="true" class="collapseSidebarButtonIcon_3E-R"><g fill="#7a7a7a"><path d="M9.992 10.023c0 .2-.062.399-.172.547l-4.996 7.492a.982.982 0 01-.828.454H1c-.55 0-1-.453-1-1 0-.2.059-.403.168-.551l4.629-6.942L.168 3.078A.939.939 0 010 2.528c0-.548.45-.997 1-.997h2.996c.352 0 .649.18.828.45L9.82 9.472c.11.148.172.347.172.55zm0 0"></path><path d="M19.98 10.023c0 .2-.058.399-.168.547l-4.996 7.492a.987.987 0 01-.828.454h-3c-.547 0-.996-.453-.996-1 0-.2.059-.403.168-.551l4.625-6.942-4.625-6.945a.939.939 0 01-.168-.55 1 1 0 01.996-.997h3c.348 0 .649.18.828.45l4.996 7.492c.11.148.168.347.168.55zm0 0"></path></g></svg></button></div></div><main class="docMainContainer_28N5"><div class="container padding-vert--lg"><div class="row"><div class="col docItemCol_3WPG"><div class="docItemContainer_3XDu"><article><div class="member_qHIL markdown"><div class="tocCollapsible_1PrD theme-doc-toc-mobile tocMobile_3ryM"><button type="button" class="clean-btn tocCollapsibleButton_2O1e">On this page</button></div><header><h1 class="docTitle_1ddc" style="text-decoration:none"><span style="display:inline-block">Knit</span><span style="display:inline-block">Util</span></h1><div class="luaClassTags_2Zrs"></div><div>
+<p>A module that contains useful functions for projects that use <a href="https://sleitnick.github.io/Knit/" target="_blank">Knit</a>.</p>
+</div></header><h2 class="anchor anchorWithStickyNavbar_31ik" id="functions">Functions<a aria-hidden="true" class="hash-link" href="#functions" title="Direct link to heading">​</a></h2><div class="divider_3z1R"></div><h3 class="anchor anchorWithStickyNavbar_31ik" id="LoadComponents"><code style="text-decoration:none">LoadComponents</code><a aria-hidden="true" class="hash-link" href="#LoadComponents" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_1UH0"><a class="sourceButton_2aE5" href="https://github.com/Virshal/CrustUtil/blob/main/lib/KnitUtil/init.lua#L40"><div class="sourceButtonText_monK">&lt;/&gt;</div></a></div><div class="memberString_P8-X"><code>KnitUtil<!-- -->.</code><code class="green_3LnD">LoadComponents</code><code>(</code><div class="inset_2cJr"><div><code>container<!-- -->: </code><code class="blue_2Afy"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/datatype/Instance" target="_blank" rel="noopener noreferrer">Instance<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><span class="inlineDescription_17uy">-- <span>
+<p>The folder containing the Components</p>
+</span></span></div></div><code>) → </code><code class="blue_2Afy">table</code><code class="purple__nFc">{</code><code class="blue_2Afy">Component</code><code class="purple__nFc">}</code></div><div>
+<p>Requires all children of the provided Instance.</p>
+<pre class="language-lua"><code class="language-lua">	<span class="token comment">-- Require the module</span>
+	<span class="token keyword">local</span> KnitUtil <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span>somewhere<span class="token punctuation">.</span>KnitUtil<span class="token punctuation">)</span>
+
+	<span class="token comment">-- Locate components folder</span>
+	<span class="token keyword">local</span> componentsFolder <span class="token operator">=</span> ReplicatedStorage<span class="token punctuation">.</span>Client<span class="token punctuation">.</span>Components
+
+	<span class="token comment">-- Load all of the components</span>
+	<span class="token keyword">local</span> components <span class="token operator">=</span> KnitUtil<span class="token punctuation">.</span><span class="token function">LoadComponents</span><span class="token punctuation">(</span>componentsFolder<span class="token punctuation">)</span>
+</code></pre>
+</div><div class="divider_3z1R"></div><h3 class="anchor anchorWithStickyNavbar_31ik" id="MethodFromInstance"><code style="text-decoration:none">MethodFromInstance</code><a aria-hidden="true" class="hash-link" href="#MethodFromInstance" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_1UH0"><a class="sourceButton_2aE5" href="https://github.com/Virshal/CrustUtil/blob/main/lib/KnitUtil/init.lua#L185"><div class="sourceButtonText_monK">&lt;/&gt;</div></a></div><div class="memberString_P8-X"><code>KnitUtil<!-- -->.</code><code class="green_3LnD">MethodFromInstance</code><code>(</code><div class="inset_2cJr"><div><code>instance<!-- -->: </code><code class="blue_2Afy"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/datatype/Instance" target="_blank" rel="noopener noreferrer">Instance<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><code>,</code><span class="inlineDescription_17uy">-- <span>
+<p>The Instance to search</p>
+</span></span></div><div><code>methodName<!-- -->: </code><code class="blue_2Afy">string</code><span class="inlineDescription_17uy">-- <span>
+<p>The name of the method to look for</p>
+</span></span></div></div><code>) → </code><code>(</code><div class="inset_2cJr"><div><code class="blue_2Afy">method</code><code class="blue_2Afy">function?</code><code>,</code><span class="inlineDescription_17uy">-- <span>
+<p>The method that was found</p>
+</span></span></div><div><code class="blue_2Afy">component</code><code class="blue_2Afy">Component?</code><span class="inlineDescription_17uy">-- <span>
+<p>The component instance the method belongs to</p>
+</span></span></div></div><code>)</code></div><div>
+<p>Searches all the Instance's components for a specific method.</p>
+<h2>Writing cleaner code with MethodFromInstance</h2>
+<p>Let's say we have two components: a door and a light switch. We want to write a script to interact with these objects and any new ones we may come up with in the future:</p>
+<h3>Door Component</h3>
+<pre class="language-lua"><code class="language-lua">	<span class="token keyword">local</span> Door <span class="token operator">=</span> Component<span class="token punctuation">.</span><span class="token function">new</span> <span class="token punctuation">{</span>
+		Tag <span class="token operator">=</span> <span class="token string">"Door"</span>
+	<span class="token punctuation">}</span>
+
+	<span class="token keyword">function</span> Door<span class="token punctuation">:</span><span class="token function">_open</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+		<span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"Door open"</span><span class="token punctuation">)</span>
+		self<span class="token punctuation">.</span>isOpen <span class="token operator">=</span> <span class="token keyword">true</span>
+	<span class="token keyword">end</span>
+
+	<span class="token keyword">function</span> Door<span class="token punctuation">:</span><span class="token function">_close</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+		<span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"Door closed"</span><span class="token punctuation">)</span>
+		self<span class="token punctuation">.</span>isOpen <span class="token operator">=</span> <span class="token keyword">false</span>
+	<span class="token keyword">end</span>
+
+	<span class="token keyword">function</span> Door<span class="token punctuation">:</span><span class="token function">OnInteract</span><span class="token punctuation">(</span>open<span class="token punctuation">:</span> boolean<span class="token punctuation">)</span>
+		<span class="token keyword">if</span> open <span class="token keyword">then</span>
+			<span class="token keyword">if</span> self<span class="token punctuation">.</span>isOpen <span class="token keyword">then</span>
+				self<span class="token punctuation">:</span><span class="token function">_close</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+			<span class="token keyword">else</span>
+				self<span class="token punctuation">:</span><span class="token function">_open</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+			<span class="token keyword">end</span>
+		<span class="token keyword">end</span>
+	<span class="token keyword">end</span>
+
+	<span class="token keyword">function</span> Door<span class="token punctuation">:</span><span class="token function">Construct</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+		self<span class="token punctuation">.</span>isOpen <span class="token operator">=</span> <span class="token keyword">false</span>
+	<span class="token keyword">end</span>
+</code></pre>
+<h3>Light Switch Component</h3>
+<pre class="language-lua"><code class="language-lua">	<span class="token keyword">local</span> LightSwitch <span class="token operator">=</span> Component<span class="token punctuation">.</span><span class="token function">new</span> <span class="token punctuation">{</span>
+		Tag <span class="token operator">=</span> <span class="token string">"LightSwitch"</span>
+	<span class="token punctuation">}</span>
+
+	<span class="token keyword">function</span> LightSwitch<span class="token punctuation">:</span><span class="token function">_turnOn</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+		<span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"Light on"</span><span class="token punctuation">)</span>
+		self<span class="token punctuation">.</span>isOn <span class="token operator">=</span> <span class="token keyword">true</span>
+	<span class="token keyword">end</span>
+
+	<span class="token keyword">function</span> LightSwitch<span class="token punctuation">:</span><span class="token function">_turnOff</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+		<span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"Light off"</span><span class="token punctuation">)</span>
+		self<span class="token punctuation">.</span>isOn <span class="token operator">=</span> <span class="token keyword">false</span>
+	<span class="token keyword">end</span>
+
+	<span class="token keyword">function</span> LightSwitch<span class="token punctuation">:</span><span class="token function">OnInteract</span><span class="token punctuation">(</span>on<span class="token punctuation">:</span> boolean<span class="token punctuation">)</span>
+		<span class="token keyword">if</span> on <span class="token keyword">then</span>
+			<span class="token keyword">if</span> self<span class="token punctuation">.</span>isOn <span class="token keyword">then</span>
+				self<span class="token punctuation">:</span><span class="token function">_turnOff</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+			<span class="token keyword">else</span>
+				self<span class="token punctuation">:</span><span class="token function">_turnOn</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+			<span class="token keyword">end</span>
+		<span class="token keyword">end</span>
+	<span class="token keyword">end</span>
+
+	<span class="token keyword">function</span> LightSwitch<span class="token punctuation">:</span><span class="token function">Construct</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+		self<span class="token punctuation">.</span>isOn <span class="token operator">=</span> <span class="token keyword">false</span>
+	<span class="token keyword">end</span>
+</code></pre>
+<h3>Interaction Script (without MethodFromInstance)</h3>
+<p>Without <code>MethodFromInstance</code>, we might write some interaction code like this:</p>
+<pre class="language-lua"><code class="language-lua">	<span class="token comment">-- Require components we can interact with</span>
+	<span class="token keyword">local</span> DoorComponent <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span>somewhere<span class="token punctuation">.</span>Components<span class="token punctuation">.</span>DoorComponent<span class="token punctuation">)</span>
+	<span class="token keyword">local</span> LightSwitchComponent <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span>somewhere<span class="token punctuation">.</span>Components<span class="token punctuation">.</span>LightSwitch<span class="token punctuation">)</span>
+
+	<span class="token keyword">local</span> <span class="token keyword">function</span> <span class="token function">InteractWith</span><span class="token punctuation">(</span>instance<span class="token punctuation">:</span> Instance<span class="token punctuation">)</span>
+		<span class="token comment">-- Scan through the Instance's components for an 'OnInteract' method</span>
+		<span class="token keyword">if</span> CollectionService<span class="token punctuation">:</span><span class="token function">HasTag</span><span class="token punctuation">(</span>instance<span class="token punctuation">,</span> <span class="token string">"Door"</span><span class="token punctuation">)</span> <span class="token keyword">then</span>
+			DoorComponent<span class="token punctuation">:</span><span class="token function">FromInstance</span><span class="token punctuation">(</span>instance<span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token function">OnInteract</span><span class="token punctuation">(</span><span class="token keyword">true</span><span class="token punctuation">)</span>
+		<span class="token keyword">elseif</span> CollectionService<span class="token punctuation">:</span><span class="token function">HasTag</span><span class="token punctuation">(</span>instance<span class="token punctuation">,</span> <span class="token string">"LightSwitch"</span><span class="token punctuation">)</span> <span class="token keyword">then</span>
+			LightSwitchComponent<span class="token punctuation">:</span><span class="token function">FromInstance</span><span class="token punctuation">(</span>instance<span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token function">OnInteract</span><span class="token punctuation">(</span><span class="token keyword">true</span><span class="token punctuation">)</span>
+		<span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">.......</span> <span class="token keyword">then</span>
+			<span class="token comment">-- etc etc etc</span>
+			<span class="token punctuation">.....</span>
+		<span class="token keyword">end</span>
+	<span class="token keyword">end</span>
+
+	<span class="token comment">-- Open the door</span>
+	<span class="token function">InteractWith</span><span class="token punctuation">(</span>workspace<span class="token punctuation">.</span>Door<span class="token punctuation">)</span>
+	<span class="token comment">-- Flick the light switch to on</span>
+	<span class="token function">InteractWith</span><span class="token punctuation">(</span>workspace<span class="token punctuation">.</span>LightSwitch<span class="token punctuation">)</span>
+</code></pre>
+<h3>Interaction Script (using MethodFromInstance)</h3>
+<p>This code is bad because it will get messy as we add more types of Components to our game.</p>
+<p>However, if we instead use <code>MethodFromInstance</code> we don't need to modify the code every time we create a new component.</p>
+<p>Below is an example that implements <code>MethodFromInstance</code>:</p>
+<pre class="language-lua"><code class="language-lua">	<span class="token keyword">local</span> <span class="token keyword">function</span> <span class="token function">InteractWith</span><span class="token punctuation">(</span>instance<span class="token punctuation">:</span> Instance<span class="token punctuation">)</span>
+		<span class="token comment">-- Scan through the Instance's components for an 'OnInteract' method</span>
+		<span class="token keyword">local</span> onInteract <span class="token operator">=</span> KnitUtil<span class="token punctuation">.</span><span class="token function">MethodFromInstance</span><span class="token punctuation">(</span>instance<span class="token punctuation">,</span> <span class="token string">"OnInteract"</span><span class="token punctuation">)</span>
+
+		<span class="token keyword">if</span> onInteract <span class="token keyword">then</span>
+			<span class="token comment">-- Call the method</span>
+			<span class="token function">onInteract</span><span class="token punctuation">(</span><span class="token keyword">true</span><span class="token punctuation">)</span>
+		<span class="token keyword">end</span>
+	<span class="token keyword">end</span>
+
+	<span class="token comment">-- Open the door</span>
+	<span class="token function">InteractWith</span><span class="token punctuation">(</span>workspace<span class="token punctuation">.</span>Door<span class="token punctuation">)</span>
+	<span class="token comment">-- Flick the light switch to on</span>
+	<span class="token function">InteractWith</span><span class="token punctuation">(</span>workspace<span class="token punctuation">.</span>LightSwitch<span class="token punctuation">)</span>
+</code></pre>
+</div><div class="divider_3z1R"></div><h3 class="anchor anchorWithStickyNavbar_31ik" id="VariableFromInstance"><code style="text-decoration:none">VariableFromInstance</code><a aria-hidden="true" class="hash-link" href="#VariableFromInstance" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_1UH0"><a class="sourceButton_2aE5" href="https://github.com/Virshal/CrustUtil/blob/main/lib/KnitUtil/init.lua#L227"><div class="sourceButtonText_monK">&lt;/&gt;</div></a></div><div class="memberString_P8-X"><code>KnitUtil<!-- -->.</code><code class="green_3LnD">VariableFromInstance</code><code>(</code><div class="inset_2cJr"><div><code>instance<!-- -->: </code><code class="blue_2Afy"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/datatype/Instance" target="_blank" rel="noopener noreferrer">Instance<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><code>,</code><span class="inlineDescription_17uy">-- <span>
+<p>The Instance to search</p>
+</span></span></div><div><code>variableName<!-- -->: </code><code class="blue_2Afy">string</code><span class="inlineDescription_17uy">-- <span>
+<p>The variable to look for</p>
+</span></span></div></div><code>) → </code><code>(</code><div class="inset_2cJr"><div><code class="blue_2Afy">variable</code><code class="blue_2Afy">any</code><code>,</code><span class="inlineDescription_17uy">-- <span>
+<p>The variable that was found</p>
+</span></span></div><div><code class="blue_2Afy">component</code><code class="blue_2Afy">Component?</code><span class="inlineDescription_17uy">-- <span>
+<p>The component instance the method belongs to</p>
+</span></span></div></div><code>)</code></div><div>
+<p>Similar to <code>MethodFromInstance</code>, but for non-methods.</p>
+<pre class="language-lua"><code class="language-lua">	<span class="token keyword">local</span> <span class="token keyword">function</span> <span class="token function">GetHealth</span><span class="token punctuation">(</span>enemy<span class="token punctuation">:</span> Instance<span class="token punctuation">)</span>
+		<span class="token keyword">local</span> health<span class="token punctuation">:</span> number? <span class="token operator">=</span> KnitUtil<span class="token punctuation">.</span><span class="token function">VariableFromInstance</span><span class="token punctuation">(</span>enemy<span class="token punctuation">,</span> <span class="token string">"MyHealth"</span><span class="token punctuation">)</span>
+		<span class="token keyword">return</span> health
+	<span class="token keyword">end</span>
+
+	<span class="token function">print</span><span class="token punctuation">(</span><span class="token function">GetHealth</span><span class="token punctuation">(</span>workspace<span class="token punctuation">.</span>Zombie<span class="token punctuation">)</span><span class="token punctuation">)</span>
+	<span class="token function">print</span><span class="token punctuation">(</span><span class="token function">GetHealth</span><span class="token punctuation">(</span>workspace<span class="token punctuation">.</span>Player<span class="token punctuation">)</span><span class="token punctuation">)</span>
+	<span class="token function">print</span><span class="token punctuation">(</span><span class="token function">GetHealth</span><span class="token punctuation">(</span>workspace<span class="token punctuation">.</span>DestructableBox<span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+</div></div></article></div><details><summary>Show raw api</summary><pre style="max-width:100%;white-space:pre-wrap">{
+    &quot;functions&quot;: [
+        {
+            &quot;name&quot;: &quot;LoadComponents&quot;,
+            &quot;desc&quot;: &quot;Requires all children of the provided Instance.\n\n\n```lua\n\t-- Require the module\n\tlocal KnitUtil = require(somewhere.KnitUtil)\n\n\t-- Locate components folder\n\tlocal componentsFolder = ReplicatedStorage.Client.Components\n\n\t-- Load all of the components\n\tlocal components = KnitUtil.LoadComponents(componentsFolder)\n```&quot;,
+            &quot;params&quot;: [
+                {
+                    &quot;name&quot;: &quot;container&quot;,
+                    &quot;desc&quot;: &quot;The folder containing the Components&quot;,
+                    &quot;lua_type&quot;: &quot;Instance&quot;
+                }
+            ],
+            &quot;returns&quot;: [
+                {
+                    &quot;desc&quot;: &quot;&quot;,
+                    &quot;lua_type&quot;: &quot;table {Component}&quot;
+                }
+            ],
+            &quot;function_type&quot;: &quot;static&quot;,
+            &quot;source&quot;: {
+                &quot;line&quot;: 40,
+                &quot;path&quot;: &quot;lib/KnitUtil/init.lua&quot;
+            }
+        },
+        {
+            &quot;name&quot;: &quot;MethodFromInstance&quot;,
+            &quot;desc&quot;: &quot;Searches all the Instance&#x27;s components for a specific method.\n\n\n## Writing cleaner code with MethodFromInstance\n\nLet&#x27;s say we have two components: a door and a light switch. We want to write a script to interact with these objects and any new ones we may come up with in the future:\n\n### Door Component\n```lua\n\tlocal Door = Component.new {\n\t\tTag = \&quot;Door\&quot;\n\t}\n\n\tfunction Door:_open()\n\t\tprint(\&quot;Door open\&quot;)\n\t\tself.isOpen = true\n\tend\n\n\tfunction Door:_close()\n\t\tprint(\&quot;Door closed\&quot;)\n\t\tself.isOpen = false\n\tend\n\n\tfunction Door:OnInteract(open: boolean)\n\t\tif open then\n\t\t\tif self.isOpen then\n\t\t\t\tself:_close()\n\t\t\telse\n\t\t\t\tself:_open()\n\t\t\tend\n\t\tend\n\tend\n\n\tfunction Door:Construct()\n\t\tself.isOpen = false\n\tend\n```\n\n### Light Switch Component\n```lua\n\tlocal LightSwitch = Component.new {\n\t\tTag = \&quot;LightSwitch\&quot;\n\t}\n\n\tfunction LightSwitch:_turnOn()\n\t\tprint(\&quot;Light on\&quot;)\n\t\tself.isOn = true\n\tend\n\n\tfunction LightSwitch:_turnOff()\n\t\tprint(\&quot;Light off\&quot;)\n\t\tself.isOn = false\n\tend\n\n\tfunction LightSwitch:OnInteract(on: boolean)\n\t\tif on then\n\t\t\tif self.isOn then\n\t\t\t\tself:_turnOff()\n\t\t\telse\n\t\t\t\tself:_turnOn()\n\t\t\tend\n\t\tend\n\tend\n\n\tfunction LightSwitch:Construct()\n\t\tself.isOn = false\n\tend\n```\n\n### Interaction Script (without MethodFromInstance)\n\nWithout `MethodFromInstance`, we might write some interaction code like this:\n```lua\n\t-- Require components we can interact with\n\tlocal DoorComponent = require(somewhere.Components.DoorComponent)\n\tlocal LightSwitchComponent = require(somewhere.Components.LightSwitch)\n\n\tlocal function InteractWith(instance: Instance)\n\t\t-- Scan through the Instance&#x27;s components for an &#x27;OnInteract&#x27; method\n\t\tif CollectionService:HasTag(instance, \&quot;Door\&quot;) then\n\t\t\tDoorComponent:FromInstance(instance):OnInteract(true)\n\t\telseif CollectionService:HasTag(instance, \&quot;LightSwitch\&quot;) then\n\t\t\tLightSwitchComponent:FromInstance(instance):OnInteract(true)\n\t\telse if ....... then\n\t\t\t-- etc etc etc\n\t\t\t.....\n\t\tend\n\tend\n\n\t-- Open the door\n\tInteractWith(workspace.Door)\n\t-- Flick the light switch to on\n\tInteractWith(workspace.LightSwitch)\n```\n\n### Interaction Script (using MethodFromInstance)\n\nThis code is bad because it will get messy as we add more types of Components to our game.\n\nHowever, if we instead use `MethodFromInstance` we don&#x27;t need to modify the code every time we create a new component.\n\nBelow is an example that implements `MethodFromInstance`:\n```lua\n\tlocal function InteractWith(instance: Instance)\n\t\t-- Scan through the Instance&#x27;s components for an &#x27;OnInteract&#x27; method\n\t\tlocal onInteract = KnitUtil.MethodFromInstance(instance, \&quot;OnInteract\&quot;)\n\n\t\tif onInteract then\n\t\t\t-- Call the method\n\t\t\tonInteract(true)\n\t\tend\n\tend\n\n\t-- Open the door\n\tInteractWith(workspace.Door)\n\t-- Flick the light switch to on\n\tInteractWith(workspace.LightSwitch)\n```&quot;,
+            &quot;params&quot;: [
+                {
+                    &quot;name&quot;: &quot;instance&quot;,
+                    &quot;desc&quot;: &quot;The Instance to search&quot;,
+                    &quot;lua_type&quot;: &quot;Instance&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;methodName&quot;,
+                    &quot;desc&quot;: &quot;The name of the method to look for&quot;,
+                    &quot;lua_type&quot;: &quot;string&quot;
+                }
+            ],
+            &quot;returns&quot;: [
+                {
+                    &quot;desc&quot;: &quot;The method that was found&quot;,
+                    &quot;lua_type&quot;: &quot;method function?&quot;
+                },
+                {
+                    &quot;desc&quot;: &quot;The component instance the method belongs to&quot;,
+                    &quot;lua_type&quot;: &quot;component Component?&quot;
+                }
+            ],
+            &quot;function_type&quot;: &quot;static&quot;,
+            &quot;source&quot;: {
+                &quot;line&quot;: 185,
+                &quot;path&quot;: &quot;lib/KnitUtil/init.lua&quot;
+            }
+        },
+        {
+            &quot;name&quot;: &quot;VariableFromInstance&quot;,
+            &quot;desc&quot;: &quot;Similar to `MethodFromInstance`, but for non-methods.\n\n\n```lua\n\tlocal function GetHealth(enemy: Instance)\n\t\tlocal health: number? = KnitUtil.VariableFromInstance(enemy, \&quot;MyHealth\&quot;)\n\t\treturn health\n\tend\n\n\tprint(GetHealth(workspace.Zombie))\n\tprint(GetHealth(workspace.Player))\n\tprint(GetHealth(workspace.DestructableBox))\n```&quot;,
+            &quot;params&quot;: [
+                {
+                    &quot;name&quot;: &quot;instance&quot;,
+                    &quot;desc&quot;: &quot;The Instance to search&quot;,
+                    &quot;lua_type&quot;: &quot;Instance&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;variableName&quot;,
+                    &quot;desc&quot;: &quot;The variable to look for&quot;,
+                    &quot;lua_type&quot;: &quot;string&quot;
+                }
+            ],
+            &quot;returns&quot;: [
+                {
+                    &quot;desc&quot;: &quot;The variable that was found&quot;,
+                    &quot;lua_type&quot;: &quot;variable any&quot;
+                },
+                {
+                    &quot;desc&quot;: &quot;The component instance the method belongs to&quot;,
+                    &quot;lua_type&quot;: &quot;component Component?&quot;
+                }
+            ],
+            &quot;function_type&quot;: &quot;static&quot;,
+            &quot;source&quot;: {
+                &quot;line&quot;: 227,
+                &quot;path&quot;: &quot;lib/KnitUtil/init.lua&quot;
+            }
+        }
+    ],
+    &quot;properties&quot;: [],
+    &quot;types&quot;: [],
+    &quot;name&quot;: &quot;KnitUtil&quot;,
+    &quot;desc&quot;: &quot;A module that contains useful functions for projects that use [Knit](https://sleitnick.github.io/Knit/).&quot;,
+    &quot;source&quot;: {
+        &quot;line&quot;: 12,
+        &quot;path&quot;: &quot;lib/KnitUtil/init.lua&quot;
+    }
+}</pre></details></div><div class="col col--3"><div class="tableOfContents_35-E thin-scrollbar"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#types" class="table-of-contents__link toc-highlight">Types</a></li><li><a href="#properties" class="table-of-contents__link toc-highlight">Properties</a></li><li><a href="#functions" class="table-of-contents__link toc-highlight">Functions</a><ul><li><a href="#LoadComponents" class="table-of-contents__link toc-highlight">.LoadComponents</a></li><li><a href="#MethodFromInstance" class="table-of-contents__link toc-highlight">.MethodFromInstance</a></li><li><a href="#VariableFromInstance" class="table-of-contents__link toc-highlight">.VariableFromInstance</a></li></ul></li></ul></div></div></div></div></main></div></div><footer class="footer footer--dark"><div class="container"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2022 Virshal. Built with Moonwave and Docusaurus.</div></div></div></footer></div>
+<script src="/CrustUtil/assets/js/runtime~main.522143a6.js"></script>
+<script src="/CrustUtil/assets/js/main.11b74e9a.js"></script>
+</body>
+</html>
