@@ -10,37 +10,37 @@
 	## Example
 
 	```lua
-		local UIComponent = require(somewhere.UIComponent)
-		local CreateInstance = UIComponent.CreateInstance
-		
-		local LoudButton = UIComponent.new()
-		
-		function LoudButton:SetText(text)
-			self.button.Text = text:upper()
-		end
-		
-		function LoudButton:Build()
-			self.button = CreateInstance("TextButton", {
-				Size = UDim2.new(0, 80, 0, 30),
-				Text = self.props.text
-				Parent = self.props.parent
-			})
-			
-			return self.button, self.SetText
-		end
-		
-		local screenGui = CreateInstance("ScreenGui", {
-			ResetOnSpawn = false, 
-			Parent = LOCAL_PLAYER.PlayerGui
+	local UIComponent = require(somewhere.UIComponent)
+	local CreateInstance = UIComponent.CreateInstance
+	
+	local LoudButton = UIComponent.new()
+	
+	function LoudButton:SetText(text)
+		self.button.Text = text:upper()
+	end
+	
+	function LoudButton:Build()
+		self.button = CreateInstance("TextButton", {
+			Size = UDim2.new(0, 80, 0, 30),
+			Text = self.props.text
+			Parent = self.props.parent
 		})
 		
-		local button, _, UpdateText = LoudButton {text = "click me 10 times!", parent = screenGui}
-		local clicks = 0
-		
-		button.button.MouseButton1Click:Connect(function(clickCounter)
-			clicks += 1
-			UpdateText(button, button.props.text .. " " .. clicks)
-		end)
+		return self.button, self.SetText
+	end
+	
+	local screenGui = CreateInstance("ScreenGui", {
+		ResetOnSpawn = false, 
+		Parent = LOCAL_PLAYER.PlayerGui
+	})
+	
+	local button, _, UpdateText = LoudButton {text = "click me 10 times!", parent = screenGui}
+	local clicks = 0
+	
+	button.button.MouseButton1Click:Connect(function(clickCounter)
+		clicks += 1
+		UpdateText(button, button.props.text .. " " .. clicks)
+	end)
 	```
 ]=]
 local UIComponent = {}
@@ -78,26 +78,26 @@ end
 	@return Instance -- Returns a new Instance
 
 	```lua
-		local smokeyCube = CreateInstance("BasePart", {
-			Name = "SmokeyCube",
-			Anchored = true,
-			Size = Vector3.new(4, 4, 4)
-			Parent = workspace
-			[UIComponent.Children] = CreateInstance("Smoke", {
-				Size = 4
-			})
+	local smokeyCube = CreateInstance("BasePart", {
+		Name = "SmokeyCube",
+		Anchored = true,
+		Size = Vector3.new(4, 4, 4)
+		Parent = workspace
+		[UIComponent.Children] = CreateInstance("Smoke", {
+			Size = 4
 		})
-		
-		-- ...which is equivalent to:
-		local smokeyCube = Instance.new("BasePart")
-		smokeyCube.Name = "SmokeyCube"
-		smokeyCube.Anchored = true
-		smokeyCube.Size = Vector3.new(4, 4, 4)
-		smokeyCube.Parent = workspace
+	})
+	
+	-- ...which is equivalent to:
+	local smokeyCube = Instance.new("BasePart")
+	smokeyCube.Name = "SmokeyCube"
+	smokeyCube.Anchored = true
+	smokeyCube.Size = Vector3.new(4, 4, 4)
+	smokeyCube.Parent = workspace
 
-		local smoke = Instance.new("Smoke")
-		smoke.Size = 4
-		smoke.Parent = smokeyCube
+	local smoke = Instance.new("Smoke")
+	smoke.Size = 4
+	smoke.Parent = smokeyCube
 	```
 
 	### Assigning children
@@ -105,49 +105,49 @@ end
 	Assigning children can be done within the CreateInstance function. The simplist way to do this is to simply pass a child:
 
 	```lua
-		local gui = CreateInstance("ScreenGui", {
-			Parent = PlayerGui,
+	local gui = CreateInstance("ScreenGui", {
+		Parent = PlayerGui,
 
-			Children = CreateInstance("Frame", {
-				Size = UDim2.new(0, 50, 0, 50),
-			}),
-		})
+		Children = CreateInstance("Frame", {
+			Size = UDim2.new(0, 50, 0, 50),
+		}),
+	})
 	```
 
 	Or a table for multiple children:
 	```lua
-		local gui = CreateInstance("ScreenGui", {
-			Parent = PlayerGui,
+	local gui = CreateInstance("ScreenGui", {
+		Parent = PlayerGui,
 
-			Children = {
-				CreateInstance("Frame", {
-					Size = UDim2.new(0, 50, 0, 50),
-				}),
+		Children = {
+			CreateInstance("Frame", {
+				Size = UDim2.new(0, 50, 0, 50),
+			}),
 
-				CreateInstance("TextButton", {
-					Size = UDim2.new(0, 50, 0, 50),
-				}),
-			}
-		})
+			CreateInstance("TextButton", {
+				Size = UDim2.new(0, 50, 0, 50),
+			}),
+		}
+	})
 	```
 
 	If you ever need to, you can also specify multiple children under different keys using the `UIComponent.Children` Enum:
 	```lua
-		local gui = CreateInstance("ScreenGui", {
-			Parent = PlayerGui,
+	local gui = CreateInstance("ScreenGui", {
+		Parent = PlayerGui,
 
-			[UIComponent.Children] = {
-				CreateInstance("Frame", {
-					Size = UDim2.new(0, 50, 0, 50),
-				}),
-			}
+		[UIComponent.Children] = {
+			CreateInstance("Frame", {
+				Size = UDim2.new(0, 50, 0, 50),
+			}),
+		}
 
-			[UIComponent.Children] = {
-				CreateInstance("TextButton", {
-					Size = UDim2.new(0, 50, 0, 50),
-				}),
-			}
-		})
+		[UIComponent.Children] = {
+			CreateInstance("TextButton", {
+				Size = UDim2.new(0, 50, 0, 50),
+			}),
+		}
+	})
 	```
 ]=]
 function UIComponent.CreateInstance(className: string, props: {[any]: any})
@@ -197,24 +197,24 @@ end
 	@return Instance
 
 	```lua
-		local Button = UIComponent.new()
+	local Button = UIComponent.new()
 
-		function Button:Build()
-			return CreateInstance "TextButton" {
-				Name = "FriendlyButton",
-				Size = UDim2.new(0, 100, 0, 50),
-				Text = self.props.Text,
-			}, self.props
-		end
+	function Button:Build()
+		return CreateInstance "TextButton" {
+			Name = "FriendlyButton",
+			Size = UDim2.new(0, 100, 0, 50),
+			Text = self.props.Text,
+		}, self.props
+	end
 
-		local newButton, _, props = Button {Text = "Hello World!"}
-		print(newButton:GetInstance())
-		print(props)
+	local newButton, _, props = Button {Text = "Hello World!"}
+	print(newButton:GetInstance())
+	print(props)
 
-		> FriendlyButton
-		> {
-			Text = "Hello World!"
-		}
+	> FriendlyButton
+	> {
+		Text = "Hello World!"
+	}
 	```
 ]=]
 function UIComponent:GetInstance()

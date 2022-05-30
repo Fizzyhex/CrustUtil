@@ -66,99 +66,99 @@ end
 	@return method function? -- The method that was found
 	@return component Component? -- The component instance the method belongs to 
 
-	## Writing cleaner code with MethodFromInstance
+	### Writing cleaner code with MethodFromInstance
 
 	Let's say we have two components: a door and a light switch. We want to write a script to interact with these objects and any new ones we may come up with in the future:
 
-	### Door Component
+	#### Door Component
 	```lua
-		local Door = Component.new {
-			Tag = "Door"
-		}
+	local Door = Component.new {
+		Tag = "Door"
+	}
 
-		function Door:_open()
-			print("Door open")
-			self.isOpen = true
-		end
+	function Door:_open()
+		print("Door open")
+		self.isOpen = true
+	end
 
-		function Door:_close()
-			print("Door closed")
-			self.isOpen = false
-		end
+	function Door:_close()
+		print("Door closed")
+		self.isOpen = false
+	end
 
-		function Door:OnInteract(open: boolean)
-			if open then
-				if self.isOpen then
-					self:_close()
-				else
-					self:_open()
-				end
+	function Door:OnInteract(open: boolean)
+		if open then
+			if self.isOpen then
+				self:_close()
+			else
+				self:_open()
 			end
 		end
+	end
 
-		function Door:Construct()
-			self.isOpen = false
-		end
+	function Door:Construct()
+		self.isOpen = false
+	end
 	```
 
-	### Light Switch Component
+	#### Light Switch Component
 	```lua
-		local LightSwitch = Component.new {
-			Tag = "LightSwitch"
-		}
+	local LightSwitch = Component.new {
+		Tag = "LightSwitch"
+	}
 
-		function LightSwitch:_turnOn()
-			print("Light on")
-			self.isOn = true
-		end
+	function LightSwitch:_turnOn()
+		print("Light on")
+		self.isOn = true
+	end
 
-		function LightSwitch:_turnOff()
-			print("Light off")
-			self.isOn = false
-		end
+	function LightSwitch:_turnOff()
+		print("Light off")
+		self.isOn = false
+	end
 
-		function LightSwitch:OnInteract(on: boolean)
-			if on then
-				if self.isOn then
-					self:_turnOff()
-				else
-					self:_turnOn()
-				end
+	function LightSwitch:OnInteract(on: boolean)
+		if on then
+			if self.isOn then
+				self:_turnOff()
+			else
+				self:_turnOn()
 			end
 		end
+	end
 
-		function LightSwitch:Construct()
-			self.isOn = false
-		end
+	function LightSwitch:Construct()
+		self.isOn = false
+	end
 	```
 
-	### Interaction Script (without MethodFromInstance)
+	#### Interaction Script (without MethodFromInstance)
 
 	Without `MethodFromInstance`, we might write some interaction code like this:
 	```lua
-		-- Require components we can interact with
-		local DoorComponent = require(somewhere.Components.DoorComponent)
-		local LightSwitchComponent = require(somewhere.Components.LightSwitch)
+	-- Require components we can interact with
+	local DoorComponent = require(somewhere.Components.DoorComponent)
+	local LightSwitchComponent = require(somewhere.Components.LightSwitch)
 
-		local function InteractWith(instance: Instance)
-			-- Scan through the Instance's components for an 'OnInteract' method
-			if CollectionService:HasTag(instance, "Door") then
-				DoorComponent:FromInstance(instance):OnInteract(true)
-			elseif CollectionService:HasTag(instance, "LightSwitch") then
-				LightSwitchComponent:FromInstance(instance):OnInteract(true)
-			else if ....... then
-				-- etc etc etc
-				.....
-			end
+	local function InteractWith(instance: Instance)
+		-- Scan through the Instance's components for an 'OnInteract' method
+		if CollectionService:HasTag(instance, "Door") then
+			DoorComponent:FromInstance(instance):OnInteract(true)
+		elseif CollectionService:HasTag(instance, "LightSwitch") then
+			LightSwitchComponent:FromInstance(instance):OnInteract(true)
+		else if ....... then
+			-- etc etc etc
+			.....
 		end
+	end
 
-		-- Open the door
-		InteractWith(workspace.Door)
-		-- Flick the light switch to on
-		InteractWith(workspace.LightSwitch)
+	-- Open the door
+	InteractWith(workspace.Door)
+	-- Flick the light switch to on
+	InteractWith(workspace.LightSwitch)
 	```
 
-	### Interaction Script (using MethodFromInstance)
+	#### Final Result (using MethodFromInstance)
 
 	This code is bad because it will get messy as we add more types of Components to our game.
 
@@ -166,20 +166,20 @@ end
 
 	Below is an example that implements `MethodFromInstance`:
 	```lua
-		local function InteractWith(instance: Instance)
-			-- Scan through the Instance's components for an 'OnInteract' method
-			local onInteract = KnitUtil.MethodFromInstance(instance, "OnInteract")
+	local function InteractWith(instance: Instance)
+		-- Scan through the Instance's components for an 'OnInteract' method
+		local onInteract = KnitUtil.MethodFromInstance(instance, "OnInteract")
 
-			if onInteract then
-				-- Call the method
-				onInteract(true)
-			end
+		if onInteract then
+			-- Call the method
+			onInteract(true)
 		end
+	end
 
-		-- Open the door
-		InteractWith(workspace.Door)
-		-- Flick the light switch to on
-		InteractWith(workspace.LightSwitch)
+	-- Open the door
+	InteractWith(workspace.Door)
+	-- Flick the light switch to on
+	InteractWith(workspace.LightSwitch)
 	```
 ]=]
 function KnitUtil.MethodFromInstance(instance: Instance, methodName: string)
@@ -214,14 +214,14 @@ end
 	@return component Component? -- The component instance the method belongs to 
 
 	```lua
-		local function GetHealth(enemy: Instance)
-			local health: number? = KnitUtil.VariableFromInstance(enemy, "MyHealth")
-			return health
-		end
+	local function GetHealth(enemy: Instance)
+		local health: number? = KnitUtil.VariableFromInstance(enemy, "MyHealth")
+		return health
+	end
 
-		print(GetHealth(workspace.Zombie))
-		print(GetHealth(workspace.Player))
-		print(GetHealth(workspace.DestructableBox))
+	print(GetHealth(workspace.Zombie))
+	print(GetHealth(workspace.Player))
+	print(GetHealth(workspace.DestructableBox))
 	```
 ]=]
 function KnitUtil.VariableFromInstance(instance: Instance, variableName: string)
