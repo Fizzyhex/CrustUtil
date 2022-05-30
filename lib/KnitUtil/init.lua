@@ -27,14 +27,14 @@ end
 	@return table {Component}
 
 	```lua
-		-- Require the module
-		local KnitUtil = require(somewhere.KnitUtil)
+	-- Require the module
+	local KnitUtil = require(somewhere.KnitUtil)
 
-		-- Locate components folder
-		local componentsFolder = ReplicatedStorage.Client.Components
+	-- Locate components folder
+	local componentsFolder = ReplicatedStorage.Client.Components
 
-		-- Load all of the components
-		local components = KnitUtil.LoadComponents(componentsFolder)
+	-- Load all of the components
+	local components = KnitUtil.LoadComponents(componentsFolder)
 	```
 ]=]
 function KnitUtil.LoadComponents(container: Instance)
