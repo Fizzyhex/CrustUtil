@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="generator" content="Docusaurus v2.0.0-beta.9">
 <title data-react-helmet="true">KnitUtil | CrustUtil</title><meta data-react-helmet="true" property="og:title" content="KnitUtil | CrustUtil"><meta data-react-helmet="true" name="twitter:card" content="summary_large_image"><meta data-react-helmet="true" name="description" content="A module that contains useful functions for projects that use [Knit](https://sleitnick.github.io/Knit/)."><meta data-react-helmet="true" property="og:description" content="A module that contains useful functions for projects that use [Knit](https://sleitnick.github.io/Knit/)."><meta data-react-helmet="true" property="og:url" content="https://Virshal.github.io/CrustUtil/api/KnitUtil"><meta data-react-helmet="true" name="docusaurus_locale" content="en"><meta data-react-helmet="true" name="docusaurus_tag" content="default"><link data-react-helmet="true" rel="canonical" href="https://Virshal.github.io/CrustUtil/api/KnitUtil"><link data-react-helmet="true" rel="alternate" href="https://Virshal.github.io/CrustUtil/api/KnitUtil" hreflang="en"><link data-react-helmet="true" rel="alternate" href="https://Virshal.github.io/CrustUtil/api/KnitUtil" hreflang="x-default"><link rel="stylesheet" href="/CrustUtil/assets/css/styles.302001c7.css">
-<link rel="preload" href="/CrustUtil/assets/js/runtime~main.fbb603d8.js" as="script">
-<link rel="preload" href="/CrustUtil/assets/js/main.8425946e.js" as="script">
+<link rel="preload" href="/CrustUtil/assets/js/runtime~main.34558d84.js" as="script">
+<link rel="preload" href="/CrustUtil/assets/js/main.cc0400e8.js" as="script">
 </head>
 <body>
 <script>!function(){function e(e){document.documentElement.setAttribute("data-theme",e)}var t=function(){var e=null;try{e=localStorage.getItem("theme")}catch(e){}return e}();null!==t?e(t):window.matchMedia("(prefers-color-scheme: dark)").matches?e("dark"):(window.matchMedia("(prefers-color-scheme: light)").matches,e("light"))}()</script><div id="__docusaurus">
@@ -16,14 +16,14 @@
 <p>The folder containing the Components</p>
 </span></span></div></div><code>) → </code><code class="blue_2Afy">table</code><code class="purple__nFc">{</code><code class="blue_2Afy">Component</code><code class="purple__nFc">}</code></div><div>
 <p>Requires all children of the provided Instance.</p>
-<pre class="language-lua"><code class="language-lua">	<span class="token comment">-- Require the module</span>
-	<span class="token keyword">local</span> KnitUtil <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span>somewhere<span class="token punctuation">.</span>KnitUtil<span class="token punctuation">)</span>
+<pre class="language-lua"><code class="language-lua"><span class="token comment">-- Require the module</span>
+<span class="token keyword">local</span> KnitUtil <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span>somewhere<span class="token punctuation">.</span>KnitUtil<span class="token punctuation">)</span>
 
-	<span class="token comment">-- Locate components folder</span>
-	<span class="token keyword">local</span> componentsFolder <span class="token operator">=</span> ReplicatedStorage<span class="token punctuation">.</span>Client<span class="token punctuation">.</span>Components
+<span class="token comment">-- Locate components folder</span>
+<span class="token keyword">local</span> componentsFolder <span class="token operator">=</span> ReplicatedStorage<span class="token punctuation">.</span>Client<span class="token punctuation">.</span>Components
 
-	<span class="token comment">-- Load all of the components</span>
-	<span class="token keyword">local</span> components <span class="token operator">=</span> KnitUtil<span class="token punctuation">.</span><span class="token function">LoadComponents</span><span class="token punctuation">(</span>componentsFolder<span class="token punctuation">)</span>
+<span class="token comment">-- Load all of the components</span>
+<span class="token keyword">local</span> components <span class="token operator">=</span> KnitUtil<span class="token punctuation">.</span><span class="token function">LoadComponents</span><span class="token punctuation">(</span>componentsFolder<span class="token punctuation">)</span>
 </code></pre>
 </div><div class="divider_3z1R"></div><h3 class="anchor anchorWithStickyNavbar_31ik" id="MethodFromInstance"><code style="text-decoration:none">MethodFromInstance</code><a aria-hidden="true" class="hash-link" href="#MethodFromInstance" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_1UH0"><a class="sourceButton_2aE5" href="https://github.com/Virshal/CrustUtil/blob/main/lib/KnitUtil/init.lua#L185"><div class="sourceButtonText_monK">&lt;/&gt;</div></a></div><div class="memberString_P8-X"><code>KnitUtil<!-- -->.</code><code class="green_3LnD">MethodFromInstance</code><code>(</code><div class="inset_2cJr"><div><code>instance<!-- -->: </code><code class="blue_2Afy"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/datatype/Instance" target="_blank" rel="noopener noreferrer">Instance<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><code>,</code><span class="inlineDescription_17uy">-- <span>
 <p>The Instance to search</p>
@@ -160,7 +160,7 @@
     &quot;functions&quot;: [
         {
             &quot;name&quot;: &quot;LoadComponents&quot;,
-            &quot;desc&quot;: &quot;Requires all children of the provided Instance.\n\n\n```lua\n\t-- Require the module\n\tlocal KnitUtil = require(somewhere.KnitUtil)\n\n\t-- Locate components folder\n\tlocal componentsFolder = ReplicatedStorage.Client.Components\n\n\t-- Load all of the components\n\tlocal components = KnitUtil.LoadComponents(componentsFolder)\n```&quot;,
+            &quot;desc&quot;: &quot;Requires all children of the provided Instance.\n\n\n```lua\n-- Require the module\nlocal KnitUtil = require(somewhere.KnitUtil)\n\n-- Locate components folder\nlocal componentsFolder = ReplicatedStorage.Client.Components\n\n-- Load all of the components\nlocal components = KnitUtil.LoadComponents(componentsFolder)\n```&quot;,
             &quot;params&quot;: [
                 {
                     &quot;name&quot;: &quot;container&quot;,
@@ -252,7 +252,7 @@
         &quot;path&quot;: &quot;lib/KnitUtil/init.lua&quot;
     }
 }</pre></details></div><div class="col col--3"><div class="tableOfContents_35-E thin-scrollbar"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#types" class="table-of-contents__link toc-highlight">Types</a></li><li><a href="#properties" class="table-of-contents__link toc-highlight">Properties</a></li><li><a href="#functions" class="table-of-contents__link toc-highlight">Functions</a><ul><li><a href="#LoadComponents" class="table-of-contents__link toc-highlight">.LoadComponents</a></li><li><a href="#MethodFromInstance" class="table-of-contents__link toc-highlight">.MethodFromInstance</a></li><li><a href="#VariableFromInstance" class="table-of-contents__link toc-highlight">.VariableFromInstance</a></li></ul></li></ul></div></div></div></div></main></div></div><footer class="footer footer--dark"><div class="container"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2022 Virshal. Built with Moonwave and Docusaurus.</div></div></div></footer></div>
-<script src="/CrustUtil/assets/js/runtime~main.fbb603d8.js"></script>
-<script src="/CrustUtil/assets/js/main.8425946e.js"></script>
+<script src="/CrustUtil/assets/js/runtime~main.34558d84.js"></script>
+<script src="/CrustUtil/assets/js/main.cc0400e8.js"></script>
 </body>
 </html>
