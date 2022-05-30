@@ -192,6 +192,36 @@ function UIComponent.CreateInstance(className: string, props: {[any]: any})
 end
 
 --[=[
+	Returns the Instance returned by the component when it was built. This function will error if the component does not have an Instance.
+
+	@return Instance
+
+	```lua
+		local Button = UIComponent.new()
+
+		function Button:Build()
+			return CreateInstance "TextButton" {
+				Name = "FriendlyButton",
+				Size = UDim2.new(0, 100, 0, 50),
+				Text = self.props.Text,
+			}, self.props
+		end
+
+		local newButton, _, props = Button {Text = "Hello World!"}
+		print(newButton:GetInstance())
+		print(props)
+
+		> FriendlyButton
+		> {
+			Text = "Hello World!"
+		}
+	```
+]=]
+function UIComponent:GetInstance()
+	return self._topInstance or error("UIComponent did not return an Instance when it was built")
+end
+
+--[=[
 	`Build` is called during the UIComponent's creation.
 
 	Build should **not** be called to create a new Instance of a UIComponent. Instead, call it like a function.
