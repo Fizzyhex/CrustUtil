@@ -191,7 +191,10 @@ local ParallelComponent = {}
 	Constructs a new Parallel Component.
 
 	```lua
-	local MyComponent = ParallelComponent.new({Tag = "MyComponent"})
+	local MyComponent = ParallelComponent.new {
+		Tag = "MyComponent"
+		ParallelInstance = script:FindFirstChild("ParallelInstance") -- Required!
+	}
 	```
 ]=]
 function ParallelComponent.new(config: ComponentConfig)
@@ -209,6 +212,10 @@ function ParallelComponent:LoadComponent(module: ModuleScript)
 	local actors = {}
 	
 	local function OnInstanceTagged(instance: Instance)
+		if not instance:IsDescendantOf(workspace) then
+			return
+		end
+
 		local actor = Instance.new("Actor")
 		actor.Name = "Component Actor " .. tag
 		local moduleClone = module:Clone()
