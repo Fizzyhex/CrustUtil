@@ -1,9 +1,9 @@
 [package]
-name = "virshal/knitutil"
+name = "fizzyhex/knitutil"
 description = "A module containing useful functions for Knit projects"
 version = "0.1.2"
 license = "MIT"
-authors = ["Virshal"]
+authors = ["Fizzyhex"]
 registry = "https://github.com/UpliftGames/wally-index"
 realm = "shared"
 

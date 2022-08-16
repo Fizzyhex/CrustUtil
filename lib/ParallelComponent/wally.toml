@@ -2,6 +2,7 @@
 name = "fizzyhex/parallelcomponent"
 version = "0.1.0"
 registry = "https://github.com/UpliftGames/wally-index"
+authors = ["Fizzyhex"]
 realm = "shared"
 
 [dependencies]
