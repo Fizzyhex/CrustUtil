@@ -1,5 +1,5 @@
 [package]
-name = "virshal/uicomponent"
+name = "fizzyhex/uicomponent"
 description = "A library for creating GUIs"
 version = "0.2.2"
 license = "MIT"
