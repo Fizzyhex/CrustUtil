@@ -1,5 +1,3 @@
-[![forthebadge](badges/powered-by-imagination.svg)](https://forthebadge.com)
-
 ## What's this?
 CrustUtil is a library of useful utilities for Roblox.
 
