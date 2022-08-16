@@ -169,9 +169,10 @@ local ModifiedComponent = require(script:WaitForChild("ModifiedComponent"))
 
 local LOCAL_PLAYER = Players.LocalPlayer
 
-local scriptContainer = Instance.new("Folder")
+local containerParent = if LOCAL_PLAYER then LOCAL_PLAYER:WaitForChild("PlayerScripts") else game:GetService("ServerScriptService")
+local scriptContainer = containerParent:FindFirstChild("ParallelComponentActors") or Instance.new("Folder")
 scriptContainer.Name = "ParallelComponentActors"
-scriptContainer.Parent = if LOCAL_PLAYER then LOCAL_PLAYER:WaitForChild("PlayerScripts") else game:GetService("ServerScriptService")
+scriptContainer.Parent = containerParent
 
 local moduleRunner = if LOCAL_PLAYER then script:WaitForChild("ModuleRunnerClient") else script:WaitForChild("ModuleRunnerServer")
 
