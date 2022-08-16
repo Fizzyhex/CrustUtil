@@ -6,6 +6,8 @@
 	@class UIComponent
 	
 	A UIComponent is a class for managing components of user interfaces.
+
+	This library is no longer maintained. I would suggest using Fusion instead.
 	
 	## Example
 
