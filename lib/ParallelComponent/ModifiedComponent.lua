@@ -174,10 +174,10 @@ local CollectionService = game:GetService("CollectionService")
 local RunService = game:GetService("RunService")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
-local Signal = require(script.Parent.Signal)
-local Symbol = require(script.Parent.Symbol)
-local Trove = require(script.Parent.Trove)
-local Promise = require(script.Parent.Promise)
+local Signal = require(script.Parent.Parent.Signal)
+local Symbol = require(script.Parent.Parent.Symbol)
+local Trove = require(script.Parent.Parent.Trove)
+local Promise = require(script.Parent.Parent.Promise)
 
 local IS_SERVER = RunService:IsServer()
 local DEFAULT_ANCESTORS = { workspace, game:GetService("Players") }
