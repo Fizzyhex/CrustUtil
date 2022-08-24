@@ -1,44 +1,40 @@
--- UIComponent
--- Virshal
--- May 27, 2022
-
 --[=[
 	@class UIComponent
-	
+
 	A UIComponent is a class for managing components of user interfaces.
 
 	This library is no longer maintained. I would suggest using Fusion instead.
-	
+
 	## Example
 
 	```lua
 	local UIComponent = require(somewhere.UIComponent)
 	local CreateInstance = UIComponent.CreateInstance
-	
+
 	local LoudButton = UIComponent.new()
-	
+
 	function LoudButton:SetText(text)
 		self.button.Text = text:upper()
 	end
-	
+
 	function LoudButton:Build()
 		self.button = CreateInstance("TextButton", {
 			Size = UDim2.new(0, 80, 0, 30),
 			Text = self.props.text
 			Parent = self.props.parent
 		})
-		
+
 		return self.button, self.SetText
 	end
-	
+
 	local screenGui = CreateInstance("ScreenGui", {
-		ResetOnSpawn = false, 
+		ResetOnSpawn = false,
 		Parent = LOCAL_PLAYER.PlayerGui
 	})
-	
+
 	local button, _, UpdateText = LoudButton {text = "click me 10 times!", parent = screenGui}
 	local clicks = 0
-	
+
 	button.button.MouseButton1Click:Connect(function(clickCounter)
 		clicks += 1
 		UpdateText(button, button.props.text .. " " .. clicks)
@@ -48,8 +44,8 @@
 local UIComponent = {}
 
 UIComponent.Children = newproxy(true)
-getmetatable(UIComponent.Children).__tostring = function() 
-	return "CustomEnum(Children)" 
+getmetatable(UIComponent.Children).__tostring = function()
+	return "CustomEnum(Children)"
 end
 
 UIComponent.__call = function(self, props: {[any]: any})
@@ -73,7 +69,7 @@ UIComponent.__call = function(self, props: {[any]: any})
 end
 
 --[=[
-	A utility for creating Instances. 
+	A utility for creating Instances.
 
 	@param className string -- The class name of the Instance you want to create
 	@param props table -- The properties of the instance you want to create
@@ -89,7 +85,7 @@ end
 			Size = 4
 		})
 	})
-	
+
 	-- ...which is equivalent to:
 	local smokeyCube = Instance.new("BasePart")
 	smokeyCube.Name = "SmokeyCube"
@@ -155,7 +151,7 @@ end
 function UIComponent.CreateInstance(className: string, props: {[any]: any})
 	local instance = Instance.new(className)
 	local parent
-	
+
 	local function HandleChild(child)
 		if typeof(child) == "Instance" then
 			child.Parent = instance
@@ -169,7 +165,7 @@ function UIComponent.CreateInstance(className: string, props: {[any]: any})
 			error("Instance children must be an Instance or a UIComponent! " .. tostring(child))
 		end
 	end
-	
+
 	for k, v in pairs (props or {}) do
 		if k == "Parent" then
 			parent = v
@@ -232,7 +228,7 @@ end
 
 	```lua
 		local UIComponent = require(somewhere.UIComponent)
-	
+
 		local PersistentGui = UIComponent.new()
 
 		function PersistentGui:Build()
@@ -275,11 +271,11 @@ end
 
 --[=[
 	Creates a new UIComponent class.
-	
+
 	```lua
 		local newComponent = UIComponent.new()
 	```
-	
+
 	@return UIComponent
 ]=]
 function UIComponent.new()
