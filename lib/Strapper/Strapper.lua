@@ -1,24 +1,34 @@
 export type BeforeRequireCallback = (moduleScript: ModuleScript) -> (boolean | BeforeRequireCallback | nil)
-
 export type AfterRequireCallback = (moduleScript: ModuleScript, module: any) -> ()
-
 export type LoadParams = {
     beforeRequire: BeforeRequireCallback?,
     afterRequire: AfterRequireCallback?
 }
 
 --- @class Strapper
---- Strapper is a module for mass requiring modules.
+--- A module that assists with requiring other modules.
 local Strapper = {}
+
+--- @type BeforeRequireCallback (moduleScript: ModuleScript) -> (boolean | BeforeRequireCallback | nil)
+--- @within Strapper
+--- The callback that will be called before a module is required.
+--- If a `BeforeRequireCallback` returns `false`, then the module will be skipped.
+
+--- @type AfterRequireCallback (moduleScript: ModuleScript, module: any) -> ()
+--- @within Strapper
+--- The callback that will be called after a module is successfully required.
+
+--- @type LoadParams {beforeRequire: BeforeRequireCallback?, afterRequire: AfterRequireCallback?}
+--- @within Strapper
 
 --- @prop Silence function
 --- @within Strapper
---- A blank function
+--- A callback that does nothing.
 Strapper.Silence = function(_, _) end
 
 --- @prop Loud function
 --- @within Strapper
---- Prints to the output
+--- A callback that will output details about the require.
 Strapper.Loud = function(_, _) end
 
 --- @ignore
@@ -111,6 +121,7 @@ function Strapper:LoadModules(modules: {ModuleScript}, params: LoadParams?)
             afterRequire(moduleScript, module)
         end
     end
+
     return results
 end
 
