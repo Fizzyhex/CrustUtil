@@ -1,50 +1,51 @@
----	@class Strapper
----	Strapper is a module for mass requiring modules.
-local Strapper = {}
-
---- @within Strapper
 export type BeforeRequireCallback = (moduleScript: ModuleScript) -> (boolean | BeforeRequireCallback | nil)
 
---- @within Strapper
 export type AfterRequireCallback = (moduleScript: ModuleScript, module: any) -> ()
 
---- @within Strapper
 export type LoadParams = {
     beforeRequire: BeforeRequireCallback?,
     afterRequire: AfterRequireCallback?
 }
 
---- @prop Silence
+--- @class Strapper
+--- Strapper is a module for mass requiring modules.
+local Strapper = {}
+
+--- @prop Silence function
 --- @within Strapper
 --- A blank function
 Strapper.Silence = function(_, _) end
 
---- @prop Loud
+--- @prop Loud function
 --- @within Strapper
 --- Prints to the output
 Strapper.Loud = function(_, _) end
 
 --- @ignore
 --- @private
+--- @within Strapper
+--- @prop _loudBeforeRequireCallback function
 Strapper._loudBeforeRequireCallback = function(moduleScript, _)
     print("[Strapper]: Requiring", moduleScript, "...")
 end
 
 --- @ignore
 --- @private
+--- @within Strapper
+--- @prop _loudBeforeRequireCallback function
 Strapper._loudAfterRequireCallback = function(_)
     print("[Strapper]: ↑ Success!")
 end
 
 --[=[
-	@param modules table -- A table of all the modules
+    @param modules table -- A table of all the modules
     @param params LoadParams -- Parameters describing how the modules should be loaded
 
     Requires all of the modules in a provided table.
     If a BeforeRequireCallback returns `false`, the module will be skipped.
 
-	```lua
-	local Strapper = require(Packages.Strapper)
+    ```lua
+    local Strapper = require(Packages.Strapper)
 
     local modules = somewhere.Modules:GetChildren()
 
@@ -62,7 +63,7 @@ end
     })
 
     print("All modules loaded!")
-	```
+    ```
 ]=]
 function Strapper:LoadModules(modules: {ModuleScript}, params: LoadParams?)
     params = params or {
