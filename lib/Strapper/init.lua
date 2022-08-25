@@ -116,7 +116,9 @@ function Strapper:LoadModules(modules: {ModuleScript}, params: LoadParams?)
         results[moduleScript] = module
 
         if afterRequire then
-            afterRequire(moduleScript, module)
+            if afterRequire(moduleScript, module) == self.Loud then
+                self._loudAfterRequireCallback(moduleScript, module)
+            end
         end
     end
 
