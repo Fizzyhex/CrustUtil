@@ -109,8 +109,6 @@ function Strapper:LoadModules(modules: {ModuleScript}, params: LoadParams?)
                 else
                     result(moduleScript)
                 end
-            else
-                error("BeforeRequireCallback returned an unaccepted value")
             end
         end
 
