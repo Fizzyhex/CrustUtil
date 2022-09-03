@@ -1,0 +1,8 @@
+[package]
+name = "fizzyhex/parallelrequire"
+version = "0.1.0"
+registry = "https://github.com/UpliftGames/wally-index"
+realm = "shared"
+description = "A tool that assists with requiring modules into different Actors."
+
+[dependencies]
