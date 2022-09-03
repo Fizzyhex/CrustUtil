@@ -4,157 +4,336 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="generator" content="Docusaurus v2.0.1">
-<title data-rh="true">Strapper | CrustUtil</title><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://Virshal.github.io/CrustUtil/api/Strapper"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docusaurus_tag" content="default"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docsearch:docusaurus_tag" content="default"><meta data-rh="true" property="og:title" content="Strapper | CrustUtil"><meta data-rh="true" name="description" content="A module that assists with requiring other modules."><meta data-rh="true" property="og:description" content="A module that assists with requiring other modules."><link data-rh="true" rel="canonical" href="https://Virshal.github.io/CrustUtil/api/Strapper"><link data-rh="true" rel="alternate" href="https://Virshal.github.io/CrustUtil/api/Strapper" hreflang="en"><link data-rh="true" rel="alternate" href="https://Virshal.github.io/CrustUtil/api/Strapper" hreflang="x-default"><link rel="stylesheet" href="/CrustUtil/assets/css/styles.77d02042.css">
-<link rel="preload" href="/CrustUtil/assets/js/runtime~main.810a1e64.js" as="script">
-<link rel="preload" href="/CrustUtil/assets/js/main.480e9ce4.js" as="script">
+<title data-rh="true">Strapper | CrustUtil</title><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://Virshal.github.io/CrustUtil/api/Strapper"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docusaurus_tag" content="default"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docsearch:docusaurus_tag" content="default"><meta data-rh="true" property="og:title" content="Strapper | CrustUtil"><meta data-rh="true" name="description" content="A powerful module that assists with requiring other modules.
+
+```lua
+-- A complex implementation can look like this!
+
+local Strapper = require(Somewhere.Strapper)
+
+local strapper = Strapper.new {
+    require = function(moduleScript)
+        if CollectionService:HasTag(moduleScript, &quot;DontRequire&quot;) then
+            return Strapper.silence
+        end
+
+        print(&quot;Requiring&quot;, moduleScript, &quot;...&quot;)
+        local module = require(moduleScript)
+        print(&quot;\tRequired&quot;, moduleScript)
+        if module.OnInit then
+            print(&quot;Initalizing&quot;, moduleScript, &quot;...&quot;)
+            module:OnInit()
+            print(&quot;\tInitalized&quot;, moduleScript)
+        end
+        return module
+    end)
+
+    andThen = function(moduleScript, module)
+        if module.OnStart then
+            print(&quot;Starting&quot;, moduleScript)
+            module:OnStart()
+            print(&quot;\tStarted&quot;, moduleScript)
+        end
+    end
+}
+
+local modules = strapper:LoadModules({
+    Somewhere.Modules:GetChildren(),
+    Somewhere.MoreModules:GetChildren()
+})
+
+print(&quot;Loaded modules!&quot;, modules)
+```
+
+```lua
+-- Or a more simple implementation...
+
+local Strapper = require(Somewhere.Strapper)
+
+local strapper = Strapper.new()
+
+local modules = strapper:LoadModules({
+    Somewhere.Modules:GetChildren(),
+    Somewhere.MoreModules:GetChildren()
+})
+
+print(&quot;Loaded modules!&quot;, modules)
+```"><meta data-rh="true" property="og:description" content="A powerful module that assists with requiring other modules.
+
+```lua
+-- A complex implementation can look like this!
+
+local Strapper = require(Somewhere.Strapper)
+
+local strapper = Strapper.new {
+    require = function(moduleScript)
+        if CollectionService:HasTag(moduleScript, &quot;DontRequire&quot;) then
+            return Strapper.silence
+        end
+
+        print(&quot;Requiring&quot;, moduleScript, &quot;...&quot;)
+        local module = require(moduleScript)
+        print(&quot;\tRequired&quot;, moduleScript)
+        if module.OnInit then
+            print(&quot;Initalizing&quot;, moduleScript, &quot;...&quot;)
+            module:OnInit()
+            print(&quot;\tInitalized&quot;, moduleScript)
+        end
+        return module
+    end)
+
+    andThen = function(moduleScript, module)
+        if module.OnStart then
+            print(&quot;Starting&quot;, moduleScript)
+            module:OnStart()
+            print(&quot;\tStarted&quot;, moduleScript)
+        end
+    end
+}
+
+local modules = strapper:LoadModules({
+    Somewhere.Modules:GetChildren(),
+    Somewhere.MoreModules:GetChildren()
+})
+
+print(&quot;Loaded modules!&quot;, modules)
+```
+
+```lua
+-- Or a more simple implementation...
+
+local Strapper = require(Somewhere.Strapper)
+
+local strapper = Strapper.new()
+
+local modules = strapper:LoadModules({
+    Somewhere.Modules:GetChildren(),
+    Somewhere.MoreModules:GetChildren()
+})
+
+print(&quot;Loaded modules!&quot;, modules)
+```"><link data-rh="true" rel="canonical" href="https://Virshal.github.io/CrustUtil/api/Strapper"><link data-rh="true" rel="alternate" href="https://Virshal.github.io/CrustUtil/api/Strapper" hreflang="en"><link data-rh="true" rel="alternate" href="https://Virshal.github.io/CrustUtil/api/Strapper" hreflang="x-default"><link rel="stylesheet" href="/CrustUtil/assets/css/styles.77d02042.css">
+<link rel="preload" href="/CrustUtil/assets/js/runtime~main.8bbace67.js" as="script">
+<link rel="preload" href="/CrustUtil/assets/js/main.0b118132.js" as="script">
 </head>
 <body class="navigation-with-keyboard">
 <script>!function(){function e(e){document.documentElement.setAttribute("data-theme",e)}var t=function(){var e=null;try{e=localStorage.getItem("theme")}catch(e){}return e}();null!==t?e(t):window.matchMedia("(prefers-color-scheme: dark)").matches?e("dark"):(window.matchMedia("(prefers-color-scheme: light)").matches,e("light"))}()</script><div id="__docusaurus">
-<div role="region"><a href="#" class="skipToContent_fXgn">Skip to main content</a></div><nav class="navbar navbar--fixed-top"><div class="navbar__inner"><div class="navbar__items"><button aria-label="Navigation bar toggle" class="navbar__toggle clean-btn" type="button" tabindex="0"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/CrustUtil/"><b class="navbar__title text--truncate">CrustUtil</b></a><a class="navbar__item navbar__link" href="/CrustUtil/docs/intro">Docs</a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/CrustUtil/api/">API</a></div><div class="navbar__items navbar__items--right"><a href="https://github.com/Fizzyhex/CrustUtil" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="Switch between dark and light mode (currently light mode)" aria-label="Switch between dark and light mode (currently light mode)"><svg viewBox="0 0 24 24" width="24" height="24" class="lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" class="darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg></button></div><div class="searchBox_ZlJk"><div class="navbar__search"><span aria-label="expand searchbar" role="button" class="search-icon" tabindex="0"></span><input type="search" id="search_input_react" placeholder="Press S to Search..." aria-label="Search" class="navbar__search-input search-bar"></div></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div class="main-wrapper mainWrapper_z2l0 docPageContainer_wNNk"><div class="docPage_Dpn1"><div class="docSidebarContainer_o_re"><div class="sidebar_njMd"><nav class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/CrustUtil/api/Component">​Component</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/CrustUtil/api/ParallelComponent">​Parallel​Component</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" href="/CrustUtil/api/Strapper">​Strapper</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/CrustUtil/api/UIComponent">​U​I​Component</a></li></ul></nav></div></div><main class="docMainContainer_HJE1"><div class="container padding-vert--lg"><div class="row"><div class="col docItemCol_MU3C"><div class="docItemContainer_Wv98"><article><div class="member_J0w1 markdown"><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_oUs_"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><header><h1 class="docTitle_mZRt" style="text-decoration:none"><span style="display:inline-block">Strapper</span></h1><div class="luaClassTags_EipM"></div><div>
-<p>A module that assists with requiring other modules.</p>
-</div></header><h2 class="anchor anchorWithStickyNavbar_LWe7" id="types">Types<a class="hash-link" href="#types" title="Direct link to heading">​</a></h2><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="BeforeRequireCallback"><code style="text-decoration:none">BeforeRequireCallback</code><a class="hash-link" href="#BeforeRequireCallback" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/Fizzyhex/CrustUtil/blob/main/lib/Strapper/init.lua#L16"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code class="purple_ieR2">type</code> <code>BeforeRequireCallback<!-- --> = </code> <code class="purple_ieR2">(</code><code>moduleScript<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/class/ModuleScript" target="_blank" rel="noopener noreferrer">ModuleScript<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><code class="purple_ieR2">)</code><code class="purple_ieR2"> → </code><code class="purple_ieR2">(</code><code class="blue_P4bS">boolean</code><code class="op_lSLc"> | </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/CrustUtil/api/Strapper#BeforeRequireCallback">BeforeRequireCallback</a></code><code class="op_lSLc"> | </code><code class="blue_P4bS">nil</code><code class="purple_ieR2">)</code></div><div>
-<p>
-  The callback that will be called before a module is required.
-  If a <code>BeforeRequireCallback</code> returns <code>false</code>, then the module will be skipped.
-</p>
-</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="AfterRequireCallback"><code style="text-decoration:none">AfterRequireCallback</code><a class="hash-link" href="#AfterRequireCallback" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/Fizzyhex/CrustUtil/blob/main/lib/Strapper/init.lua#L20"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code class="purple_ieR2">type</code> <code>AfterRequireCallback<!-- --> = </code> <code class="purple_ieR2">(</code><div class="inset_uKQm"><code>moduleScript<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/class/ModuleScript" target="_blank" rel="noopener noreferrer">ModuleScript<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><code class="purple_ieR2">,</code></div><div class="inset_uKQm"><code>module<!-- -->: </code><code class="blue_P4bS">any</code></div><code class="purple_ieR2">)</code><code class="purple_ieR2"> → </code><code class="purple_ieR2">(</code><code class="purple_ieR2">)</code></div><div>
-<p>The callback that will be called after a module is successfully required.</p>
-</div><h2 class="anchor anchorWithStickyNavbar_LWe7" id="properties">Properties<a class="hash-link" href="#properties" title="Direct link to heading">​</a></h2><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="Silence"><code style="text-decoration:none">Silence</code><a class="hash-link" href="#Silence" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/Fizzyhex/CrustUtil/blob/main/lib/Strapper/init.lua#L27"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Strapper<!-- -->.<!-- -->Silence<!-- -->:<!-- --> </code> <code class="blue_P4bS">function</code></div><div>
-<p>A callback that does nothing.</p>
-</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="Loud"><code style="text-decoration:none">Loud</code><a class="hash-link" href="#Loud" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/Fizzyhex/CrustUtil/blob/main/lib/Strapper/init.lua#L32"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Strapper<!-- -->.<!-- -->Loud<!-- -->:<!-- --> </code> <code class="blue_P4bS">function</code></div><div>
-<p>A callback that will output details about the require.</p>
-</div><h2 class="anchor anchorWithStickyNavbar_LWe7" id="functions">Functions<a class="hash-link" href="#functions" title="Direct link to heading">​</a></h2><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="LoadModules"><code style="text-decoration:none">LoadModules</code><a class="hash-link" href="#LoadModules" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/Fizzyhex/CrustUtil/blob/main/lib/Strapper/init.lua#L78"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Strapper<!-- -->:</code><code class="green_DgR4">LoadModules</code><code>(</code><div class="inset_uKQm"><div><code>modules<!-- -->: </code><code class="blue_P4bS">table</code><code>,</code><span class="inlineDescription_G7Er">-- <span>
-<p>A table of all the modules</p>
-</span></span></div><div><code>params<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/CrustUtil/api/Strapper#LoadParams">LoadParams</a></code><span class="inlineDescription_G7Er">-- <span>
-<p>Parameters describing how the modules should be loaded</p>
-</span></span></div></div><code>) → </code><code>(</code><code>)</code></div><h3>Types</h3><h3 class="anchor anchorWithStickyNavbar_LWe7" id="LoadParams"><a class="hash-link" href="#LoadParams" title="Direct link to heading">​</a></h3><div class="memberString_GwaU"><code class="purple_ieR2">type</code> <code>LoadParams<!-- --> = </code> <code class="purple_ieR2">{</code><div class="inset_uKQm"><code>beforeRequire<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/CrustUtil/api/Strapper#BeforeRequireCallback">BeforeRequireCallback?</a></code><code class="purple_ieR2">,</code></div><div class="inset_uKQm"><code>afterRequire<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/CrustUtil/api/Strapper#AfterRequireCallback">AfterRequireCallback?</a></code></div><code class="purple_ieR2">}</code></div><div></div><div>
-<p>
-  Requires all of the modules in a provided table.
-  If a BeforeRequireCallback returns <code>false</code>, the module will be skipped.
-</p>
-<pre class="language-lua"><code class="language-lua"><span class="token keyword">local</span> Strapper <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span>Packages<span class="token punctuation">.</span>Strapper<span class="token punctuation">)</span>
+<div role="region"><a href="#" class="skipToContent_fXgn">Skip to main content</a></div><nav class="navbar navbar--fixed-top"><div class="navbar__inner"><div class="navbar__items"><button aria-label="Navigation bar toggle" class="navbar__toggle clean-btn" type="button" tabindex="0"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/CrustUtil/"><b class="navbar__title text--truncate">CrustUtil</b></a><a class="navbar__item navbar__link" href="/CrustUtil/docs/intro">Docs</a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/CrustUtil/api/">API</a></div><div class="navbar__items navbar__items--right"><a href="https://github.com/Fizzyhex/CrustUtil" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="Switch between dark and light mode (currently light mode)" aria-label="Switch between dark and light mode (currently light mode)"><svg viewBox="0 0 24 24" width="24" height="24" class="lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" class="darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg></button></div><div class="searchBox_ZlJk"><div class="navbar__search"><span aria-label="expand searchbar" role="button" class="search-icon" tabindex="0"></span><input type="search" id="search_input_react" placeholder="Press S to Search..." aria-label="Search" class="navbar__search-input search-bar"></div></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div class="main-wrapper mainWrapper_z2l0 docPageContainer_wNNk"><div class="docPage_Dpn1"><div class="docSidebarContainer_o_re"><div class="sidebar_njMd"><nav class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/CrustUtil/api/Component">​Component</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/CrustUtil/api/ParallelComponent">​Parallel​Component</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/CrustUtil/api/ParallelRequire">​Parallel​Require</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" href="/CrustUtil/api/Strapper">​Strapper</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/CrustUtil/api/UIComponent">​U​I​Component</a></li></ul></nav></div></div><main class="docMainContainer_HJE1"><div class="container padding-vert--lg"><div class="row"><div class="col docItemCol_MU3C"><div class="docItemContainer_Wv98"><article><div class="member_J0w1 markdown"><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_oUs_"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><header><h1 class="docTitle_mZRt" style="text-decoration:none"><span style="display:inline-block">Strapper</span></h1><div class="luaClassTags_EipM"></div><div>
+<p>A powerful module that assists with requiring other modules.</p>
+<pre class="language-lua"><code class="language-lua"><span class="token comment">-- A complex implementation can look like this!</span>
 
-<span class="token keyword">local</span> modules <span class="token operator">=</span> somewhere<span class="token punctuation">.</span>Modules<span class="token punctuation">:</span><span class="token function">GetChildren</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">local</span> Strapper <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span>Somewhere<span class="token punctuation">.</span>Strapper<span class="token punctuation">)</span>
 
-Strapper<span class="token punctuation">:</span><span class="token function">LoadModules</span><span class="token punctuation">(</span>modules<span class="token punctuation">,</span> <span class="token punctuation">{</span>
-    beforeRequire <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span>moduleScript<span class="token punctuation">)</span>
-        <span class="token keyword">if</span> moduleScript<span class="token punctuation">:</span><span class="token function">GetAttribute</span><span class="token punctuation">(</span><span class="token string">"DontRequire"</span><span class="token punctuation">)</span> <span class="token keyword">then</span>
-            <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"[Strapper]: Skipped"</span><span class="token punctuation">,</span> moduleScript<span class="token punctuation">)</span>
-            <span class="token keyword">return</span> <span class="token keyword">false</span>
-        <span class="token keyword">else</span>
-            <span class="token keyword">return</span> Strapper<span class="token punctuation">.</span>Loud
+<span class="token keyword">local</span> strapper <span class="token operator">=</span> Strapper<span class="token punctuation">.</span><span class="token function">new</span> <span class="token punctuation">{</span>
+    require <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span>moduleScript<span class="token punctuation">)</span>
+        <span class="token keyword">if</span> CollectionService<span class="token punctuation">:</span><span class="token function">HasTag</span><span class="token punctuation">(</span>moduleScript<span class="token punctuation">,</span> <span class="token string">"DontRequire"</span><span class="token punctuation">)</span> <span class="token keyword">then</span>
+            <span class="token keyword">return</span> Strapper<span class="token punctuation">.</span>silence
         <span class="token keyword">end</span>
-    <span class="token keyword">end</span><span class="token punctuation">,</span>
 
-    afterRequire <span class="token operator">=</span> Strapper<span class="token punctuation">.</span>Loud
+        <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"Requiring"</span><span class="token punctuation">,</span> moduleScript<span class="token punctuation">,</span> <span class="token string">"..."</span><span class="token punctuation">)</span>
+        <span class="token keyword">local</span> module <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span>moduleScript<span class="token punctuation">)</span>
+        <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"\tRequired"</span><span class="token punctuation">,</span> moduleScript<span class="token punctuation">)</span>
+        <span class="token keyword">if</span> module<span class="token punctuation">.</span>OnInit <span class="token keyword">then</span>
+            <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"Initalizing"</span><span class="token punctuation">,</span> moduleScript<span class="token punctuation">,</span> <span class="token string">"..."</span><span class="token punctuation">)</span>
+            module<span class="token punctuation">:</span><span class="token function">OnInit</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"\tInitalized"</span><span class="token punctuation">,</span> moduleScript<span class="token punctuation">)</span>
+        <span class="token keyword">end</span>
+        <span class="token keyword">return</span> module
+    <span class="token keyword">end</span><span class="token punctuation">)</span>
+
+    andThen <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span>moduleScript<span class="token punctuation">,</span> module<span class="token punctuation">)</span>
+        <span class="token keyword">if</span> module<span class="token punctuation">.</span>OnStart <span class="token keyword">then</span>
+            <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"Starting"</span><span class="token punctuation">,</span> moduleScript<span class="token punctuation">)</span>
+            module<span class="token punctuation">:</span><span class="token function">OnStart</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"\tStarted"</span><span class="token punctuation">,</span> moduleScript<span class="token punctuation">)</span>
+        <span class="token keyword">end</span>
+    <span class="token keyword">end</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">local</span> modules <span class="token operator">=</span> strapper<span class="token punctuation">:</span><span class="token function">LoadModules</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    Somewhere<span class="token punctuation">.</span>Modules<span class="token punctuation">:</span><span class="token function">GetChildren</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    Somewhere<span class="token punctuation">.</span>MoreModules<span class="token punctuation">:</span><span class="token function">GetChildren</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
 
-<span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"All modules loaded!"</span><span class="token punctuation">)</span>
+<span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"Loaded modules!"</span><span class="token punctuation">,</span> modules<span class="token punctuation">)</span>
+</code></pre>
+<pre class="language-lua"><code class="language-lua"><span class="token comment">-- Or a more simple implementation...</span>
+
+<span class="token keyword">local</span> Strapper <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span>Somewhere<span class="token punctuation">.</span>Strapper<span class="token punctuation">)</span>
+
+<span class="token keyword">local</span> strapper <span class="token operator">=</span> Strapper<span class="token punctuation">.</span><span class="token function">new</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token keyword">local</span> modules <span class="token operator">=</span> strapper<span class="token punctuation">:</span><span class="token function">LoadModules</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    Somewhere<span class="token punctuation">.</span>Modules<span class="token punctuation">:</span><span class="token function">GetChildren</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    Somewhere<span class="token punctuation">.</span>MoreModules<span class="token punctuation">:</span><span class="token function">GetChildren</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"Loaded modules!"</span><span class="token punctuation">,</span> modules<span class="token punctuation">)</span>
+</code></pre>
+</div></header><h2 class="anchor anchorWithStickyNavbar_LWe7" id="types">Types<a class="hash-link" href="#types" title="Direct link to heading">​</a></h2><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="LoadParams"><code style="text-decoration:none">LoadParams</code><a class="hash-link" href="#LoadParams" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/Fizzyhex/CrustUtil/blob/main/lib/Strapper/init.lua#L72"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code class="purple_ieR2">type</code> <code>LoadParams<!-- --> = </code> <code class="purple_ieR2">{</code><div class="inset_uKQm"><code>require<!-- -->: </code><code class="green_DgR4">(</code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/class/ModuleScript" target="_blank" rel="noopener noreferrer">ModuleScript<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><code class="green_DgR4">)</code><code class="green_DgR4"> → </code><code class="green_DgR4">(</code><code class="blue_P4bS">any</code><code class="green_DgR4">)</code><code class="blue_P4bS">?</code><code class="purple_ieR2">,</code></div><div class="inset_uKQm"><code>moduleReturnType<!-- -->: </code><code class="blue_P4bS">typeof(newproxy(true))</code></div><code class="purple_ieR2">}</code></div><div>
+<p>Parameters that decide how modules should be loaded.</p>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="StrapperConfig"><code style="text-decoration:none">StrapperConfig</code><a class="hash-link" href="#StrapperConfig" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/Fizzyhex/CrustUtil/blob/main/lib/Strapper/init.lua#L76"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code class="purple_ieR2">type</code> <code>StrapperConfig<!-- --> = </code> <code class="purple_ieR2">{</code><code>defaultLoadParams<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/CrustUtil/api/Strapper#LoadParams">LoadParams?</a></code><code class="purple_ieR2">}</code></div><div>
+<p>Parameters that decide how modules should be loaded.</p>
+</div><h2 class="anchor anchorWithStickyNavbar_LWe7" id="properties">Properties<a class="hash-link" href="#properties" title="Direct link to heading">​</a></h2><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="requireMethods"><code style="text-decoration:none">requireMethods</code><a class="hash-link" href="#requireMethods" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/Fizzyhex/CrustUtil/blob/main/lib/Strapper/init.lua#L101"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Strapper<!-- -->.<!-- -->requireMethods<!-- -->:<!-- --> </code> <code class="blue_P4bS">table</code></div><div>
+<p>A table of basic require functions. If you don't need to write your own, you can use these:</p>
+<p><code>quietSuccess</code> - Only prints that the module was required.</p>
+<p><code>loud</code> - Prints that the module was required, then prints again when the require was successful.</p>
+<pre class="language-lua"><code class="language-lua">quietSuccess <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span>module<span class="token punctuation">:</span> ModuleScript<span class="token punctuation">)</span>
+    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"Requiring"</span><span class="token punctuation">,</span> module<span class="token punctuation">,</span> <span class="token string">"at"</span><span class="token punctuation">,</span> module<span class="token punctuation">:</span><span class="token function">GetFullName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> <span class="token function">require</span><span class="token punctuation">(</span>module<span class="token punctuation">)</span>
+<span class="token keyword">end</span><span class="token punctuation">,</span>
+
+loud <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span>module<span class="token punctuation">:</span> ModuleScript<span class="token punctuation">)</span>
+    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"Requiring"</span><span class="token punctuation">,</span> module<span class="token punctuation">,</span> <span class="token string">"at"</span><span class="token punctuation">,</span> module<span class="token punctuation">:</span><span class="token function">GetFullName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">"..."</span><span class="token punctuation">)</span>
+    <span class="token keyword">local</span> result <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span>module<span class="token punctuation">)</span>
+    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"\tRequired"</span><span class="token punctuation">,</span> module<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> result
+<span class="token keyword">end</span><span class="token punctuation">,</span>
+</code></pre>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="silence"><code style="text-decoration:none">silence</code><a class="hash-link" href="#silence" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/Fizzyhex/CrustUtil/blob/main/lib/Strapper/init.lua#L148"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Strapper<!-- -->.<!-- -->silence<!-- -->:<!-- --> </code> <code class="blue_P4bS">userdata</code></div><div>
+<p>A <code>StrapperRequireMethod</code> response that will output nothing.</p>
+<pre class="language-lua"><code class="language-lua"><span class="token keyword">local</span> CollectionService <span class="token operator">=</span> game<span class="token punctuation">:</span><span class="token function">GetService</span><span class="token punctuation">(</span><span class="token string">"CollectionService"</span><span class="token punctuation">)</span>
+
+<span class="token keyword">local</span> Strapper <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span>Somewhere<span class="token punctuation">.</span>Strapper<span class="token punctuation">)</span>
+
+<span class="token keyword">local</span> strapper <span class="token operator">=</span> Strapper<span class="token punctuation">.</span><span class="token function">new</span> <span class="token punctuation">{</span>
+    defaultLoadParams <span class="token operator">=</span> <span class="token punctuation">{</span>
+        require <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span>moduleScript<span class="token punctuation">)</span>
+            <span class="token keyword">if</span> CollectionService<span class="token punctuation">:</span><span class="token function">HasTag</span><span class="token punctuation">(</span>moduleScript<span class="token punctuation">,</span> <span class="token string">"Disabled"</span><span class="token punctuation">)</span> <span class="token keyword">then</span>
+                <span class="token keyword">return</span> Strapper<span class="token punctuation">.</span>silence
+            <span class="token keyword">end</span>
+            <span class="token keyword">return</span> <span class="token function">require</span><span class="token punctuation">(</span>moduleScript<span class="token punctuation">)</span>
+        <span class="token keyword">end</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<div class="admonition admonition-caution alert alert--warning">
+  <div class="admonition-heading">
+    <h5><span class="admonition-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+          <path d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 0 0 0 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 0 0 .01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"></path>
+        </svg></span>caution</h5>
+  </div>
+  <div class="admonition-content">
+    <p>If a <code>StrapperRequireMethod</code> returns nil, a warning will be printed to the console. Return <code>Strapper.silence</code> instead!</p>
+  </div>
+</div>
+</div><h2 class="anchor anchorWithStickyNavbar_LWe7" id="functions">Functions<a class="hash-link" href="#functions" title="Direct link to heading">​</a></h2><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="new"><code style="text-decoration:none">new</code><a class="hash-link" href="#new" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/Fizzyhex/CrustUtil/blob/main/lib/Strapper/init.lua#L217"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Strapper<!-- -->.</code><code class="green_DgR4">new</code><code>(</code><code>config<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/CrustUtil/api/Strapper#StrapperConfig">StrapperConfig?</a></code><code>) → </code><code>(</code><code>)</code></div><div>
+<p>Constructs a new Strapper object, with the optional <code>config</code> arugment.</p>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="LoadModules"><code style="text-decoration:none">LoadModules</code><a class="hash-link" href="#LoadModules" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/Fizzyhex/CrustUtil/blob/main/lib/Strapper/init.lua#L172"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Strapper<!-- -->:</code><code class="green_DgR4">LoadModules</code><code>(</code><div class="inset_uKQm"><div><code>modules<!-- -->: </code><code class="purple_ieR2">{</code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/datatype/Instance" target="_blank" rel="noopener noreferrer">Instance<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><code class="purple_ieR2">}</code><code>,</code><span class="inlineDescription_G7Er">-- <span>
+<p>A table of modules</p>
+</span></span></div><div><code>params<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/CrustUtil/api/Strapper#LoadParams">LoadParams?</a></code><span class="inlineDescription_G7Er">-- <span>
+<p>Optional LoadParams</p>
+</span></span></div></div><code>) → </code><code class="purple_ieR2">{</code><span><code>[</code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/class/ModuleScript" target="_blank" rel="noopener noreferrer">ModuleScript<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><code>]</code></span><code>: </code><code class="blue_P4bS">any</code><code class="purple_ieR2">}</code><code class="op_lSLc"> | </code><code class="purple_ieR2">{</code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/class/ModuleScript" target="_blank" rel="noopener noreferrer">ModuleScript<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><code class="purple_ieR2">}</code></div><div>
+<p>Mass requires the modules in a table. Any table items that aren't <code>ModuleScripts</code> will be skipped.</p>
+<pre class="language-lua"><code class="language-lua"><span class="token comment">-- Get the Strapper module</span>
+<span class="token keyword">local</span> Strapper <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span>Somewhere<span class="token punctuation">.</span>Strapper<span class="token punctuation">)</span>
+
+<span class="token comment">-- Construct a new strapper</span>
+<span class="token keyword">local</span> strapper <span class="token operator">=</span> Strapper<span class="token punctuation">.</span><span class="token function">new</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment">-- Require all ModuleScripts that are children of the 'Modules' folder</span>
+<span class="token keyword">local</span> modules <span class="token operator">=</span> strapper<span class="token punctuation">:</span><span class="token function">LoadModules</span><span class="token punctuation">(</span>ReplicatedStorage<span class="token punctuation">.</span>Modules<span class="token punctuation">:</span><span class="token function">GetChildren</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    require <span class="token operator">=</span> Strapper<span class="token punctuation">.</span>requireMethods<span class="token punctuation">.</span>quietSuccess <span class="token comment">-- This will only print to the output that the module is being required</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token comment">-- Print the dictionary of required modules</span>
+<span class="token function">print</span><span class="token punctuation">(</span>modules<span class="token punctuation">)</span>
 </code></pre>
 </div></div></article></div><details><summary>Show raw api</summary><pre style="max-width:100%;white-space:pre-wrap">{
     &quot;functions&quot;: [
         {
             &quot;name&quot;: &quot;LoadModules&quot;,
-            &quot;desc&quot;: &quot;Requires all of the modules in a provided table.\nIf a BeforeRequireCallback returns `false`, the module will be skipped.\n\n```lua\nlocal Strapper = require(Packages.Strapper)\n\nlocal modules = somewhere.Modules:GetChildren()\n\nStrapper:LoadModules(modules, {\n    beforeRequire = function(moduleScript)\n        if moduleScript:GetAttribute(\&quot;DontRequire\&quot;) then\n            print(\&quot;[Strapper]: Skipped\&quot;, moduleScript)\n            return false\n        else\n            return Strapper.Loud\n        end\n    end,\n\n    afterRequire = Strapper.Loud\n})\n\nprint(\&quot;All modules loaded!\&quot;)\n```&quot;,
+            &quot;desc&quot;: &quot;Mass requires the modules in a table. Any table items that aren&#x27;t `ModuleScripts` will be skipped.\n\n\n```lua\n-- Get the Strapper module\nlocal Strapper = require(Somewhere.Strapper)\n\n-- Construct a new strapper\nlocal strapper = Strapper.new()\n\n-- Require all ModuleScripts that are children of the &#x27;Modules&#x27; folder\nlocal modules = strapper:LoadModules(ReplicatedStorage.Modules:GetChildren(), {\n    require = Strapper.requireMethods.quietSuccess -- This will only print to the output that the module is being required\n})\n\n-- Print the dictionary of required modules\nprint(modules)\n```&quot;,
             &quot;params&quot;: [
                 {
                     &quot;name&quot;: &quot;modules&quot;,
-                    &quot;desc&quot;: &quot;A table of all the modules&quot;,
-                    &quot;lua_type&quot;: &quot;table&quot;
+                    &quot;desc&quot;: &quot;A table of modules&quot;,
+                    &quot;lua_type&quot;: &quot;{Instance}&quot;
                 },
                 {
                     &quot;name&quot;: &quot;params&quot;,
-                    &quot;desc&quot;: &quot;Parameters describing how the modules should be loaded&quot;,
-                    &quot;lua_type&quot;: &quot;LoadParams&quot;
+                    &quot;desc&quot;: &quot;Optional LoadParams&quot;,
+                    &quot;lua_type&quot;: &quot;LoadParams?&quot;
+                }
+            ],
+            &quot;returns&quot;: [
+                {
+                    &quot;desc&quot;: &quot;&quot;,
+                    &quot;lua_type&quot;: &quot;{[ModuleScript]: any} | {ModuleScript}\r\n&quot;
+                }
+            ],
+            &quot;function_type&quot;: &quot;method&quot;,
+            &quot;source&quot;: {
+                &quot;line&quot;: 172,
+                &quot;path&quot;: &quot;lib/Strapper/init.lua&quot;
+            }
+        },
+        {
+            &quot;name&quot;: &quot;new&quot;,
+            &quot;desc&quot;: &quot;Constructs a new Strapper object, with the optional `config` arugment.&quot;,
+            &quot;params&quot;: [
+                {
+                    &quot;name&quot;: &quot;config&quot;,
+                    &quot;desc&quot;: &quot;&quot;,
+                    &quot;lua_type&quot;: &quot;StrapperConfig?&quot;
                 }
             ],
             &quot;returns&quot;: [],
-            &quot;function_type&quot;: &quot;method&quot;,
+            &quot;function_type&quot;: &quot;static&quot;,
             &quot;source&quot;: {
-                &quot;line&quot;: 78,
+                &quot;line&quot;: 217,
                 &quot;path&quot;: &quot;lib/Strapper/init.lua&quot;
             }
         }
     ],
     &quot;properties&quot;: [
         {
-            &quot;name&quot;: &quot;Silence&quot;,
-            &quot;desc&quot;: &quot;A callback that does nothing.&quot;,
-            &quot;lua_type&quot;: &quot;function&quot;,
+            &quot;name&quot;: &quot;requireMethods&quot;,
+            &quot;desc&quot;: &quot;A table of basic require functions. If you don&#x27;t need to write your own, you can use these:\n\n`quietSuccess` - Only prints that the module was required.\n\n`loud` - Prints that the module was required, then prints again when the require was successful.\n\n```lua\nquietSuccess = function(module: ModuleScript)\n    print(\&quot;Requiring\&quot;, module, \&quot;at\&quot;, module:GetFullName())\n    return require(module)\nend,\n\nloud = function(module: ModuleScript)\n    print(\&quot;Requiring\&quot;, module, \&quot;at\&quot;, module:GetFullName(), \&quot;...\&quot;)\n    local result = require(module)\n    print(\&quot;\\tRequired\&quot;, module)\n    return result\nend,\n```&quot;,
+            &quot;lua_type&quot;: &quot;table&quot;,
             &quot;source&quot;: {
-                &quot;line&quot;: 27,
+                &quot;line&quot;: 101,
                 &quot;path&quot;: &quot;lib/Strapper/init.lua&quot;
             }
         },
         {
-            &quot;name&quot;: &quot;Loud&quot;,
-            &quot;desc&quot;: &quot;A callback that will output details about the require.&quot;,
-            &quot;lua_type&quot;: &quot;function&quot;,
+            &quot;name&quot;: &quot;silence&quot;,
+            &quot;desc&quot;: &quot;A `StrapperRequireMethod` response that will output nothing.\n\n```lua\nlocal CollectionService = game:GetService(\&quot;CollectionService\&quot;)\n\nlocal Strapper = require(Somewhere.Strapper)\n\nlocal strapper = Strapper.new {\n    defaultLoadParams = {\n        require = function(moduleScript)\n            if CollectionService:HasTag(moduleScript, \&quot;Disabled\&quot;) then\n                return Strapper.silence\n            end\n            return require(moduleScript)\n        end\n    }\n}\n```\n\n:::caution\nIf a `StrapperRequireMethod` returns nil, a warning will be printed to the console. Return `Strapper.silence` instead!\n:::&quot;,
+            &quot;lua_type&quot;: &quot;userdata&quot;,
             &quot;source&quot;: {
-                &quot;line&quot;: 32,
-                &quot;path&quot;: &quot;lib/Strapper/init.lua&quot;
-            }
-        },
-        {
-            &quot;name&quot;: &quot;_loudBeforeRequireCallback&quot;,
-            &quot;desc&quot;: &quot;&quot;,
-            &quot;lua_type&quot;: &quot;function&quot;,
-            &quot;private&quot;: true,
-            &quot;ignore&quot;: true,
-            &quot;source&quot;: {
-                &quot;line&quot;: 38,
-                &quot;path&quot;: &quot;lib/Strapper/init.lua&quot;
-            }
-        },
-        {
-            &quot;name&quot;: &quot;_loudBeforeRequireCallback&quot;,
-            &quot;desc&quot;: &quot;&quot;,
-            &quot;lua_type&quot;: &quot;function&quot;,
-            &quot;private&quot;: true,
-            &quot;ignore&quot;: true,
-            &quot;source&quot;: {
-                &quot;line&quot;: 46,
+                &quot;line&quot;: 148,
                 &quot;path&quot;: &quot;lib/Strapper/init.lua&quot;
             }
         }
     ],
     &quot;types&quot;: [
         {
-            &quot;name&quot;: &quot;BeforeRequireCallback&quot;,
-            &quot;desc&quot;: &quot;The callback that will be called before a module is required.\nIf a `BeforeRequireCallback` returns `false`, then the module will be skipped.&quot;,
-            &quot;lua_type&quot;: &quot;(moduleScript: ModuleScript) -&gt; (boolean | BeforeRequireCallback | nil)&quot;,
-            &quot;source&quot;: {
-                &quot;line&quot;: 16,
-                &quot;path&quot;: &quot;lib/Strapper/init.lua&quot;
-            }
-        },
-        {
-            &quot;name&quot;: &quot;AfterRequireCallback&quot;,
-            &quot;desc&quot;: &quot;The callback that will be called after a module is successfully required.&quot;,
-            &quot;lua_type&quot;: &quot;(moduleScript: ModuleScript, module: any) -&gt; ()&quot;,
-            &quot;source&quot;: {
-                &quot;line&quot;: 20,
-                &quot;path&quot;: &quot;lib/Strapper/init.lua&quot;
-            }
-        },
-        {
             &quot;name&quot;: &quot;LoadParams&quot;,
-            &quot;desc&quot;: &quot;&quot;,
-            &quot;lua_type&quot;: &quot;{beforeRequire: BeforeRequireCallback?, afterRequire: AfterRequireCallback?}&quot;,
+            &quot;desc&quot;: &quot;Parameters that decide how modules should be loaded.&quot;,
+            &quot;lua_type&quot;: &quot;{require: (ModuleScript) -&gt; (any)?, moduleReturnType: typeof(newproxy(true))}&quot;,
             &quot;source&quot;: {
-                &quot;line&quot;: 23,
+                &quot;line&quot;: 72,
+                &quot;path&quot;: &quot;lib/Strapper/init.lua&quot;
+            }
+        },
+        {
+            &quot;name&quot;: &quot;StrapperConfig&quot;,
+            &quot;desc&quot;: &quot;Parameters that decide how modules should be loaded.&quot;,
+            &quot;lua_type&quot;: &quot;{defaultLoadParams: LoadParams?}&quot;,
+            &quot;source&quot;: {
+                &quot;line&quot;: 76,
                 &quot;path&quot;: &quot;lib/Strapper/init.lua&quot;
             }
         }
     ],
     &quot;name&quot;: &quot;Strapper&quot;,
-    &quot;desc&quot;: &quot;A module that assists with requiring other modules.&quot;,
+    &quot;desc&quot;: &quot;A powerful module that assists with requiring other modules.\n\n```lua\n-- A complex implementation can look like this!\n\nlocal Strapper = require(Somewhere.Strapper)\n\nlocal strapper = Strapper.new {\n    require = function(moduleScript)\n        if CollectionService:HasTag(moduleScript, \&quot;DontRequire\&quot;) then\n            return Strapper.silence\n        end\n\n        print(\&quot;Requiring\&quot;, moduleScript, \&quot;...\&quot;)\n        local module = require(moduleScript)\n        print(\&quot;\\tRequired\&quot;, moduleScript)\n        if module.OnInit then\n            print(\&quot;Initalizing\&quot;, moduleScript, \&quot;...\&quot;)\n            module:OnInit()\n            print(\&quot;\\tInitalized\&quot;, moduleScript)\n        end\n        return module\n    end)\n\n    andThen = function(moduleScript, module)\n        if module.OnStart then\n            print(\&quot;Starting\&quot;, moduleScript)\n            module:OnStart()\n            print(\&quot;\\tStarted\&quot;, moduleScript)\n        end\n    end\n}\n\nlocal modules = strapper:LoadModules({\n    Somewhere.Modules:GetChildren(),\n    Somewhere.MoreModules:GetChildren()\n})\n\nprint(\&quot;Loaded modules!\&quot;, modules)\n```\n\n```lua\n-- Or a more simple implementation...\n\nlocal Strapper = require(Somewhere.Strapper)\n\nlocal strapper = Strapper.new()\n\nlocal modules = strapper:LoadModules({\n    Somewhere.Modules:GetChildren(),\n    Somewhere.MoreModules:GetChildren()\n})\n\nprint(\&quot;Loaded modules!\&quot;, modules)\n```&quot;,
     &quot;source&quot;: {
-        &quot;line&quot;: 10,
+        &quot;line&quot;: 66,
         &quot;path&quot;: &quot;lib/Strapper/init.lua&quot;
     }
-}</pre></details></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#types" class="table-of-contents__link toc-highlight">Types</a><ul><li><a href="#AfterRequireCallback" class="table-of-contents__link toc-highlight">AfterRequireCallback</a></li><li><a href="#BeforeRequireCallback" class="table-of-contents__link toc-highlight">BeforeRequireCallback</a></li><li><a href="#LoadParams" class="table-of-contents__link toc-highlight">LoadParams</a></li></ul></li><li><a href="#properties" class="table-of-contents__link toc-highlight">Properties</a><ul><li><a href="#Loud" class="table-of-contents__link toc-highlight">Loud</a></li><li><a href="#Silence" class="table-of-contents__link toc-highlight">Silence</a></li></ul></li><li><a href="#functions" class="table-of-contents__link toc-highlight">Functions</a><ul><li><a href="#LoadModules" class="table-of-contents__link toc-highlight">:LoadModules</a></li></ul></li></ul></div></div></div></div></main></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2022 Virshal. Built with Moonwave and Docusaurus.</div></div></div></footer></div>
-<script src="/CrustUtil/assets/js/runtime~main.810a1e64.js"></script>
-<script src="/CrustUtil/assets/js/main.480e9ce4.js"></script>
+}</pre></details></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#types" class="table-of-contents__link toc-highlight">Types</a><ul><li><a href="#LoadParams" class="table-of-contents__link toc-highlight">LoadParams</a></li><li><a href="#StrapperConfig" class="table-of-contents__link toc-highlight">StrapperConfig</a></li></ul></li><li><a href="#properties" class="table-of-contents__link toc-highlight">Properties</a><ul><li><a href="#requireMethods" class="table-of-contents__link toc-highlight">requireMethods</a></li><li><a href="#silence" class="table-of-contents__link toc-highlight">silence</a></li></ul></li><li><a href="#functions" class="table-of-contents__link toc-highlight">Functions</a><ul><li><a href="#LoadModules" class="table-of-contents__link toc-highlight">:LoadModules</a></li><li><a href="#new" class="table-of-contents__link toc-highlight">.new</a></li></ul></li></ul></div></div></div></div></main></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2022 Virshal. Built with Moonwave and Docusaurus.</div></div></div></footer></div>
+<script src="/CrustUtil/assets/js/runtime~main.8bbace67.js"></script>
+<script src="/CrustUtil/assets/js/main.0b118132.js"></script>
 </body>
 </html>
