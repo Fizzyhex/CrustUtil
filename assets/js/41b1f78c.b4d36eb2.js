@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkdocs=self.webpackChunkdocs||[]).push([[398],{63891:s=>{s.exports=JSON.parse('{"sourceUrl":"https://github.com/Fizzyhex/CrustUtil/blob/main","baseUrl":"/CrustUtil/","classOrder":[],"apiCategories":[]}')}}]);
