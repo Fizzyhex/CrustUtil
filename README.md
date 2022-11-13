@@ -1,5 +1,7 @@
 ## What's this?
-CrustUtil is a library of useful utilities for Roblox.
+CrustUtil is a collection of personal modules that I have developed and decided to make public as part of my contribution to the Roblox OSS community.
+
+The modules you'll find here are mostly experimental! Use at your own risk.
 
 | Module | Dependancy | Description |
 | -- | -- | -- |
