@@ -18,22 +18,22 @@ end
 	-- Find all ModuleScripts inside of the 'Modules' folder.
 	-- Then, we'll filter through them to only get ModuleScripts that have names
 	-- ending with 'Controller'.
-	local controllers = Baseline:FilterForModuleScripts(
+	local controllers = Baseline.FilterForModuleScripts(
 		ReplicatedStorage.Modules:GetDescendants(),
 		ControllerFilter
 	)
 
 	-- Require the controllers.
-	controllers = Baseline:RequireModuleScripts(
+	controllers = Baseline.RequireModuleScripts(
 		controllers,
 		"Requiring controller %s"
 	)
 
 	-- For every controller module, we'll call module:OnInit() if it's present.
-	Baseline:CallAll(controllers, "OnInit", "Calling {moduleName}.{method}")
+	Baseline.CallAll(controllers, "OnInit", "Calling {moduleName}.{method}")
 	-- Same as above, but this time we'll wrap the call in a spawn so that it
 	-- doesn't yield.
-	Baseline:SpawnAll(controllers, "OnStart")
+	Baseline.SpawnAll(controllers, "OnStart")
 
 	print("All controllers initalized/started!", controllers)
 	```
@@ -42,7 +42,7 @@ local Baseline = {}
 Baseline.__index = Baseline
 
 -- Returns an array of all of the ModuleScripts inside of a table.
-function Baseline:FilterForModuleScripts(children: {Instance}, filter: (ModuleScript) -> (boolean))
+function Baseline.FilterForModuleScripts(children: {Instance}, filter: (ModuleScript) -> (boolean))
 	local moduleScripts = {}
 	for _, child in children do
 		if child:IsA("ModuleScript") == false or (filter and filter(child) ~= true) then
@@ -53,7 +53,7 @@ function Baseline:FilterForModuleScripts(children: {Instance}, filter: (ModuleSc
 	return moduleScripts
 end
 
-function Baseline:FilterChildren(children: {Instance}, filter: (ModuleScript) -> (boolean))
+function Baseline.FilterChildren(children: {Instance}, filter: (ModuleScript) -> (boolean))
 	local result = {}
 	for _, child in children do
 		if filter(child) then
@@ -74,13 +74,13 @@ end
 	```lua
 	local Baseline = require(somewhere.Baseline)
 
-	local components = Baseline:RequireModuleScripts(
+	local components = Baseline.RequireModuleScripts(
 		ReplicatedStorage.Components,
 		"Loading component %s"
 	)
 	```
 ]=]
-function Baseline:RequireModuleScripts(modules: {ModuleScript}, requireMessage: string?)
+function Baseline.RequireModuleScripts(modules: {ModuleScript}, requireMessage: string?)
 	local moduleScripts = {}
 	for _, module in modules do
 		if not module:IsA("ModuleScript") then
@@ -101,7 +101,7 @@ end
 	@param method -- Method to call
 	@param callMessage -- Optional message to print before calling the method
 ]=]
-function Baseline:CallAll(modules: {any: any}, method: string, callMessage: string?)
+function Baseline.CallAll(modules: {any: any}, method: string, callMessage: string?)
 	for moduleScript, module in modules do
 		if not module[method] then
 			continue
@@ -129,7 +129,7 @@ end
 	@param modules -- Dictionary/table of modules
 	@param method -- Method to call
 ]=]
-function Baseline:SpawnAll(modules: {any: any}, method: string)
+function Baseline.SpawnAll(modules: {any: any}, method: string)
 	for moduleScript, module in modules do
 		if module[method] then
 			debug.setmemorycategory(GetName(moduleScript))
