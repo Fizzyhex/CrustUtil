@@ -8,4 +8,4 @@ enabled = true
 includeReadme = true
 
 [docusaurus]
-tagline = "A library of useful Roblox utilities"
+tagline = "A collection of useful Roblox modules"
