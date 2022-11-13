@@ -178,10 +178,14 @@ local moduleRunner = if LOCAL_PLAYER then script:WaitForChild("ModuleRunnerClien
 
 --[=[
 	@class ParallelComponent
-	
+
 	ParallelComponent is a modified version of [Sleitnick's Component](https://sleitnick.github.io/RbxUtil/api/Component) that places each Instance of a component into separate acutators.
 
-	The method used to achieve this could greatly be improved on.
+	:::caution
+	This module is experimental and is not recommended for use outside of experimentation!
+	:::
+
+	⚠ This module is experimental!
 ]=]
 local ParallelComponent = {}
 
