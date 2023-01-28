@@ -31,7 +31,7 @@ end
 
 	-- For every controller module, we'll call module:OnInit() if it's present.
 	Baseline.CallAll(controllers, "OnInit", "Calling {moduleName}.{method}")
-	-- Same as above, but this time we'll wrap the call in a spawn so that it
+	-- Similar to CallAll, but this time we'll wrap the call in a spawn so that it
 	-- doesn't yield.
 	Baseline.SpawnAll(controllers, "OnStart")
 
@@ -44,22 +44,26 @@ Baseline.__index = Baseline
 -- Returns an array of all of the ModuleScripts inside of a table.
 function Baseline.FilterForModuleScripts(children: {Instance}, filter: (ModuleScript) -> (boolean))
 	local moduleScripts = {}
+
 	for _, child in children do
 		if child:IsA("ModuleScript") == false or (filter and filter(child) ~= true) then
 			continue
 		end
 		table.insert(moduleScripts, child)
 	end
+
 	return moduleScripts
 end
 
 function Baseline.FilterChildren(children: {Instance}, filter: (ModuleScript) -> (boolean))
 	local result = {}
+
 	for _, child in children do
 		if filter(child) then
 			table.insert(result, child)
 		end
 	end
+
 	return result
 end
 
@@ -80,17 +84,31 @@ end
 	)
 	```
 ]=]
-function Baseline.RequireModuleScripts(modules: {ModuleScript}, requireMessage: string?)
+function Baseline.RequireModuleScripts(modules: {ModuleScript}, requireMessageOrLogger: (ModuleScript) -> () | string? | {["__call"]: (ModuleScript) -> ()})
+	local requireMessage = if typeof(requireMessageOrLogger) == "string" then requireMessageOrLogger else nil
+	local logger =
+		if typeof(requireMessageOrLogger) == "function"
+		or (typeof(requireMessageOrLogger) == "table" and getmetatable(requireMessageOrLogger).__call)
+		then requireMessageOrLogger
+		else nil
+
+	assert(requireMessage or logger, "Expected function or string type at argument 2, got " .. typeof(requireMessageOrLogger))
 	local moduleScripts = {}
+
 	for _, module in modules do
 		if not module:IsA("ModuleScript") then
 			continue
 		end
+
 		if requireMessage then
-			print(string.format(requireMessage, module:GetFullName()))
+			print(requireMessage:format(module:GetFullName()))
+		elseif logger then
+			logger(module)
 		end
+
 		moduleScripts[module] = require(module)
 	end
+
 	return moduleScripts
 end
 
