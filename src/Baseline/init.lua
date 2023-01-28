@@ -72,7 +72,7 @@ end
 	Requires all module scripts inside of the table. Any instances that are not ModuleScripts will be ignored.
 
 	@param modules -- Dictionary/table of modules
-	@param requireMessageOrLogger -- Optional message to print before calling the method
+	@param requireMessageOrLogger -- Optional message to print/function to call before calling the method
 	@return table -- Returns a dictionary of ModuleScripts and their returned values
 
 	```lua
