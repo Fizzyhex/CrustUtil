@@ -84,7 +84,7 @@ end
 	)
 	```
 ]=]
-function Baseline.RequireModuleScripts(modules: {ModuleScript}, requireMessageOrLogger: (ModuleScript) -> () | string? | {["__call"]: (ModuleScript) -> ()})
+function Baseline.RequireModuleScripts(modules: {ModuleScript}, requireMessageOrLogger: ((ModuleScript) -> () | string | {["__call"]: (ModuleScript) -> ()})?)
 	local requireMessage = if typeof(requireMessageOrLogger) == "string" then requireMessageOrLogger else nil
 	local logger =
 		if typeof(requireMessageOrLogger) == "function"
@@ -92,7 +92,11 @@ function Baseline.RequireModuleScripts(modules: {ModuleScript}, requireMessageOr
 		then requireMessageOrLogger
 		else nil
 
-	assert(requireMessage or logger, "Expected function or string type at argument 2, got " .. typeof(requireMessageOrLogger))
+	assert(
+		requireMessageOrLogger == nil or requireMessage or logger,
+		"Expected function or string type at argument 2, got " .. typeof(requireMessageOrLogger)
+	)
+
 	local moduleScripts = {}
 
 	for _, module in modules do
