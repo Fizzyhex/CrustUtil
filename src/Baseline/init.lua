@@ -117,6 +117,22 @@ function Baseline.RequireModuleScripts(modules: {ModuleScript}, requireMessageOr
 end
 
 --[=[
+	Converts a dictionary to a list, useful for converting the results of `RequireModuleScripts`.
+
+	@param dict -- Dictionary to convert
+	@return table -- A table of the dictionary's keys
+]=]
+function Baseline.ToList(dict: {[any]: any})
+	local list = {}
+
+	for _, value in dict do
+		table.insert(list, value)
+	end
+
+	return list
+end
+
+--[=[
 	Calls a specific method on all of the modules.
 
 	@param modules -- Dictionary/table of modules
