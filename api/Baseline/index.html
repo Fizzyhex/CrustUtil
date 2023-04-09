@@ -67,8 +67,8 @@ Baseline.SpawnAll(controllers, &quot;OnStart&quot;)
 
 print(&quot;All controllers initalized/started!&quot;, controllers)
 ```"><link data-rh="true" rel="canonical" href="https://Virshal.github.io/CrustUtil/api/Baseline"><link data-rh="true" rel="alternate" href="https://Virshal.github.io/CrustUtil/api/Baseline" hreflang="en"><link data-rh="true" rel="alternate" href="https://Virshal.github.io/CrustUtil/api/Baseline" hreflang="x-default"><link rel="stylesheet" href="/CrustUtil/assets/css/styles.77d02042.css">
-<link rel="preload" href="/CrustUtil/assets/js/runtime~main.4da3a754.js" as="script">
-<link rel="preload" href="/CrustUtil/assets/js/main.d7a1e9ec.js" as="script">
+<link rel="preload" href="/CrustUtil/assets/js/runtime~main.dae6b302.js" as="script">
+<link rel="preload" href="/CrustUtil/assets/js/main.0d7eb233.js" as="script">
 </head>
 <body class="navigation-with-keyboard">
 <script>!function(){function e(e){document.documentElement.setAttribute("data-theme",e)}var t=function(){var e=null;try{e=localStorage.getItem("theme")}catch(e){}return e}();null!==t?e(t):window.matchMedia("(prefers-color-scheme: dark)").matches?e("dark"):(window.matchMedia("(prefers-color-scheme: light)").matches,e("light"))}()</script><div id="__docusaurus">
@@ -118,7 +118,13 @@ Baseline<span class="token punctuation">.</span><span class="token function">Spa
 	<span class="token string">"Loading component %s"</span>
 <span class="token punctuation">)</span>
 </code></pre>
-</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="CallAll"><code style="text-decoration:none">CallAll</code><a class="hash-link" href="#CallAll" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/Fizzyhex/CrustUtil/blob/main/src/Baseline/init.lua#L126"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Baseline<!-- -->.</code><code class="green_DgR4">CallAll</code><code>(</code><div class="inset_uKQm"><div><code>modules<!-- -->: </code><code class="purple_ieR2">{</code><code>any<!-- -->: </code><code class="blue_P4bS">any</code><code class="purple_ieR2">}</code><code>,</code><span class="inlineDescription_G7Er">-- <span>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="ToList"><code style="text-decoration:none">ToList</code><a class="hash-link" href="#ToList" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/Fizzyhex/CrustUtil/blob/main/src/Baseline/init.lua#L125"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Baseline<!-- -->.</code><code class="green_DgR4">ToList</code><code>(</code><div class="inset_uKQm"><div><code>dict<!-- -->: </code><code class="purple_ieR2">{</code><span><code>[</code><code class="blue_P4bS">any</code><code>]</code></span><code>: </code><code class="blue_P4bS">any</code><code class="purple_ieR2">}</code><span class="inlineDescription_G7Er">-- <span>
+<p>Dictionary to convert</p>
+</span></span></div></div><code>) → </code><code class="blue_P4bS">table</code><span class="inlineDescription_G7Er">-- <span>
+<p>A table of the dictionary's keys</p>
+</span></span></div><div>
+<p>Converts a dictionary to a list, useful for converting the results of <code>RequireModuleScripts</code>.</p>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="CallAll"><code style="text-decoration:none">CallAll</code><a class="hash-link" href="#CallAll" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/Fizzyhex/CrustUtil/blob/main/src/Baseline/init.lua#L142"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Baseline<!-- -->.</code><code class="green_DgR4">CallAll</code><code>(</code><div class="inset_uKQm"><div><code>modules<!-- -->: </code><code class="purple_ieR2">{</code><code>any<!-- -->: </code><code class="blue_P4bS">any</code><code class="purple_ieR2">}</code><code>,</code><span class="inlineDescription_G7Er">-- <span>
 <p>Dictionary/table of modules</p>
 </span></span></div><div><code>method<!-- -->: </code><code class="blue_P4bS">string</code><code>,</code><span class="inlineDescription_G7Er">-- <span>
 <p>Method to call</p>
@@ -126,7 +132,7 @@ Baseline<span class="token punctuation">.</span><span class="token function">Spa
 <p>Optional message to print before calling the method</p>
 </span></span></div></div><code>) → </code><code>(</code><code>)</code></div><div>
 <p>Calls a specific method on all of the modules.</p>
-</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="SpawnAll"><code style="text-decoration:none">SpawnAll</code><a class="hash-link" href="#SpawnAll" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/Fizzyhex/CrustUtil/blob/main/src/Baseline/init.lua#L154"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Baseline<!-- -->.</code><code class="green_DgR4">SpawnAll</code><code>(</code><div class="inset_uKQm"><div><code>modules<!-- -->: </code><code class="purple_ieR2">{</code><code>any<!-- -->: </code><code class="blue_P4bS">any</code><code class="purple_ieR2">}</code><code>,</code><span class="inlineDescription_G7Er">-- <span>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="SpawnAll"><code style="text-decoration:none">SpawnAll</code><a class="hash-link" href="#SpawnAll" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/Fizzyhex/CrustUtil/blob/main/src/Baseline/init.lua#L170"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Baseline<!-- -->.</code><code class="green_DgR4">SpawnAll</code><code>(</code><div class="inset_uKQm"><div><code>modules<!-- -->: </code><code class="purple_ieR2">{</code><code>any<!-- -->: </code><code class="blue_P4bS">any</code><code class="purple_ieR2">}</code><code>,</code><span class="inlineDescription_G7Er">-- <span>
 <p>Dictionary/table of modules</p>
 </span></span></div><div><code>method<!-- -->: </code><code class="blue_P4bS">string</code><span class="inlineDescription_G7Er">-- <span>
 <p>Method to call</p>
@@ -162,6 +168,28 @@ Baseline<span class="token punctuation">.</span><span class="token function">Spa
             }
         },
         {
+            &quot;name&quot;: &quot;ToList&quot;,
+            &quot;desc&quot;: &quot;Converts a dictionary to a list, useful for converting the results of `RequireModuleScripts`.&quot;,
+            &quot;params&quot;: [
+                {
+                    &quot;name&quot;: &quot;dict&quot;,
+                    &quot;desc&quot;: &quot;Dictionary to convert&quot;,
+                    &quot;lua_type&quot;: &quot;{[any]: any}&quot;
+                }
+            ],
+            &quot;returns&quot;: [
+                {
+                    &quot;desc&quot;: &quot;A table of the dictionary&#x27;s keys&quot;,
+                    &quot;lua_type&quot;: &quot;table&quot;
+                }
+            ],
+            &quot;function_type&quot;: &quot;static&quot;,
+            &quot;source&quot;: {
+                &quot;line&quot;: 125,
+                &quot;path&quot;: &quot;src/Baseline/init.lua&quot;
+            }
+        },
+        {
             &quot;name&quot;: &quot;CallAll&quot;,
             &quot;desc&quot;: &quot;Calls a specific method on all of the modules.&quot;,
             &quot;params&quot;: [
@@ -184,7 +212,7 @@ Baseline<span class="token punctuation">.</span><span class="token function">Spa
             &quot;returns&quot;: [],
             &quot;function_type&quot;: &quot;static&quot;,
             &quot;source&quot;: {
-                &quot;line&quot;: 126,
+                &quot;line&quot;: 142,
                 &quot;path&quot;: &quot;src/Baseline/init.lua&quot;
             }
         },
@@ -206,7 +234,7 @@ Baseline<span class="token punctuation">.</span><span class="token function">Spa
             &quot;returns&quot;: [],
             &quot;function_type&quot;: &quot;static&quot;,
             &quot;source&quot;: {
-                &quot;line&quot;: 154,
+                &quot;line&quot;: 170,
                 &quot;path&quot;: &quot;src/Baseline/init.lua&quot;
             }
         }
@@ -219,8 +247,8 @@ Baseline<span class="token punctuation">.</span><span class="token function">Spa
         &quot;line&quot;: 41,
         &quot;path&quot;: &quot;src/Baseline/init.lua&quot;
     }
-}</pre></details></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#types" class="table-of-contents__link toc-highlight">Types</a></li><li><a href="#properties" class="table-of-contents__link toc-highlight">Properties</a></li><li><a href="#functions" class="table-of-contents__link toc-highlight">Functions</a><ul><li><a href="#CallAll" class="table-of-contents__link toc-highlight">.CallAll</a></li><li><a href="#RequireModuleScripts" class="table-of-contents__link toc-highlight">.RequireModuleScripts</a></li><li><a href="#SpawnAll" class="table-of-contents__link toc-highlight">.SpawnAll</a></li></ul></li></ul></div></div></div></div></main></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2023 Virshal. Built with Moonwave and Docusaurus.</div></div></div></footer></div>
-<script src="/CrustUtil/assets/js/runtime~main.4da3a754.js"></script>
-<script src="/CrustUtil/assets/js/main.d7a1e9ec.js"></script>
+}</pre></details></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#types" class="table-of-contents__link toc-highlight">Types</a></li><li><a href="#properties" class="table-of-contents__link toc-highlight">Properties</a></li><li><a href="#functions" class="table-of-contents__link toc-highlight">Functions</a><ul><li><a href="#CallAll" class="table-of-contents__link toc-highlight">.CallAll</a></li><li><a href="#RequireModuleScripts" class="table-of-contents__link toc-highlight">.RequireModuleScripts</a></li><li><a href="#SpawnAll" class="table-of-contents__link toc-highlight">.SpawnAll</a></li><li><a href="#ToList" class="table-of-contents__link toc-highlight">.ToList</a></li></ul></li></ul></div></div></div></div></main></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2023 Virshal. Built with Moonwave and Docusaurus.</div></div></div></footer></div>
+<script src="/CrustUtil/assets/js/runtime~main.dae6b302.js"></script>
+<script src="/CrustUtil/assets/js/main.0d7eb233.js"></script>
 </body>
 </html>
