@@ -1,8 +1,0 @@
-[package]
-name = "fizzyhex/baseline"
-version = "0.1.6"
-registry = "https://github.com/UpliftGames/wally-index"
-realm = "shared"
-description = "A powerfully simple module loading library."
-
-[dependencies]
