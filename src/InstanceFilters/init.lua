@@ -1,6 +1,6 @@
-local function MethodFilter(method, p1, p2)
+local function MethodFilter(method, match)
 	return function(instance: Instance)
-		return if instance[method](instance, p1, p2) then instance else nil
+		return if instance[method](instance) == match then instance else nil
 	end
 end
 
