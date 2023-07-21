@@ -1,0 +1,8 @@
+[package]
+name = "fizzyhex/iter"
+description = "An experimental functional iteration library."
+version = "0.0.5"
+registry = "https://github.com/UpliftGames/wally-index"
+realm = "shared"
+
+[dependencies]

@@ -1,9 +1,5 @@
 ## What's this?
 CrustUtil is a collection of general purpose modules that I have developed and decided to make public as part of my contribution to the Roblox OSS community.
 
-Some of the modules you'll find here are experimental! Please use them at your own risk.
-
-| Module | Dependancy | Description |
-| -- | -- | -- |
-| [ParallelComponent](https://fizzyhex.github.io/CrustUtil/api/ParallelComponent) | `ParallelComponent = "fizzyhex/parallelcomponent@0.1.4"` | Modified version of Component
-| [ParallelRequire](https://fizzyhex.github.io/CrustUtil/api/ParallelRequire) | `ParallelRequire = "fizzyhex/parallelrequire@0.1.0"` | Experimental utility for requiring modules in parallel
+## Installation
+The modules available within this repository are available through [Wally](https://wally.run). You can also clone this repository if you prefer.
