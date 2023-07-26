@@ -1,6 +1,6 @@
 local function MethodFilter(method, match)
 	return function(instance: Instance)
-		return if instance[method](instance) == match then instance else nil
+		return if instance[method](instance, match) ~= nil then instance else nil
 	end
 end
 

@@ -1,10 +1,6 @@
-export type Iterator = {
-	(isExhausted: boolean, result...) -> ()
-}
+export type Iterator = (isExhausted: boolean?, ...any) -> (boolean, any)
 
-export type Filter = {
-	(args...) -> (any)
-}
+export type Filter = (...any) -> (boolean | any)
 
 --[[
 	A functional iteration library for Luau.
@@ -88,7 +84,7 @@ function Iter.CallMethod(method, ...)
 end
 
 -- For each item in the `iterator`, run the `callback` if it passes the optional `filter`.
-function Iter.iterate(iterator: Iterator, callback: (a...) -> (r...), filter: (a...) -> (r...))
+function Iter.iterate(iterator: Iterator, callback: (...any) -> (...any), filter: (...any) -> (...any)?)
 	if typeof(iterator) ~= "function" then
 		iterator = Iter.ForValues(iterator)
 	end
@@ -170,9 +166,11 @@ function Iter.makeArray(iterator: Iterator, transform, filter: Filter)
 	Iter.iterate(iterator, function(...)
 		if filter == nil or filter(...) then
 			if transform then
-				table.insert(array, next({transform(...)}))
+				local value = next({transform(...)})
+				table.insert(array, value)
 			else
-				table.insert(array, next({...}))
+				local value = next({...})
+				table.insert(array, value)
 			end
 		end
 	end)
@@ -181,7 +179,7 @@ function Iter.makeArray(iterator: Iterator, transform, filter: Filter)
 end
 
 -- A factory that combines all provided filters into one.
-function Iter.UnionFilter(...: Filter...): Filter
+function Iter.UnionFilter(...)
 	local filters = {...}
 
 	return function(...)
@@ -192,11 +190,11 @@ function Iter.UnionFilter(...: Filter...): Filter
 		end
 
 		return ...
-	end :: Filter
+	end
 end
 
 -- A factory for a filter that returns true fi any of the provided filter's conditions are met.
-function Iter.OrFilter(...: Filter...): Filter
+function Iter.OrFilter(...)
 	local filters = {...}
 
 	return function(...)
@@ -207,14 +205,14 @@ function Iter.OrFilter(...: Filter...): Filter
 		end
 
 		return false
-	end :: Filter
+	end
 end
 
 -- A factory for a filter that returns the inverse of the filter (true becomes false and in vice versa).
-function Iter.InvertedFilter(filter: Filter): Filter
+function Iter.InvertedFilter(filter)
 	return function(...)
 		return if filter(...) then nil else ...
-	end :: Filter
+	end
 end
 
 return Iter

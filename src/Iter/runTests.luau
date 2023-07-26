@@ -75,7 +75,7 @@ return function()
         end
 
         local function PropertyFilter(property, value)
-            return function(instance: Instance)
+            return function(instance)
                 return if (instance[property] == value) then instance else nil
             end
         end
@@ -90,12 +90,6 @@ return function()
     end)
 
     runTest("print workspace from baseplate", function()
-        local function InstanceIsA(className: string)
-            return function(instance: Instance)
-                return if instance:IsA(className) then instance else nil
-            end
-        end
-
-        print(first(ForAncestors(workspace.Baseplate), function() return true end))
+        print(first(ForAncestors(workspace:FindFirstChild("Baseplate")), function() return true end))
     end)
 end
