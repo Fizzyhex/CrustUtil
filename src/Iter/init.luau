@@ -96,7 +96,7 @@ function Iter.iterate(iterator: Iterator | {}, callback: (...any) -> (...any), f
 	end
 
 	while true do
-		local results = {iterator()}
+		local results = {(iterator :: Iterator)()}
 		local alive = table.remove(results, 1)
 
 		if not alive then
@@ -139,7 +139,7 @@ function Iter.first(iterator: Iterator | {}, filter: Filter)
 	end
 
 	while true do
-		local results = {iterator()}
+		local results = {(iterator :: Iterator)()}
 		local alive = table.remove(results, 1)
 
 		if not alive then
