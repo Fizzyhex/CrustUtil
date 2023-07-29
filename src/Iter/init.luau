@@ -166,10 +166,10 @@ function Iter.makeArray(iterator: Iterator, transform: any?, filter: Filter?)
 	Iter.iterate(iterator, function(...)
 		if filter == nil or filter(...) then
 			if transform then
-				local value = next({transform(...)})
+				local _, value = next({transform(...)})
 				table.insert(array, value)
 			else
-				local value = next({...})
+				local _, value = next({...})
 				table.insert(array, value)
 			end
 		end
