@@ -160,7 +160,7 @@ function Iter.getNext(iterator: Iterator)
 end
 
 -- For each item in the `iterator`, append the item (or the optionally `transformed` item) to a table if it passes the optional `filter`
-function Iter.makeArray(iterator: Iterator, transform, filter: Filter)
+function Iter.makeArray(iterator: Iterator, transform: any?, filter: Filter?)
 	local array = {}
 
 	Iter.iterate(iterator, function(...)
