@@ -84,7 +84,7 @@ function Iter.CallMethod(method, ...)
 end
 
 -- For each item in the `iterator`, run the `callback` if it passes the optional `filter`.
-function Iter.iterate(iterator: Iterator, callback: (...any) -> (...any), filter: (...any) -> (...any)?)
+function Iter.iterate(iterator: Iterator | {}, callback: (...any) -> (...any), filter: (...any) -> (...any)?)
 	if typeof(iterator) ~= "function" then
 		iterator = Iter.ForValues(iterator)
 	end
@@ -110,7 +110,7 @@ function Iter.iterate(iterator: Iterator, callback: (...any) -> (...any), filter
 end
 
 -- Returns a new table with only items that pass the filter.
-function Iter.filter(iterator: Iterator, filter: Filter)
+function Iter.filter(iterator: Iterator | {}, filter: Filter)
 	if typeof(iterator) ~= "function" then
 		iterator = Iter.ForValues(iterator)
 	end
@@ -133,7 +133,7 @@ function Iter.filter(iterator: Iterator, filter: Filter)
 end
 
 -- Returns the first match of a filter.
-function Iter.first(iterator, filter: Filter)
+function Iter.first(iterator: Iterator | {}, filter: Filter)
 	if typeof(iterator) ~= "function" then
 		iterator = Iter.ForValues(iterator)
 	end
@@ -160,7 +160,7 @@ function Iter.getNext(iterator: Iterator)
 end
 
 -- For each item in the `iterator`, append the item (or the optionally `transformed` item) to a table if it passes the optional `filter`
-function Iter.makeArray(iterator: Iterator, transform: any?, filter: Filter?)
+function Iter.makeArray(iterator: Iterator | {}, transform: any?, filter: Filter?)
 	local array = {}
 
 	Iter.iterate(iterator, function(...)
